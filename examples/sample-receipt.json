@@ -1,0 +1,36 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show the shape of an action receipt for documentation. See docs/architecture.md for the evidence model.",
+
+  "receipt_id": "example-receipt-001",
+  "mission_id": "example-mission-001",
+  "plan_id": "example-plan-001",
+  "step_index": 3,
+
+  "action": "write.deliverable",
+  "tier": "SENSITIVE",
+  "approval_required": true,
+
+  "status": "verified",
+  "lifecycle": [
+    { "state": "proposed",  "at": "2026-05-26T10:05:00Z" },
+    { "state": "awaiting_owner_confirmation", "at": "2026-05-26T10:05:02Z" },
+    { "state": "approved",  "at": "2026-05-26T10:05:15Z", "by": "owner" },
+    { "state": "executed",  "at": "2026-05-26T10:05:18Z" },
+    { "state": "verified",  "at": "2026-05-26T10:05:21Z" }
+  ],
+
+  "actor": {
+    "proposed_by": "kora",
+    "approved_by": "owner",
+    "executed_by": "pac"
+  },
+
+  "posture_at_execution": "sovereign",
+  "network_access": "not_used",
+
+  "evidence": {
+    "outputs": ["meeting-summary-2026-05-26.md"],
+    "audit_entry_ids": ["audit-entry-12345", "audit-entry-12346"]
+  }
+}

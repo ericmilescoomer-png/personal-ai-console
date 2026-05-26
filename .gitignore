@@ -1,0 +1,76 @@
+# Secrets and credentials
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.token
+secrets/
+credentials/
+tokens/
+
+# Local and private config
+*.local.*
+*.private.*
+local_settings.*
+config.local.*
+settings.local.*
+settings.private.*
+
+# Databases and state
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+data/
+storage/
+memory/
+journal/
+backups/
+app_data/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Model files
+models/
+*.gguf
+*.bin
+*.safetensors
+*.pt
+*.onnx
+
+# Caches
+*.cache
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+
+# Python environments
+.venv/
+venv/
+env/
+
+# Node and frontend builds
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+.cursor/
+
+# Personal scratch
+scratch/
+notes-private/
+TODO.private*
