@@ -100,6 +100,8 @@ Degraded network or system conditions are surfaced as operational state, but the
 
 Governed actions, policy decisions, and tool invocations write to audit and receipt surfaces separate from the main database. Where the action spine applies, executed work is captured in `action_receipts`. As far as the system is concerned, an action without a receipt didn't happen.
 
+For the full trust architecture &mdash; owner authority, capability tiers, postures, owner-controlled memory, and oversight &mdash; see [docs/trust-model.md](docs/trust-model.md).
+
 ---
 
 ## Kora
@@ -180,7 +182,15 @@ Not everything in Personal A.I. Console is finished.
 
 This repository is the public-facing layer for Personal A.I. Console. It exists to make the project visible while keeping the implementation private.
 
-**It is:** product positioning, architecture summaries, design principles, roadmap notes, and evidence of active product direction. It will grow to include screenshots, redacted workflow examples, and demo material as the public showcase matures.
+**It is:** product positioning, architecture summaries, a trust model, screenshots, a glossary, roadmap notes, and sanitized examples &mdash; evidence of active product direction. It will grow with demo material as the public showcase matures.
+
+**Documentation:**
+- [docs/architecture.md](docs/architecture.md) &mdash; the three-layer architecture and work loop
+- [docs/trust-model.md](docs/trust-model.md) &mdash; owner authority, tiers, postures, memory, oversight
+- [docs/screenshots.md](docs/screenshots.md) &mdash; annotated screenshots from the prototype
+- [docs/roadmap.md](docs/roadmap.md) &mdash; what's built now vs. product direction
+- [docs/glossary.md](docs/glossary.md) &mdash; PAC vocabulary
+- [examples/](examples/) &mdash; public-safe mock mission flow and receipt
 
 **It is not:** the source-code repository, a clone-and-run distribution, a cloud service, a chatbot wrapper, or a place for secrets, logs, databases, or production configuration.
 
@@ -240,6 +250,8 @@ Personal A.I. Console is designed for a future where everyone has an AI assistan
 **Personal A.I. Console** is the product name.
 **PAC** is the abbreviation.
 **PAC Desktop** is the current private desktop implementation.
+
+See [TRADEMARK.md](TRADEMARK.md) for trademark notice and permitted use.
 
 ---
 
