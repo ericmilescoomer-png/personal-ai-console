@@ -20,6 +20,7 @@ This repository is the public showcase for Personal A.I. Console. The implementa
 - [What Makes Personal A.I. Console Different](#what-makes-personal-ai-console-different)
 - [Roadmap](#roadmap)
 - [Naming](#naming)
+- [Contact](#contact)
 - [Rights](#rights)
 
 ---
@@ -252,6 +253,14 @@ Personal A.I. Console is designed for a future where everyone has an AI assistan
 **PAC Desktop** is the current private desktop implementation.
 
 See [TRADEMARK.md](TRADEMARK.md) for trademark notice and permitted use.
+
+---
+
+## Contact
+
+Personal A.I. Console&trade; is an active private prototype. For portfolio review, collaboration, or private demo inquiries, contact **personal.aiconsole@gmail.com**.
+
+Please do not use this repository to request source-code access &mdash; the implementation is private and not available for distribution.
 
 ---
 
