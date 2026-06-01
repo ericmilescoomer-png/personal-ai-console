@@ -61,11 +61,12 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Ambient infrastructure
 
-- **Re-entry brief** — on return from idle, a concise, sourced handoff: what happened, what's pending, what changed, what's awaiting attention.
-- **Experience search** — meaning-based retrieval across journal, receipts, deliverables, and ingested documents, with provenance and freshness on everything.
-- **Preference learning** — Kora learns from the work loop (what's approved, deferred, read) into inspectable, owner-deletable preferences — from a documented trail, not model fine-tuning.
-- **Context signatures** — lightweight daily fingerprints of how time was spent, enriching mission context.
-- **WAN awareness** — graceful handling of connectivity changes; offline-first, with online-only work deferring and resurfacing automatically.
+The monitoring primitives for these already run as PAC OS agents (session signatures, preference learning, ambient state, network/WAN awareness). What's still ahead is the owner-facing experience built on top of them:
+
+- **Re-entry brief** — turning ambient-state tracking into a concise, sourced handoff on return from idle: what happened, what's pending, what changed, what's awaiting attention.
+- **Experience search** — maturing today's cross-surface search into a polished, meaning-based "search everything" across journal, receipts, deliverables, and documents, with provenance and freshness.
+- **Fuller preference learning** — the preference-learner agent already records inspectable, owner-deletable preferences from the work loop; deeper standing grants and session handoff are the direction.
+- **Broader connectivity handling** — WAN polling and deferred-plan resurfacing already run; wider graceful-degradation behavior is the direction.
 
 ### Reach
 

@@ -29,15 +29,19 @@ This repository is the public showcase for Personal A.I. Console. The implementa
 
 AI is moving from chat interfaces toward agentic systems &mdash; assistants that can plan, use tools, access context, and complete real work on a user's behalf. OpenAI's ChatGPT Agent, Anthropic's Model Context Protocol, Microsoft's agent platforms, and Apple's on-device AI direction all point at the same shift: AI is becoming part of the operating layer, not just another app sitting on top of one.
 
-The default version of that future runs in the cloud. Someone else owns the assistant, the context, the data, and the access. That is convenient. It is also a trade most people are making without thinking about it.
+That future is arriving whether any one person chose it or not. The default version of it runs in the cloud: someone else owns the assistant, the context, the data, the permissions, and the long-term direction. That is convenient, and for many tasks it will stay useful. But it is a trade &mdash; and most people are making it without deciding to.
 
 Personal A.I. Console is built on one principle: powerful AI should make people more capable without making them less in control.
 
-Personal A.I. Console is the local version of the same future. Same agentic capability &mdash; observing, planning, asking permission, executing, leaving evidence behind &mdash; but on the owner's hardware, under the owner's rules, against models the owner controls.
+PAC is the local version of the same future. Same agentic capability &mdash; observing, planning, asking permission, executing, leaving evidence behind &mdash; but on the owner's hardware, under the owner's rules, against models the owner controls. The difference is not access; cloud AI is already cheap and everywhere. The difference is ownership. A tool you rent can have its price, its policy, or its model changed under you. A tool you own, you tend yourself &mdash; and that responsibility is the point, not a cost to apologize for.
 
-The project started as a personal AI for a smart home. It evolved into a desktop console because the desktop is where the rules get decided. The smart-home work is on the roadmap.
+AI is not weightless &mdash; real compute, real power, and real access sit behind every agent. PAC does not claim to make that cost smaller or greener. What it changes is whose decision it is: running AI becomes something the owner chooses and owns deliberately, rather than a cost abstracted away until you forget you are paying it.
 
-The position is straightforward: if AI is going to be how computers work, the person in front of the computer should still be the one in charge of it.
+The project started as a personal AI for a smart home. It evolved into a desktop console because the desktop is where the rules get decided. The smart-home work is on the roadmap; the command layer comes first.
+
+PAC is not anti-cloud. PAC is not a model provider. PAC is not a chatbot wrapper. It is a local-first command console for governed AI work &mdash; and reaching the outside world is a deliberate mode: explicit, posture-gated, and receipted, not the default assumption.
+
+The position is straightforward: if AI is going to be how computers work, the person in front of the computer should still be the one in command of it.
 
 ---
 
@@ -117,7 +121,7 @@ The model provides reasoning and language. Kora's authority comes from the owner
 
 ## What's Built
 
-The current PAC Desktop build includes the following, verified against the working codebase.
+The current private PAC Desktop build includes the following. These are described at a product level; implementation details remain private.
 
 **Interface** &mdash; what the Owner sees and touches.
 
@@ -165,7 +169,7 @@ The current PAC Desktop build includes the following, verified against the worki
 
 ## What's Not Built Yet
 
-Not everything in Personal A.I. Console is finished.
+Not everything in Personal A.I. Console is finished. The work loop is most mature through the approval stage &mdash; observation, policy enforcement, planning, and owner approval; execution sandboxing and outcome verification are the areas being hardened next (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete.
@@ -224,25 +228,11 @@ Personal A.I. Console is designed for a future where everyone has an AI assistan
 
 ## Roadmap
 
-**Public showcase work:**
-- Architecture diagrams
-- Redacted screenshots
-- Demo walkthrough
-- Example mission flow
-- Example receipt format
-- Security and privacy model summary
-- Public roadmap
+The public showcase now includes architecture, a trust model, screenshots, sanitized examples, a glossary, and a roadmap. The main remaining showcase piece is a demo walkthrough, once a clean end-to-end demo is recorded.
 
-**Product direction:**
-- Stronger mission deliverable loop
-- Governed outbound connectors
-- Improved local knowledge search
-- Richer re-entry and handoff briefs
-- Stronger model-routing profiles
-- Specialized agent workers (task-specific agents capable of running different models per worker)
-- Safer automation primitives
-- Smart-home and IoT control-plane return
-- Expanded deployment profiles
+Product direction includes a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane.
+
+See **[docs/roadmap.md](docs/roadmap.md)** for the full roadmap &mdash; the earned-autonomy model, what's built now, the product direction, and what's explicitly out of scope.
 
 ---
 
@@ -269,3 +259,7 @@ Please do not use this repository to request source-code access &mdash; the impl
 &copy; 2026 Eric Coomer. All rights reserved.
 
 Personal A.I. Console&trade; is the subject of pending U.S. trademark application Serial No. 99527085 by Eric Coomer. No license is granted to copy, modify, redistribute, sublicense, commercialize, or build derivative works from this project unless permission is explicitly provided in writing.
+
+---
+
+*Company and product names are referenced for context only. Personal A.I. Console is not affiliated with, sponsored by, or endorsed by OpenAI, Anthropic, Microsoft, Apple, or any other referenced company.*
