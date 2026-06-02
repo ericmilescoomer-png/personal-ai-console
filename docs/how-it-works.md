@@ -49,7 +49,7 @@ Before anything runs, the plan is evaluated by a policy gate with three properti
 
 - **Deterministic** &mdash; the same plan produces the same decision every time.
 - **Registry-truthful** &mdash; it judges against the registry's tiers, not the plan's claims.
-- **Model-free** &mdash; it makes no model calls. No prompt, jailbreak, or clever wording changes the outcome.
+- **Model-free** &mdash; it makes no model calls. No prompt or jailbreak can talk the gate into allowing forbidden or unconfirmed work. (Wording can still influence what the model *proposes*; it cannot change how a proposed step is *classified* &mdash; see ASI01 in the [OWASP self-assessment](owasp-agentic-mapping.md).)
 
 The outcomes are simple:
 
@@ -118,7 +118,7 @@ In Sovereign posture, outbound capabilities are blocked outright, regardless of 
 
 - The model proposes; it never sets its own permissions.
 - Tiers are registry truth; a plan can't reclassify itself.
-- The gate is deterministic and model-free; wording can't change a decision.
+- The gate is deterministic and model-free; wording can't talk it into allowing forbidden or unconfirmed work.
 - Sensitive work waits for the owner; forbidden work is blocked.
 - Autonomy controls confirmation frequency, never permission.
 - Outbound is posture-gated; Sovereign means local-only.
