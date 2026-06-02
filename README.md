@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/pac-logo.PNG" alt="Personal A.I. Console logo" width="360">
+</p>
+
 # Personal A.I. Console&trade;
 
 A local-first AI command layer for a single owner.
