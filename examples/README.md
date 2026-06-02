@@ -12,9 +12,14 @@ Field names here are illustrative and chosen for readability. The real implement
 
 ## Contents
 
+All examples below share one mock scenario &mdash; a "summarize the morning's meeting notes" mission &mdash; so the artifacts line up with each other.
+
 | File | Shows |
 |---|---|
 | [`sample-mission-flow.json`](sample-mission-flow.json) | The lifecycle of a mission — plan, capability tiers, approval, execution, and receipts. See [docs/architecture.md](../docs/architecture.md) for the work loop. |
+| [`sample-policy-decision.json`](sample-policy-decision.json) | A deterministic policy decision over a plan — including a step whose registry tier overrides what the plan proposed. See [docs/how-it-works.md](../docs/how-it-works.md). |
 | [`sample-receipt.json`](sample-receipt.json) | The shape of a single action receipt, lifecycle-tracked from proposal through verification. See [docs/architecture.md](../docs/architecture.md) for the evidence model. |
+| [`sample-audit-entry.json`](sample-audit-entry.json) | Append-only audit entries for one governed flow — plan created, policy checked, confirmed, executed. See [docs/how-it-works.md](../docs/how-it-works.md). |
+| [`sample-agent-definition.json`](sample-agent-definition.json) | The shape of an agent definition, including its per-agent autonomy level (which controls confirmation frequency, not permission). See [docs/how-it-works.md](../docs/how-it-works.md). |
 
-For how these concepts hold the owner in control, see the [Trust Model](../docs/trust-model.md).
+For how these concepts hold the owner in control, see the [Trust Model](../docs/trust-model.md); for the flow that produces them, see [How It Works](../docs/how-it-works.md) and the [Demo Walkthrough](../demos/demo-walkthrough.md).

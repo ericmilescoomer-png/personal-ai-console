@@ -1,0 +1,30 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show the shape of a deterministic policy decision over a plan. The gate is registry-truthful and model-free: a step's tier comes from the capability registry, not from the plan. See docs/how-it-works.md for the decision logic.",
+
+  "plan_id": "example-plan-001",
+  "evaluated_at": "2026-05-26T10:05:15Z",
+  "evaluator": "policy_gate",
+
+  "outcome": "require_confirmation",
+  "reasons": [
+    {
+      "code": "sensitive_capability",
+      "message": "step 3: capability 'write.deliverable' is SENSITIVE and requires owner confirmation",
+      "step_index": 3
+    }
+  ],
+
+  "step_classification": [
+    { "step": 1, "action": "read.document",    "proposed_tier": "SAFE",      "registry_tier": "SAFE",      "decision": "allow" },
+    { "step": 2, "action": "summarize.content", "proposed_tier": "SAFE",      "registry_tier": "SAFE",      "decision": "allow" },
+    { "step": 3, "action": "write.deliverable", "proposed_tier": "SAFE",      "registry_tier": "SENSITIVE", "decision": "require_confirmation" }
+  ],
+
+  "_classification_note": "In step 3 the plan proposed SAFE, but the registry's tier (SENSITIVE) is authoritative and overrides it. A plan cannot reclassify its own steps.",
+
+  "obligations": [],
+  "posture_at_evaluation": "sovereign",
+  "deterministic": true,
+  "model_calls": 0
+}

@@ -1,0 +1,43 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show the shape of append-only audit entries for a single governed flow. The audit trail is separate from the main data and records what was decided, approved, and executed. See docs/how-it-works.md.",
+
+  "audit_trail": [
+    {
+      "audit_id": "audit-entry-12340",
+      "at": "2026-05-26T10:00:05Z",
+      "action_type": "plan.created",
+      "actor": "kora",
+      "subject": "example-plan-001",
+      "result": "ok"
+    },
+    {
+      "audit_id": "audit-entry-12345",
+      "at": "2026-05-26T10:05:15Z",
+      "action_type": "policy.checked",
+      "actor": "system",
+      "subject": "example-plan-001",
+      "result": "require_confirmation",
+      "policy_decision": "require_confirmation"
+    },
+    {
+      "audit_id": "audit-entry-12346",
+      "at": "2026-05-26T10:05:16Z",
+      "action_type": "plan.confirmed",
+      "actor": "owner",
+      "subject": "example-plan-001",
+      "result": "ok"
+    },
+    {
+      "audit_id": "audit-entry-12347",
+      "at": "2026-05-26T10:05:21Z",
+      "action_type": "step.executed",
+      "actor": "pac",
+      "subject": "example-plan-001#step-3",
+      "result": "verified",
+      "receipt_id": "example-receipt-r3"
+    }
+  ],
+
+  "_append_only_note": "Entries are appended, never edited or deleted in place. Each consequential action leaves one; an action without a record didn't happen."
+}
