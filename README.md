@@ -135,7 +135,7 @@ The current private PAC Desktop build includes the following. These are describe
 - FastAPI-based local backend (PAC Core)
 - Local models via Ollama; Qwen3.5 in the current reference build, model choice configurable through Settings
 - Kora planning and execution engine
-- Plan lifecycle: draft, preview, owner confirmation, execution, verified receipt
+- Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
 - Three-posture model: Sovereign, Connected, Maintenance; degraded conditions surface as operational state
 - Action receipt spine, lifecycle-tracked from proposal through verification
@@ -190,12 +190,15 @@ This repository is the public-facing layer for Personal A.I. Console. It exists 
 **It is:** product positioning, architecture summaries, a trust model, screenshots, a glossary, roadmap notes, and sanitized examples &mdash; evidence of active product direction. It will grow with demo material as the public showcase matures.
 
 **Documentation:**
-- [docs/architecture.md](docs/architecture.md) &mdash; the three-layer architecture and work loop
+- [docs/architecture.md](docs/architecture.md) &mdash; the three-layer architecture (structure)
+- [docs/how-it-works.md](docs/how-it-works.md) &mdash; the governed flow: sequence, decision points, autonomy, posture
 - [docs/trust-model.md](docs/trust-model.md) &mdash; owner authority, tiers, postures, memory, oversight
+- [docs/owasp-agentic-mapping.md](docs/owasp-agentic-mapping.md) &mdash; honest self-assessment against the OWASP Agentic AI Top 10
 - [docs/screenshots.md](docs/screenshots.md) &mdash; annotated screenshots from the prototype
+- [demos/demo-walkthrough.md](demos/demo-walkthrough.md) &mdash; a governed task end to end, tied to the screenshots
 - [docs/roadmap.md](docs/roadmap.md) &mdash; what's built now vs. product direction
 - [docs/glossary.md](docs/glossary.md) &mdash; PAC vocabulary
-- [examples/](examples/) &mdash; public-safe mock mission flow and receipt
+- [examples/](examples/) &mdash; public-safe mock artifacts (mission flow, policy decision, receipt, audit, agent)
 
 **It is not:** the source-code repository, a clone-and-run distribution, a cloud service, a chatbot wrapper, or a place for secrets, logs, databases, or production configuration.
 
@@ -205,7 +208,7 @@ The private PAC Desktop implementation remains separate.
 
 ## What Makes Personal A.I. Console Different
 
-Most personal AI tools are front ends for cloud models. Personal A.I. Console is built around the operating layer that sits *between* the model and the work &mdash; the layer where decisions about authority, evidence, and accountability actually live.
+Many personal AI tools are front ends for cloud models. Personal A.I. Console is built around the operating layer that sits *between* the model and the work &mdash; the layer where decisions about authority, evidence, and accountability actually live.
 
 The differentiator is the trust architecture:
 
@@ -220,15 +223,19 @@ model reasoning
    + visible missions
 ```
 
-The broader industry is moving AI closer to the operating layer: agents that can use tools, assistants that connect to private data sources, and on-device models that reduce cloud dependency. Personal A.I. Console takes that same direction from the owner's side &mdash; local-first, inspectable, and governed by the person who owns the machine. The model is a replaceable component; everything around it &mdash; authority, evidence, audit, memory &mdash; runs on the owner's hardware, end to end.
+Governing AI agents &mdash; policy, approvals, audit, least privilege &mdash; is becoming its own category, and that is the right direction. Most of that work targets *fleets of agents in the enterprise cloud*: a governance layer you attach to someone else's frameworks. Personal A.I. Console takes the same problem from the other end. It is the **local-first, single-owner** version &mdash; where the agent, the policy, the evidence, the memory, the posture, and the receipts are one integrated system the owner runs on their own machine. Governance is built into the product, not bolted on around it.
 
-Personal A.I. Console is designed for a future where everyone has an AI assistant, but where the user still owns the machine, the data, the memory, the permission boundary, and the final call.
+PAC also treats autonomy as a dial, not a switch. Instead of "fully locked down" or "fully trusted," it offers graduated profiles &mdash; observe, read-only, bounded routine work, and time-bounded control &mdash; with one guarantee: turning the dial up changes how often PAC asks, never what it is permitted to do. The capability tiers and the policy gate bound every level.
+
+The model is a replaceable component; everything around it &mdash; authority, evidence, audit, memory &mdash; runs on the owner's hardware, end to end. Personal A.I. Console is designed for a future where everyone has an AI assistant, but where the person still owns the machine, the data, the memory, the permission boundary, and the final call.
+
+For how PAC's controls line up against the OWASP Agentic AI Top 10, see [docs/owasp-agentic-mapping.md](docs/owasp-agentic-mapping.md).
 
 ---
 
 ## Roadmap
 
-The public showcase now includes architecture, a trust model, screenshots, sanitized examples, a glossary, and a roadmap. The main remaining showcase piece is a demo walkthrough, once a clean end-to-end demo is recorded.
+The public showcase now includes architecture, a how-it-works process flow, a trust model, screenshots, a demo walkthrough, sanitized examples, a glossary, and a roadmap. A recorded video demo is a future addition.
 
 Product direction includes a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane.
 

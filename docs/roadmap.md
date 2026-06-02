@@ -42,8 +42,8 @@ Working today on a local, owner-controlled, Windows-validated build:
 Making the project visible while keeping the engine private:
 
 - Redacted screenshots (in place) with captions.
-- Public-safe trust model, glossary, roadmap, and example artifacts.
-- A short demo walkthrough once a clean end-to-end demo is recorded.
+- Public-safe trust model, how-it-works flow, glossary, roadmap, and example artifacts (in place).
+- A written demo walkthrough tied to the screenshots (in place); a recorded video demo to follow.
 
 ---
 
@@ -78,6 +78,8 @@ The monitoring primitives for these already run as PAC OS agents (session signat
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
   - (The current build is the offline reference profile.)
 - **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing. (See "Out of scope" for the current boundary.)
+- **Tamper-evident receipts** — cryptographic signing / hash-chaining of the receipt and audit spine so the record is provably unaltered. Today receipts are append-only by design; tamper-evidence is the hardening step.
+- **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
 - **Smart-home / IoT control plane** — the project's origin, returning as a governed surface.
 
 ---
