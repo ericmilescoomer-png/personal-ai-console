@@ -1,0 +1,44 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show how reported state carries freshness. Every value has an observed-at time and a label; stale data is presented as last-known, never as live. See docs/trust-quartet.md (Freshness is part of truth).",
+
+  "answer_generated_at": "2026-05-26T14:23:30Z",
+  "_phrasing_note": "Generated wording uses 'as of <time>' rather than 'currently' or 'right now', because there is no single live fetch behind a composite system answer.",
+
+  "values": [
+    {
+      "metric": "cpu_load_percent",
+      "value": 41,
+      "observed_at": "2026-05-26T14:23:18Z",
+      "age_seconds": 12,
+      "freshness": "fresh",
+      "source": "local_evidence_layer"
+    },
+    {
+      "metric": "disk_free_percent",
+      "value": 63,
+      "observed_at": "2026-05-26T14:22:55Z",
+      "age_seconds": 35,
+      "freshness": "fresh",
+      "source": "local_evidence_layer"
+    },
+    {
+      "metric": "wan_status",
+      "value": "offline",
+      "observed_at": "2026-05-26T14:18:02Z",
+      "age_seconds": 328,
+      "freshness": "stale",
+      "presented_as": "last_known",
+      "source": "local_evidence_layer"
+    },
+    {
+      "metric": "external_weather",
+      "value": null,
+      "freshness": "unavailable",
+      "reason": "No live fetch; system is in Sovereign posture, so no outbound call was made.",
+      "presented_as": "no_data"
+    }
+  ],
+
+  "_summary": "Two values are fresh and stated as such; one is stale and explicitly marked last-known rather than current; one is simply unavailable. The system labels what it knows and the age of that knowledge, and does not fabricate a live answer it cannot back."
+}

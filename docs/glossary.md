@@ -6,7 +6,11 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 ## Product and components
 
-**Personal A.I. Console** — the product. A local-first AI command layer for a single owner, built so the system around the model &mdash; not the model itself &mdash; is the product.
+**Personal A.I. Console** — the product. A local-first **command center** for governed AI, built for a single owner, where the system around the model &mdash; not the model itself &mdash; is the product.
+
+**Command center** — what PAC *is*: an owner's cockpit for one person's AI, reachable from one local surface. You command from it; you don't build with it. It is not a framework, an SDK, or a developer harness.
+
+**Station** — one of the six surfaces of the command center (Home, Kora, Chat, Agents, Library, Settings), each a place the Owner does a specific kind of work. See [README](../README.md#the-command-center).
 
 **PAC** — the abbreviation for Personal A.I. Console.
 

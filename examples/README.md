@@ -21,5 +21,7 @@ All examples below share one mock scenario &mdash; a "summarize the morning's me
 | [`sample-receipt.json`](sample-receipt.json) | The shape of a single action receipt, lifecycle-tracked from proposal through verification. See [docs/architecture.md](../docs/architecture.md) for the evidence model. |
 | [`sample-audit-entry.json`](sample-audit-entry.json) | Append-only audit entries for one governed flow — plan created, policy checked, confirmed, executed. See [docs/how-it-works.md](../docs/how-it-works.md). |
 | [`sample-agent-definition.json`](sample-agent-definition.json) | The shape of an agent definition, including its per-agent autonomy level (which controls confirmation frequency, not permission). See [docs/how-it-works.md](../docs/how-it-works.md). |
+| [`sample-denial.json`](sample-denial.json) | A structured denial &mdash; what was blocked, why, and what would unlock it. A denial is the system working as designed, not an error. See [docs/trust-quartet.md](../docs/trust-quartet.md). |
+| [`sample-freshness-response.json`](sample-freshness-response.json) | How reported state carries freshness: each value has an observed-at time and a label, and stale data is presented as last-known rather than live. See [docs/trust-quartet.md](../docs/trust-quartet.md). |
 
 For how these concepts hold the owner in control, see the [Trust Model](../docs/trust-model.md); for the flow that produces them, see [How It Works](../docs/how-it-works.md) and the [Demo Walkthrough](../demos/demo-walkthrough.md).

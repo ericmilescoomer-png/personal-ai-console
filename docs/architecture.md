@@ -22,7 +22,7 @@ This document covers the architecture at a product level. It is not an implement
 
 ### Owner Interface
 
-The surface the Owner sees and interacts with. Browser-based, served locally. Six primary pages cover chat, home, agents, library, the Kora workspace, and settings.
+The command center the Owner operates &mdash; browser-based, served locally. It is organized as six stations (Home, Kora, Chat, Agents, Library, Settings); see [The Command Center](../README.md#the-command-center) for what each one is for.
 
 The Owner Interface is intentionally thin. It presents state, accepts Owner input, and sends requests to PAC Core. It does not enforce policy, hold authority, or own system state. Authority decisions happen in PAC Core.
 

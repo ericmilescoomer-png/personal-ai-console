@@ -4,11 +4,13 @@
 
 # Personal A.I. Console&trade;
 
-A local-first AI command layer for a single owner.
+A local-first command center for governed AI — one owner, one machine, in full command.
 
 > *Status: active private prototype. Working software, not a shipped product. This repository is positioning and architecture &mdash; the implementation stays private until it's ready.*
 
-Personal A.I. Console (PAC) treats the model as one replaceable component. The product is the system around the model: policy that decides what the model is allowed to do, receipts that prove what it did, missions that give work a visible lifecycle, and a local evidence layer that knows what's current and what isn't.
+Personal A.I. Console (PAC) is a command center for AI that runs on your own hardware — one place to see what your AI and your machine are doing, hand off work, approve what matters, and keep the receipts. You don't build *with* PAC; you command *from* it.
+
+PAC treats the model as one replaceable component. The product is the system around the model: policy that decides what the model is allowed to do, receipts that prove what it did, missions that give work a visible lifecycle, and a local evidence layer that knows what's current and what isn't.
 
 This repository is the public showcase for Personal A.I. Console. The implementation stays private.
 
@@ -16,6 +18,7 @@ This repository is the public showcase for Personal A.I. Console. The implementa
 
 - [Why This Exists](#why-this-exists)
 - [How Personal A.I. Console Is Organized](#how-personal-ai-console-is-organized)
+- [The Command Center](#the-command-center)
 - [How It Works](#how-it-works)
 - [Kora](#kora)
 - [What's Built](#whats-built)
@@ -41,9 +44,9 @@ PAC is the local version of the same future. Same agentic capability &mdash; obs
 
 AI is not weightless &mdash; real compute, real power, and real access sit behind every agent. PAC does not claim to make that cost smaller or greener. What it changes is whose decision it is: running AI becomes something the owner chooses and owns deliberately, rather than a cost abstracted away until you forget you are paying it.
 
-The project started as a personal AI for a smart home. It evolved into a desktop console because the desktop is where the rules get decided. The smart-home work is on the roadmap; the command layer comes first.
+The project started as a personal AI for a smart home. It evolved into a desktop console because the desktop is where the rules get decided. The smart-home work is on the roadmap; the command center comes first.
 
-PAC is not anti-cloud. PAC is not a model provider. PAC is not a chatbot wrapper. It is a local-first command console for governed AI work &mdash; and reaching the outside world is a deliberate mode: explicit, posture-gated, and receipted, not the default assumption.
+PAC is not anti-cloud. PAC is not a model provider. PAC is not a chatbot wrapper. It is a local-first command center for governed AI &mdash; and reaching the outside world is a deliberate mode: explicit, posture-gated, and receipted, not the default assumption.
 
 The position is straightforward: if AI is going to be how computers work, the person in front of the computer should still be the one in command of it.
 
@@ -68,6 +71,27 @@ flowchart TD
 A local model provider (Ollama, currently running Qwen) sits alongside PAC Core as the reasoning provider. The model handles reasoning. PAC Core handles authority. PAC OS provides evidence.
 
 Personal A.I. Console treats the model as a component, not the product. The system around the model is the product.
+
+Those three layers run *under the hood*. What the owner actually operates is a single surface on top of them — the command center.
+
+---
+
+## The Command Center
+
+PAC is not a framework you wire models into, and not a harness you run jobs through. It is a **command center you operate** — an owner's cockpit for one person's AI.
+
+Everything in PAC is reachable from one local surface, organized as stations of a single command center:
+
+| Station | What you do there |
+|---|---|
+| **Home** | The situation board &mdash; where things stand, and what happened while you were away. |
+| **Kora** | The command deck &mdash; review what Kora noticed, issue missions, approve or decline plans, watch execution. |
+| **Chat** | The direct line to the command agent. |
+| **Agents** | The crew &mdash; the specialized workers Kora operates, each earning trust on a measured ladder. |
+| **Library** | The evidence room &mdash; documents, memory, and the receipts of past work. |
+| **Settings** | The controls &mdash; posture, models, authority, and appearance. |
+
+The model reasons. Kora commands within the owner's authority. The owner stays in the commander's seat.
 
 ---
 
@@ -127,11 +151,11 @@ The model provides reasoning and language. Kora's authority comes from the owner
 
 The current private PAC Desktop build includes the following. These are described at a product level; implementation details remain private.
 
-**Interface** &mdash; what the Owner sees and touches.
+**Interface** &mdash; the command center the Owner operates.
 
-- Browser-based interface with six primary pages: chat, home, agents, library, Kora, settings
+- Browser-based command center with six stations: Home, Kora, Chat, Agents, Library, and Settings (see [The Command Center](#the-command-center))
 - Streaming chat responses
-- Settings surfaces across eight sections: general, models, monitors, voice, Kora, security, prompts, and developer controls
+- Settings spanning general, appearance, models, monitors, voice, Kora, security, prompts, and developer controls
 - Local neural voice synthesis using Kokoro, fully offline
 
 **Core runtime** &mdash; the engine that decides what's allowed and remembers what happened.
@@ -160,6 +184,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 - WAN awareness: deferred plans surface when the network restores
 - Network broker module for governed outbound (architecture in place; specific connectors not yet shipped)
+- Governed, read-only web research: an off-by-default Research Specialist that performs public-web reads only, allowed solely under Connected posture and SSRF-hardened. Experimental.
 
 **Security** &mdash; defenses in depth around input, secrets, and the filesystem.
 
@@ -180,7 +205,8 @@ Not everything in Personal A.I. Console is finished. The work loop is most matur
 - Some UI surfaces are catching up to backend capability.
 - Mission deliverable synthesis is partially implemented.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
-- Outbound governed connectors are architectural &mdash; the broker is in place; specific connectors are not shipped.
+- Read-only governed web research exists but is experimental and off by default; broadening it (source storage, extraction, citations) is ongoing.
+- Outbound *action* connectors &mdash; pushing to external services &mdash; are not shipped. The network broker is in place, but governed outbound *writes* to third-party services are still roadmap.
 - Remote model providers are direction, not part of the current validated release.
 - The system is built for local, owner-controlled deployment. It is not hardened for public internet exposure or multi-user hosting.
 - Smart-home and IoT control surfaces are on the roadmap but not present in the current desktop build.
@@ -191,18 +217,31 @@ Not everything in Personal A.I. Console is finished. The work loop is most matur
 
 This repository is the public-facing layer for Personal A.I. Console. It exists to make the project visible while keeping the implementation private.
 
-**It is:** product positioning, architecture summaries, a trust model, screenshots, a glossary, roadmap notes, and sanitized examples &mdash; evidence of active product direction. It will grow with demo material as the public showcase matures.
+**It is:** product positioning, architecture summaries, a trust model, a documented threat model and OWASP self-assessment, the engineering practices behind the build, a design philosophy, screenshots, a glossary, roadmap notes, and sanitized examples &mdash; evidence of active, disciplined product direction. It will grow with demo material as the public showcase matures.
 
 **Documentation:**
+
+*Architecture & flow*
 - [docs/architecture.md](docs/architecture.md) &mdash; the three-layer architecture (structure)
 - [docs/how-it-works.md](docs/how-it-works.md) &mdash; the governed flow: sequence, decision points, autonomy, posture
+
+*Trust & security*
 - [docs/trust-model.md](docs/trust-model.md) &mdash; owner authority, tiers, postures, memory, oversight
+- [docs/trust-quartet.md](docs/trust-quartet.md) &mdash; the four invariants, freshness-as-truth, and why a refusal isn't an error
+- [docs/agent-governance.md](docs/agent-governance.md) &mdash; how PAC governs the agents Kora operates: packs, the trust ratchet, propose-don't-apply
+- [docs/threat-model.md](docs/threat-model.md) &mdash; threats PAC resists and what it explicitly doesn't claim
 - [docs/owasp-agentic-mapping.md](docs/owasp-agentic-mapping.md) &mdash; honest self-assessment against the OWASP Agentic AI Top 10
+
+*How it's built & how it looks*
+- [docs/engineering-discipline.md](docs/engineering-discipline.md) &mdash; the practices behind the trust model: tests as enforced invariants, an append-only change ledger, drift detection
+- [docs/design-language.md](docs/design-language.md) &mdash; the calm-by-default design philosophy
 - [docs/screenshots.md](docs/screenshots.md) &mdash; annotated screenshots from the prototype
 - [demos/demo-walkthrough.md](demos/demo-walkthrough.md) &mdash; a governed task end to end, tied to the screenshots
+
+*Reference*
 - [docs/roadmap.md](docs/roadmap.md) &mdash; what's built now vs. product direction
 - [docs/glossary.md](docs/glossary.md) &mdash; PAC vocabulary
-- [examples/](examples/) &mdash; public-safe mock artifacts (mission flow, policy decision, receipt, audit, agent)
+- [examples/](examples/) &mdash; public-safe mock artifacts (mission flow, policy decision, receipt, audit, agent, denial, freshness)
 
 **It is not:** the source-code repository, a clone-and-run distribution, a cloud service, a chatbot wrapper, or a place for secrets, logs, databases, or production configuration.
 
@@ -213,6 +252,8 @@ The private PAC Desktop implementation remains separate.
 ## What Makes Personal A.I. Console Different
 
 Many personal AI tools are front ends for cloud models. Personal A.I. Console is built around the operating layer that sits *between* the model and the work &mdash; the layer where decisions about authority, evidence, and accountability actually live.
+
+It is also not a framework or a developer harness: you do not assemble PAC, you operate it. PAC is the command center; the engineering around it is what makes that command center trustworthy.
 
 The differentiator is the trust architecture:
 

@@ -28,7 +28,7 @@ After approval, the work executes and leaves evidence behind. The completed plan
 
 ![System overview](../assets/screenshots/03-system-overview.png)
 
-The home view presents PAC as a local-first command layer: current posture, overall health, local resource use, and the active local model &mdash; all running on the owner's own hardware.
+The home view presents PAC as a local-first command center: current posture, overall health, local resource use, and the active local model &mdash; all running on the owner's own hardware.
 
 ---
 

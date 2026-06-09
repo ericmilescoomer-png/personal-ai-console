@@ -1,0 +1,30 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show the shape of a structured denial. A denial is the system working as designed, not an error: it states what was blocked, why, and what would unlock it. See docs/trust-quartet.md (Refusals are not errors) and docs/threat-model.md.",
+
+  "plan_id": "example-plan-002",
+  "evaluated_at": "2026-05-26T10:06:40Z",
+  "evaluator": "policy_gate",
+
+  "outcome": "blocked",
+  "kind": "refusal",
+  "_kind_note": "kind=refusal means an intentional governance decision, distinct from kind=runtime_error (a post-execution failure).",
+
+  "step_index": 4,
+  "action": "web.fetch",
+  "registry_tier": "SAFE",
+
+  "what_blocked": "An outbound web fetch was requested to enrich the meeting summary with an external source.",
+  "reason_code": "posture_denied",
+  "reason": "The system is in Sovereign posture. Outbound access is denied regardless of capability tier.",
+
+  "what_unlocks": {
+    "action": "Open a time-bounded Connected window",
+    "authority": "owner",
+    "note": "Connected access is Owner-initiated, time-bounded, and routed through the governed broker. The step would re-evaluate once a window is open and the network-health signal is fresh."
+  },
+
+  "posture_at_evaluation": "sovereign",
+  "deterministic": true,
+  "model_calls": 0
+}

@@ -25,7 +25,7 @@ The current build is solid through **Approvals (rung 4)**. **Execution sandboxin
 
 Working today on a local, owner-controlled, Windows-validated build:
 
-- Local-first command console (chat, home, agents, library, Kora workspace, settings).
+- Local-first command center with six stations (Home, Kora, Chat, Agents, Library, Settings).
 - **Kora**, the command agent: observes, drafts plans, requests approval, executes governed capabilities, and writes receipts.
 - The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and formal postures (**Sovereign / Connected / Maintenance**).
@@ -34,6 +34,7 @@ Working today on a local, owner-controlled, Windows-validated build:
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation.
+- Governed, read-only web research behind an off-by-default flag (Connected posture only, SSRF-hardened) &mdash; experimental.
 
 ---
 
@@ -54,7 +55,7 @@ Direction, not shipped features. Grouped by the two families the system is built
 ### Mission expansion
 
 - **Deliverable drafting** — Kora drafts long-form output (document, report, draft) into a mission deliverable, optionally saved to the local library.
-- **Governed web research** — a new governed capability set (search, fetch, extract, source storage, citations) under the same tier system, gated to Connected posture. A substantial lift, not a quick add.
+- **Governed web research (expanding)** — read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
 - **Mission templates** — reusable mission shapes for recurring patterns.
 - **Mission inspector** — a context-aware panel showing a mission's request, plan, steps, artifacts, receipts, and journal in one place.
 - **Multi-step / multi-agent missions** — longer-running work and mission-to-mission dependencies, only as real workflows demand.
