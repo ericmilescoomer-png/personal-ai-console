@@ -44,7 +44,7 @@ PAC treats the model as a replaceable component. The model provider is configura
 
 ![Memory governance](../assets/screenshots/05-memory-governance.png)
 
-Kora can suggest something worth remembering, but she cannot change long-term memory on her own. Persistent memory is treated as owner-controlled state, changed only through an action the Owner takes &mdash; so nothing is remembered, edited, or forgotten behind the owner's back.
+Kora can suggest something worth remembering, but she cannot change long-term memory on her own. Persistent memory is treated as owner-controlled state, changed only through an action the Owner takes &mdash; so nothing is remembered, edited, or forgotten behind the owner's back. Each memory also carries its **provenance** (where it came from and how far to trust it), and the system surfaces cleanups &mdash; duplicates, conflicts, stale entries &mdash; as **reviewable proposals** rather than editing the record on its own.
 
 ---
 

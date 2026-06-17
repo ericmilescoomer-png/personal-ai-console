@@ -66,7 +66,7 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 **Posture** — a formal, system-wide stance that changes what is allowed:
 - **Sovereign** — no outbound; local operation only.
 - **Connected** — time-bounded, owner-authorized outbound through governed paths.
-- **Maintenance** — time-bounded maintenance or elevated system work.
+- **Maintenance** — time-bounded maintenance or elevated system work. An internal state used for system upkeep (e.g., local model updates), not a routine Owner-facing toggle.
 
 **Degraded condition** — a network or system problem that is surfaced as operational state. It is **not** a posture, and it never becomes permission to bypass posture rules.
 
@@ -79,6 +79,16 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 **Local evidence** — structured observations PAC OS writes about machine state, which Core can read to reason about what is currently true.
 
 **Memory governance** — the principle that long-term memory is owner-controlled state. Kora may suggest memory changes but cannot create, promote, or delete memory on her own.
+
+**Provenance / trust metadata** — the record kept with each memory of where it came from and how far to trust it: an authority chain (owner-stated, owner-approved, observed pattern, agent-derived, imported), a confidence level, and when it was last confirmed or used.
+
+**Consolidation proposal** — a system-suggested memory cleanup (merge a duplicate, resolve a conflict, retire a stale entry) presented for Owner review. Consolidation never silently rewrites or destroys memory; originals are soft-retired, not deleted on the system's own judgment.
+
+**Memory space** — an owner-defined partition of memory. Retrieval is scoped to relevant spaces, so context from one area isn't silently pulled into an unrelated one.
+
+**Grounding floor** — the protected, non-editable layer of the system prompt holding PAC's non-negotiable honesty constraints (don't invent system behavior; know when data is missing; never present stale data as live). The Owner can edit the base prompt layered above it, but not the floor.
+
+**Kill switch** — an Owner control that immediately halts all autonomous execution. It is persistent and fails closed: once engaged, it stays engaged across restart until the Owner clears it.
 
 **Memory governor** — a separate, hardware-level concern: managing system resource memory (RAM/VRAM) before running work. Distinct from owner-controlled (semantic) memory; the two share a word, not a meaning.
 

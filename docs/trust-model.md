@@ -86,6 +86,13 @@ PAC treats long-term memory as **owner-controlled state, not model-owned state.*
 - Kora does **not** write memory on her own. Memory creation, promotion, and deletion happen only through owner-controlled paths — Kora has no self-serve capability to persist memory through her own action surface.
 - Nothing is silently logged into long-term memory as a side effect of a conversation.
 
+Beyond *who* may write memory, PAC governs *what each memory is worth trusting*:
+
+- **Provenance and trust metadata.** Every memory carries where it came from — an **authority chain** (owner-stated, owner-approved, observed pattern, agent-derived, or imported) — alongside a confidence level and when it was last confirmed or used. A fact the owner stated and a pattern an agent merely noticed are not treated as equally authoritative.
+- **Consolidation is a proposal, not an edit.** When memory accumulates duplicates, conflicts, or stale entries, the system *proposes* a cleanup (merge / resolve-conflict / retire-stale) for the owner to review. It does not silently rewrite or delete what it thinks is redundant. Originals are soft-retired, never destroyed on the system's own judgment.
+- **Memory spaces.** Memory is organized into owner-defined spaces, and retrieval is scoped — so context from one area of life isn't silently pulled into an unrelated one.
+- **Portability and rollback.** The owner can export and import their memory set, with versioned history and rollback. The record is the owner's to move, inspect, and revert.
+
 Memory also carries a sensitivity level. The most sensitive ("vault") memory is never surfaced automatically during ordinary chat — it takes an explicit owner instruction to bring it forward. Personal context is treated as context, never as policy.
 
 > Note: PAC also has an internal *resource* memory governor that manages hardware memory pressure (RAM and VRAM) before running work. That is a separate, hardware-level concern and is unrelated to the owner-controlled memory described here. The two share a word, not a meaning.
@@ -111,6 +118,17 @@ The model provides reasoning and language. It does not provide authority, memory
 Kora's continuity — her receipts, mission history, standing orders, and the owner's preferences — lives outside the model. Swap the model, and Kora persists. This is deliberate: tying trust to a specific model would make trust as replaceable as the model. PAC ties trust to the owner-controlled system instead.
 
 The current reference build reasons with a local model provider (Ollama, running Qwen). Model choice is configurable. The model is a component, not the product.
+
+---
+
+## The System Prompt Has a Floor
+
+The owner can edit how Kora is framed — tone, standing preferences, working style — through an editable base system prompt. But that editable layer sits on top of a **protected grounding floor** the owner's edits cannot reach.
+
+- The **grounding floor** holds the non-negotiable honesty constraints: don't invent system behavior, know when state data is missing rather than guessing, never present stale data as live. These are the same invariants the rest of this document defends — and they are kept out of the editable surface so they cannot be tuned away, by the owner *or* by anything that reaches the owner's editing surface.
+- The editable base prompt is **versioned, revertible, and receipted** — every change is recorded, and any prior version can be restored. The framing is adjustable; the change history is evidence.
+
+The effect: you can shape *how* Kora talks and what she prioritizes, without being able to talk her out of telling you the truth about the system.
 
 ---
 

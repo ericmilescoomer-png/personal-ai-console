@@ -155,7 +155,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 - Browser-based command center with six stations: Home, Kora, Chat, Agents, Library, and Settings (see [The Command Center](#the-command-center))
 - Streaming chat responses
-- Settings spanning general, appearance, models, monitors, voice, Kora, security, prompts, and developer controls
+- Settings organized as seven panels: Personal (appearance, voice, startup), Kora (behavior, memory, learning), Privacy (posture, data handling, kill switch), Models, Storage (retention, backups, export/import), System (runtime, monitors, and health), and Advanced (diagnostics, the editable system prompt, and developer controls)
 - Local neural voice synthesis using Kokoro, fully offline
 
 **Core runtime** &mdash; the engine that decides what's allowed and remembers what happened.
@@ -166,17 +166,20 @@ The current private PAC Desktop build includes the following. These are describe
 - Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
 - Three-posture model: Sovereign, Connected, Maintenance; degraded conditions surface as operational state
+- Graduated autonomy profiles, plus a persistent, fail-closed kill switch that halts all autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - Mission and deliverable data model for report, research, draft, status, and audit work
-- Memory governor (resource-aware execution; VRAM and RAM thresholds)
+- Owner-controlled memory governance: every record carries provenance and trust metadata (confidence, authority chain); consolidation is surfaced as reviewable proposals (merge / conflict / stale) rather than silent edits; memory is organized into owner-defined spaces; and the full set supports export, import, and versioned rollback
+- Editable base system prompt layered over a protected, non-editable grounding floor — versioned, revertible, and receipted on every change, so the model's framing can be tuned but its honesty constraints cannot be edited away
+- Resource-memory governor (resource-aware execution; VRAM and RAM thresholds) — a hardware concern distinct from the owner-controlled memory above
 - Local document repository, episodic memory, and Ollama-based embeddings
 - Library workspace for offline documents and system knowledge
 - Agent lifecycle management (draft, trial, active, proven)
 
 **System layer (PAC OS)** &mdash; the local evidence and runtime substrate underneath Core.
 
-- Nineteen registered runtime monitor agents covering health (ops, disk, RAM, CPU, GPU, network), lifecycle (process supervisor, heartbeat, session signature), intelligence (knowledge monitor, preference learner, RFI collector, ambient state), and operations (job runner, housekeeping, backup, log aggregator, system identity, alerting)
+- Twenty-one registered runtime monitor agents covering health (ops, disk, RAM, CPU, GPU, network), integrity (state-integrity validation, database journaling), lifecycle (process supervisor, heartbeat, session signature), intelligence (knowledge monitor, preference learner, RFI collector, ambient state), and operations (job runner, housekeeping, backup, log aggregator, system identity, alerting)
 - Event bus, job system, trace logging with rotation
 - Two-surface agent control: a complete Owner-controlled registry of all agents, and a smaller delegable set Kora is allowed to restart. Kora cannot restart agents that observe her own behavior.
 
