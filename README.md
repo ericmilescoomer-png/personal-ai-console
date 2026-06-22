@@ -8,7 +8,7 @@ A local-first command center for governed AI — one owner, one machine, in full
 
 > *Status: active private prototype. Working software, not a shipped product. This repository is positioning and architecture &mdash; the implementation stays private until it's ready.*
 
-Personal A.I. Console (PAC) is a command center for AI that runs on your own hardware — one place to see what your AI and your machine are doing, hand off work, approve what matters, and keep the receipts. You don't build *with* PAC; you command *from* it.
+Plenty of tools now *show* you what an AI is doing. Personal A.I. Console (PAC) is built for the harder half: deciding what your AI is *allowed* to do, and proving what it *did* — all on your own hardware. You don't build *with* PAC; you command *from* it: hand work to a crew that operates under your intent, approve what needs you, see the rest as plain-language watch reports, and keep a receipt for every action. A dashboard reports; PAC commands.
 
 PAC treats the model as one replaceable component. The product is the system around the model: policy that decides what the model is allowed to do, receipts that prove what it did, missions that give work a visible lifecycle, and a local evidence layer that knows what's current and what isn't.
 
@@ -85,13 +85,15 @@ Everything in PAC is reachable from one local surface, organized as stations of 
 | Station | What you do there |
 |---|---|
 | **Home** | The situation board &mdash; where things stand, and what happened while you were away. |
-| **Kora** | The command deck &mdash; review what Kora noticed, issue missions, approve or decline plans, watch execution. |
+| **Kora** | The command deck &mdash; her **Inbox** brings you the calls only you can make (decide, review, recover); her **Operations** stream is the watch report of what the crew handled while you were away. |
 | **Chat** | The direct line to the command agent. |
 | **Agents** | The crew &mdash; the specialized workers Kora operates, each earning trust on a measured ladder. |
 | **Library** | The evidence room &mdash; documents, memory, and the receipts of past work. |
 | **Settings** | The controls &mdash; posture, models, authority, and appearance. |
 
 The model reasons. Kora commands within the owner's authority. The owner stays in the commander's seat.
+
+Inside the Kora station, that command discipline is explicit. Routine work the crew handles on its own shows up as a **watch report** in Operations &mdash; *what was done, what it means, and who did it* (Builder prepared the workspace; Records indexed the receipt; PAC Core blocked the unsafe write) &mdash; not a raw event log. Anything that needs your authority is lifted into the **Inbox** as one clear call: approve, review, or recover. Either way, the proof sits one tap away. This is the difference PAC cares about: a dashboard tells you *what happened*; a command deck tells you *what it means, whether you're needed, and where the proof is.* For the command model this borrows from &mdash; mission command, watchstanding, crew discipline &mdash; see [docs/operating-doctrine.md](docs/operating-doctrine.md).
 
 ---
 
@@ -121,15 +123,15 @@ Inside that loop, every step that touches the system is classified into one of t
 | **SENSITIVE** | Requires explicit owner confirmation before execution |
 | **FORBIDDEN** | Blocked in code |
 
-The system runs under three formal postures, and posture changes what's allowed:
+The system runs under three connectivity postures. Posture changes only *how far Kora may reach outward* — she always works locally:
 
 | Posture | Meaning |
 |---|---|
-| **Sovereign** | No outbound; local operation only |
-| **Connected** | Time-bounded, owner-authorized outbound through governed paths |
-| **Maintenance** | Time-bounded maintenance or elevated system work |
+| **Sovereign** | No outbound (default). Kora keeps working locally; web-dependent steps are held and resurface when you open a window. |
+| **Limited** | Outbound only to an explicit allowlist of approved sources; background web is denied. |
+| **Connected** | Owner-authorized open outbound through the governed broker — minus a blocklist that always wins — standing until you close it. |
 
-Degraded network or system conditions are surfaced as operational state, but they do not become permission to bypass posture rules.
+Outbound is never the default: the owner opens Limited or Connected deliberately and can close it at any time. A separate internal *Maintenance* state handles system upkeep (e.g., local model updates) and is not a user-facing mode. Degraded network or system conditions are surfaced as operational state, but never become permission to bypass posture rules.
 
 Governed actions, policy decisions, and tool invocations write to audit and receipt surfaces separate from the main database. Where the action spine applies, executed work is captured in `action_receipts`. As far as the system is concerned, an action without a receipt didn't happen.
 
@@ -165,7 +167,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Kora planning and execution engine
 - Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
-- Three-posture model: Sovereign, Connected, Maintenance; degraded conditions surface as operational state
+- Three connectivity postures: Sovereign (local-only default), Limited (allowlist-only outbound), Connected (owner-opened open outbound, blocklist always wins); degraded conditions surface as operational state, never permission
 - Graduated autonomy profiles, plus a persistent, fail-closed kill switch that halts all autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
@@ -187,7 +189,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 - WAN awareness: deferred plans surface when the network restores
 - Network broker module for governed outbound (architecture in place; specific connectors not yet shipped)
-- Governed, read-only web research: an off-by-default Research Specialist that performs public-web reads only, allowed solely under Connected posture and SSRF-hardened. Experimental.
+- Governed, read-only web research: an off-by-default Research Specialist that performs public-web reads only, allowed solely when outbound is open (Limited or Connected) and SSRF-hardened. Experimental.
 
 **Security** &mdash; defenses in depth around input, secrets, and the filesystem.
 
@@ -227,6 +229,7 @@ This repository is the public-facing layer for Personal A.I. Console. It exists 
 *Architecture & flow*
 - [docs/architecture.md](docs/architecture.md) &mdash; the three-layer architecture (structure)
 - [docs/how-it-works.md](docs/how-it-works.md) &mdash; the governed flow: sequence, decision points, autonomy, posture
+- [docs/operating-doctrine.md](docs/operating-doctrine.md) &mdash; the command model PAC borrows from: mission command, watchstanding, crew discipline, mapped to the surfaces
 
 *Trust & security*
 - [docs/trust-model.md](docs/trust-model.md) &mdash; owner authority, tiers, postures, memory, oversight
@@ -273,6 +276,8 @@ model reasoning
 
 Governing AI agents &mdash; policy, approvals, audit, least privilege &mdash; is becoming its own category, and that is the right direction. Most of that work targets *fleets of agents in the enterprise cloud*: a governance layer you attach to someone else's frameworks. Personal A.I. Console takes the same problem from the other end. It is the **local-first, single-owner** version &mdash; where the agent, the policy, the evidence, the memory, the posture, and the receipts are one integrated system the owner runs on their own machine. Governance is built into the product, not bolted on around it.
 
+That direction is now explicit in the market. The enterprise world is converging on **governed teams of specialist agents** that act within policy and **surface only the exceptions that need a human** &mdash; Oracle's Fusion Agentic Applications, Microsoft's agent platforms, and others are building exactly that, for the cloud. PAC is the same architecture from the personal end: a crew of scoped specialists, an exception-by-design command surface (decisions to the owner, the rest as watch reports), and receipts throughout &mdash; running on one owner's machine instead of someone else's data center. The convergence is a good sign the shape is right; the difference is who owns it.
+
 PAC also treats autonomy as a dial, not a switch. Instead of "fully locked down" or "fully trusted," it offers graduated profiles &mdash; observe, read-only, bounded routine work, and time-bounded control &mdash; with one guarantee: turning the dial up changes how often PAC asks, never what it is permitted to do. The capability tiers and the policy gate bound every level.
 
 The model is a replaceable component; everything around it &mdash; authority, evidence, audit, memory &mdash; runs on the owner's hardware, end to end. Personal A.I. Console is designed for a future where everyone has an AI assistant, but where the person still owns the machine, the data, the memory, the permission boundary, and the final call.
@@ -317,4 +322,4 @@ Personal A.I. Console&trade; is the subject of pending U.S. trademark applicatio
 
 ---
 
-*Company and product names are referenced for context only. Personal A.I. Console is not affiliated with, sponsored by, or endorsed by OpenAI, Anthropic, Microsoft, Apple, or any other referenced company.*
+*Company and product names are referenced for context only. Personal A.I. Console is not affiliated with, sponsored by, or endorsed by OpenAI, Anthropic, Microsoft, Apple, Oracle, or any other referenced company.*

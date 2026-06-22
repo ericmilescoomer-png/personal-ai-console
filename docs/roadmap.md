@@ -28,13 +28,13 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Local-first command center with six stations (Home, Kora, Chat, Agents, Library, Settings).
 - **Kora**, the command agent: observes, drafts plans, requests approval, executes governed capabilities, and writes receipts.
 - The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
-- Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and formal postures (**Sovereign / Connected / Maintenance**).
+- Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
 - Owner-controlled memory; a local document repository, episodic memory, and local embeddings.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation.
-- Governed, read-only web research behind an off-by-default flag (Connected posture only, SSRF-hardened) &mdash; experimental.
+- Governed, read-only web research behind an off-by-default flag (only when outbound is open — Limited or Connected — SSRF-hardened) &mdash; experimental.
 
 ---
 

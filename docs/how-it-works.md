@@ -106,11 +106,11 @@ Outbound access is governed by a system-wide **posture**, not by individual step
 
 | Posture | Outbound |
 |---|---|
-| **Sovereign** | None &mdash; local operation only (default) |
-| **Connected** | Time-bounded, owner-authorized, through a governed broker |
-| **Maintenance** | Time-bounded maintenance / elevated work |
+| **Sovereign** | None &mdash; local operation only (default); web-dependent steps are held and resurface when a window opens |
+| **Limited** | Allowlist only &mdash; outbound to explicitly approved sources; background web denied |
+| **Connected** | Owner-opened open outbound through a governed broker, minus a blocklist that always wins; standing until closed |
 
-In Sovereign posture, outbound capabilities are blocked outright, regardless of tier or autonomy. Degraded network or system conditions are surfaced as operational state &mdash; they never become permission to bypass posture rules. The system fails toward caution.
+In Sovereign posture, outbound capabilities are blocked outright, regardless of tier or autonomy &mdash; but local work continues, since posture governs only outward reach. A separate internal *Maintenance* state handles system upkeep and is not a user-facing mode. Degraded network or system conditions are surfaced as operational state &mdash; they never become permission to bypass posture rules. The system fails toward caution.
 
 ---
 

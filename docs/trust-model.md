@@ -64,15 +64,15 @@ The model can propose. Only the owner can authorize the sensitive parts.
 
 ## Postures
 
-The system runs under three formal **postures**. Posture changes what is allowed at the boundary — it is a system-wide stance, not a per-action setting.
+The system runs under three connectivity **postures**. Posture changes only *how far Kora may reach outward* — she always works locally. It is a system-wide stance, not a per-action setting.
 
 | Posture | Meaning |
 |---|---|
-| **Sovereign** | No outbound. Local operation only. |
-| **Connected** | Time-bounded, owner-authorized outbound through governed paths. |
-| **Maintenance** | Time-bounded maintenance or elevated system work. |
+| **Sovereign** | No outbound (default). Kora keeps working locally; web-dependent steps are held and resurface when the owner opens a window. |
+| **Limited** | Outbound only to an explicit allowlist of approved sources; background web is denied. |
+| **Connected** | Owner-opened open outbound through the governed broker — minus a blocklist that always wins — standing until the owner closes it. |
 
-Connected and Maintenance are **time-bounded, owner-authorized states**, not perpetual modes the system can quietly settle into.
+Outbound is **never the default**. The owner opens Limited or Connected deliberately and can close it at any time; Sovereign is the resting state. A separate internal **Maintenance** state handles system upkeep (e.g., local model updates) and is not a user-facing mode.
 
 **Degraded conditions are not a posture.** When the network or system is degraded, that condition is *surfaced as operational state* so the owner can see it — but a degraded condition never becomes permission to bypass posture rules. The system fails toward caution, not toward convenience.
 

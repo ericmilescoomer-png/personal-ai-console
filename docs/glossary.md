@@ -63,10 +63,13 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 ## Posture and state
 
-**Posture** — a formal, system-wide stance that changes what is allowed:
-- **Sovereign** — no outbound; local operation only.
-- **Connected** — time-bounded, owner-authorized outbound through governed paths.
-- **Maintenance** — time-bounded maintenance or elevated system work. An internal state used for system upkeep (e.g., local model updates), not a routine Owner-facing toggle.
+**Posture** — a system-wide connectivity stance that changes only how far Kora may reach outward (she always works locally):
+- **Sovereign** — no outbound (default); local operation only. Web-dependent steps are held and resurface when a window opens.
+- **Limited** — outbound only to an explicit allowlist of approved sources; background web denied.
+- **Connected** — owner-opened open outbound through the governed broker, minus a blocklist that always wins; standing until closed.
+- **Maintenance** — an internal state for system upkeep (e.g., local model updates), *not* a user-facing posture.
+
+**Blocklist** — an owner-defined denylist of domains that is refused in every posture, before any allowlist match. Block always wins; PAC's own protected sources (e.g., the local model check) are the only exemption.
 
 **Degraded condition** — a network or system problem that is surfaced as operational state. It is **not** a posture, and it never becomes permission to bypass posture rules.
 

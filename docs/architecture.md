@@ -64,15 +64,15 @@ The model never decides its own tier. Tier assignment lives in Core's capability
 
 ### Postures
 
-The system runs under three formal postures, and posture changes what's allowed:
+The system runs under three connectivity postures. Posture changes only how far Kora may reach outward — she always works locally:
 
 | Posture | Meaning |
 |---|---|
-| **Sovereign** | No outbound; local operation only |
-| **Connected** | Time-bounded, owner-authorized outbound through governed paths |
-| **Maintenance** | Time-bounded maintenance or elevated system work |
+| **Sovereign** | No outbound (default); local operation only. Web-dependent steps are held and resurface when a window opens |
+| **Limited** | Outbound only to an explicit allowlist of approved sources; background web denied |
+| **Connected** | Owner-opened open outbound through the governed broker, minus a blocklist that always wins; standing until closed |
 
-Degraded network or system conditions are surfaced as operational state, but they do not become permission to bypass posture rules.
+Outbound is never the default; the owner opens Limited or Connected deliberately. A separate internal *Maintenance* state handles system upkeep and is not a user-facing mode. Degraded network or system conditions are surfaced as operational state, but they do not become permission to bypass posture rules.
 
 ### Owner authority boundary
 
