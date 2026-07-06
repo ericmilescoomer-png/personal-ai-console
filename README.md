@@ -172,10 +172,11 @@ The current private PAC Desktop build includes the following. These are describe
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - Mission and deliverable data model for report, research, draft, status, and audit work
+- Standing intelligence watches: owner-defined watch conditions (thresholds, staleness, status changes) evaluated deterministically on a schedule &mdash; no model in the evaluation loop &mdash; with every run receipted and matches promotable into governed, approval-gated plans
 - Owner-controlled memory governance: every record carries provenance and trust metadata (confidence, authority chain); consolidation is surfaced as reviewable proposals (merge / conflict / stale) rather than silent edits; memory is organized into owner-defined spaces; and the full set supports export, import, and versioned rollback
 - Editable base system prompt layered over a protected, non-editable grounding floor — versioned, revertible, and receipted on every change, so the model's framing can be tuned but its honesty constraints cannot be edited away
 - Resource-memory governor (resource-aware execution; VRAM and RAM thresholds) — a hardware concern distinct from the owner-controlled memory above
-- Local document repository, episodic memory, and Ollama-based embeddings
+- Local document repository and Ollama-based embeddings
 - Library workspace for offline documents and system knowledge
 - Agent lifecycle management (draft, trial, active, proven)
 
@@ -210,6 +211,7 @@ Not everything in Personal A.I. Console is finished. The work loop is most matur
 - Some UI surfaces are catching up to backend capability.
 - Mission deliverable synthesis is partially implemented.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
+- An episodic-memory surface was built, then deliberately pulled from the current build pending a redesign; the owner-controlled memory system above is unaffected.
 - Read-only governed web research exists but is experimental and off by default; broadening it (source storage, extraction, citations) is ongoing.
 - Outbound *action* connectors &mdash; pushing to external services &mdash; are not shipped. The network broker is in place, but governed outbound *writes* to third-party services are still roadmap.
 - Remote model providers are direction, not part of the current validated release.

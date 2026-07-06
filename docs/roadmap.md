@@ -30,7 +30,8 @@ Working today on a local, owner-controlled, Windows-validated build:
 - The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
-- Owner-controlled memory; a local document repository, episodic memory, and local embeddings.
+- Owner-controlled memory; a local document repository and local embeddings.
+- Standing intelligence watches over local system state &mdash; deterministic scheduled evaluation, receipted on every run, with matches promotable into approval-gated plans.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation.
@@ -71,7 +72,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 
 ### Reach
 
-- **Standing watches** — owner-defined watches that monitor sources and surface intel under policy, with receipts.
+- **Standing watches (expanding)** — owner-defined watches over local system state already run under policy, with receipts (see "Now"). Watching *external sources* under posture rules — connected, allowlisted, robots-respecting — is the direction.
 - **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
 - **Specialized agent workers** — task-specific agents, potentially running different models per worker.
 - **Deployment profiles** — bringing the same governance spine to other hardware:
