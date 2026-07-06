@@ -18,12 +18,18 @@ Within that scope, the default stance is **assume unsafe &rarr; verify &rarr; pr
 
 ---
 
+## Design stance: assume the model gets fooled
+
+PAC starts from the assumption that prompt injection is **not reliably preventable** &mdash; the labs building frontier models say as much. So the load-bearing defense is architectural, not linguistic: **the model holds no authority.** Nothing in the rows below depends on the model resisting manipulation. Sanitization and content framing reduce exposure; the *guarantee* comes from what a fooled model still cannot do &mdash; tiers it cannot rewrite, approvals it cannot skip, capabilities it cannot reach, and receipts it cannot avoid leaving.
+
+Several of these defenses are visible in the [screenshots](screenshots.md): the policy gate overriding a step's tier and pausing for approval in the plan preview, and the receipt trail on the completed plan.
+
 ## Threats and defenses
 
 | Threat | What it looks like | How PAC resists it |
 |---|---|---|
-| **Prompt injection via content** | A document, note, pasted log, or memory snippet contains text that tries to issue commands ("ignore your rules and&hellip;"). | Retrieved and pasted content passes an **input firewall** and is treated as **data, not instructions**. The model is not allowed to obey imperatives embedded in content it was given to read. |
-| **Indirect injection via the web** | A fetched page contains text aimed at hijacking the agent or exfiltrating data. | Fetched content is **untrusted data**, routed through the same firewall, never treated as a speaker. The web-facing role is narrow: it can read public pages, nothing more &mdash; there is no powerful capability for a page to reach. |
+| **Prompt injection via content** | A document, note, pasted log, or memory snippet contains text that tries to issue commands ("ignore your rules and&hellip;"). | **Containment first:** even if embedded instructions steer the model, they steer it into a policy gate the model does not control &mdash; tiers are registry truth, sensitive steps park for Owner approval, forbidden steps are blocked in code. Upstream, an **input firewall** sanitizes retrieved and pasted content (including invisible-character tricks) and frames it as **data, not a speaker**. The firewall lowers the odds; the gate bounds the damage. |
+| **Indirect injection via the web** | A fetched page contains text aimed at hijacking the agent or exfiltrating data. | Same containment, plus a deliberately narrow role: fetched content is **untrusted data** routed through the same firewall, and the web-facing capability can read public pages, nothing more &mdash; there is no powerful capability for a page to reach, and no outbound write path for exfiltration under the default posture. |
 | **Posture-downgrade trick** | A request tries to elicit "live" / connected behavior while the system is local-only. | Posture is **code-derived and fail-closed to Sovereign**. Outbound is denied under Sovereign regardless of how the request is phrased; outbound access (Limited or Connected) is Owner-opened, revocable at any time, and conditioned on a fresh network-health signal. The model cannot argue its way online. |
 | **Silencing the oversight** | An attempt to restart, disable, or retune the agents that watch, evaluate, or alert on the agent's own behavior. | The **two-surface control split**: the delegate can only act on a strict subset of agents, and the watchers of its own loop are excluded by design and pinned by a test. (See [trust-model.md](trust-model.md).) |
 | **Secret leakage through memory** | Sensitive content embedded once resurfaces later through search. | The system **warns before embedding** potentially sensitive content, applies sensitivity tiers to memory, and **never auto-surfaces the most sensitive ("vault") tier** in ordinary use. |
