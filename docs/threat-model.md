@@ -46,7 +46,7 @@ Stated plainly, because the boundary is the point:
 
 - **A compromised host or runtime.** If the machine itself is owned by an attacker, PAC's in-process guarantees are not a substitute for host security.
 - **Public internet exposure / remote multi-user access.** Not a current property. Hardening for exposed or hosted deployment is future work.
-- **Cryptographic non-repudiation of the record.** The audit and receipt trail is append-only by design; *tamper-evident* (signed / hash-chained) receipts are a [roadmap](roadmap.md) hardening item, not a current claim.
+- **Cryptographic non-repudiation of the record.** The audit and receipt trail *is* now tamper-evident: each record is HMAC hash-chained, so any edit, deletion, reordering, or truncation made without the chain key is detectable (verification spans the rotated archive). What this is **not** is *non-repudiation*: the chain uses a symmetric local key, so a host that can read that key could re-forge the chain. Asymmetric signing &mdash; where the record's authenticity is provable to a third party and cannot be re-forged by the key holder &mdash; remains a [roadmap](roadmap.md) item. Tamper-evidence against unkeyed modification: yes. Non-repudiation against a compromised host: no.
 - **Formal certification or third-party audit.** This is the project's own threat model, not an external attestation.
 - **Perfect injection immunity.** Input sanitization limits blast radius; no system fully prevents injection. The containment guarantee is that **even a hijacked goal cannot execute beyond policy** &mdash; sensitive work still waits for the Owner, and forbidden work stays blocked.
 

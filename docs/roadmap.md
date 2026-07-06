@@ -80,7 +80,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
   - (The current build is the offline reference profile.)
 - **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing. (See "Out of scope" for the current boundary.)
-- **Tamper-evident receipts** — cryptographic signing / hash-chaining of the receipt and audit spine so the record is provably unaltered. Today receipts are append-only by design; tamper-evidence is the hardening step.
+- **Signed receipts (non-repudiation).** Hash-chaining of the receipt and audit spine is **done** — the record is now tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step is *asymmetric signing*, so the record's authenticity is provable to a third party and cannot be re-forged even by the key holder.
 - **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
 - **Smart-home / IoT control plane** — the project's origin, returning as a governed surface.
 
