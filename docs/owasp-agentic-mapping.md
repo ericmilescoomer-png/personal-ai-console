@@ -38,7 +38,7 @@ Called out plainly, because honesty is the point of this document:
 
 See [roadmap.md](roadmap.md) for where these sit, and [how-it-works.md](how-it-works.md) / [trust-model.md](trust-model.md) for the controls referenced above.
 
-**Next on this track:** OWASP's **Agentic AI Security Verification Standard (AISVS 1.0, June 2026)** turns these threat categories into testable requirements. A chapter-level AISVS self-assessment of the private build is the planned follow-up to this page &mdash; same rules: scored honestly, gaps stated plainly.
+**Next on this track:** OWASP's **AI Security Verification Standard (AISVS 1.0)** turns threat categories like these into 191 testable requirements. PAC's chapter-level scoring against it lives at [aisvs-self-assessment.md](aisvs-self-assessment.md) &mdash; same rules: scored honestly, gaps stated plainly.
 
 *This is a behavior-level self-assessment for a local, single-owner deployment. It is not an audit, a certification, or a guarantee.*
 

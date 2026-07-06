@@ -239,6 +239,7 @@ This repository is the public-facing layer for Personal A.I. Console. It exists 
 - [docs/agent-governance.md](docs/agent-governance.md) &mdash; how PAC governs the agents Kora operates: packs, the trust ratchet, propose-don't-apply
 - [docs/threat-model.md](docs/threat-model.md) &mdash; threats PAC resists and what it explicitly doesn't claim
 - [docs/owasp-agentic-mapping.md](docs/owasp-agentic-mapping.md) &mdash; honest self-assessment against the OWASP Agentic AI Top 10
+- [docs/aisvs-self-assessment.md](docs/aisvs-self-assessment.md) &mdash; chapter-level scoring against OWASP AISVS 1.0, the verification standard; gaps stated plainly
 - [docs/governance-posture.md](docs/governance-posture.md) &mdash; how PAC maps to AI governance frameworks: NIST AI RMF, EU AI Act, OWASP Agentic; written for governance and compliance readers
 
 *How it's built & how it looks*
