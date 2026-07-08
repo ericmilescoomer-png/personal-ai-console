@@ -157,6 +157,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 - Browser-based command center with six stations: Home, Kora, Chat, Agents, Library, and Settings (see [The Command Center](#the-command-center))
 - Streaming chat responses
+- Per-turn evidence disclosure in chat: when a reply drew on something or did something, the turn says so &mdash; attachments read (with match strength), saved conversations recalled, and any tool actions taken, with their receipts grouped under the disclosure &mdash; and turns that used nothing claim nothing
 - Settings organized as seven panels: Personal (appearance, voice, startup), Kora (behavior, memory, learning), Privacy (posture, data handling, kill switch), Models, Storage (retention, backups, export/import), System (runtime, monitors, and health), and Advanced (diagnostics, the editable system prompt, and developer controls)
 - Local neural voice synthesis using Kokoro, fully offline
 
@@ -164,6 +165,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 - FastAPI-based local backend (PAC Core)
 - Local models via Ollama; Qwen3.5 in the current reference build, model choice configurable through Settings
+- Governed model lifecycle: plain-English per-model verdicts and a per-machine role recommendation derived from locally measured evaluation; pulling a new model is treated as an egress event (posture-gated, audited, one at a time); any measured model exports as a portable model card
 - Kora planning and execution engine
 - Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
