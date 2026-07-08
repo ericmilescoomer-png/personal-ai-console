@@ -30,6 +30,7 @@ Working today on a local, owner-controlled, Windows-validated build:
 - The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
+- Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
 - Owner-controlled memory; a local document repository and local embeddings.
 - Standing intelligence watches over local system state &mdash; deterministic scheduled evaluation, receipted on every run, with matches promotable into approval-gated plans.
 - A configurable local model provider (Ollama, running Qwen in the reference build).

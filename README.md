@@ -158,6 +158,8 @@ The current private PAC Desktop build includes the following. These are describe
 - Browser-based command center with six stations: Home, Kora, Chat, Agents, Library, and Settings (see [The Command Center](#the-command-center))
 - Streaming chat responses
 - Per-turn evidence disclosure in chat: when a reply drew on something or did something, the turn says so &mdash; attachments read (with match strength), saved conversations recalled, and any tool actions taken, with their receipts grouped under the disclosure &mdash; and turns that used nothing claim nothing
+- Working chat context, disclosed: drag-in file attachments (PDFs and images read locally; scanned pages are OCR'd on-device, never sent anywhere), a visible context meter, and long conversations condensed by a rolling summary with the fold disclosed rather than silently applied
+- Thread search and reach-back through full chat history, plus per-reply regenerate and copy
 - Settings organized as seven panels: Personal (appearance, voice, startup), Kora (behavior, memory, learning), Privacy (posture, data handling, kill switch), Models, Storage (retention, backups, export/import), System (runtime, monitors, and health), and Advanced (diagnostics, the editable system prompt, and developer controls)
 - Local neural voice synthesis using Kokoro, fully offline
 
@@ -175,7 +177,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - Mission and deliverable data model for report, research, draft, status, and audit work
 - Standing intelligence watches: owner-defined watch conditions (thresholds, staleness, status changes) evaluated deterministically on a schedule &mdash; no model in the evaluation loop &mdash; with every run receipted and matches promotable into governed, approval-gated plans
-- Owner-controlled memory governance: every record carries provenance and trust metadata (confidence, authority chain); consolidation is surfaced as reviewable proposals (merge / conflict / stale) rather than silent edits; memory is organized into owner-defined spaces; and the full set supports export, import, and versioned rollback
+- Owner-controlled memory governance: every record carries provenance and trust metadata (confidence, authority chain); consolidation is surfaced as reviewable proposals (merge / conflict / stale) rather than silent edits; memory is organized into owner-defined spaces; and the full set supports export, import, and versioned rollback. In-chat memory commands (save / recall / forget, behind a default-off flag) route every save and delete through the same approval gates as any sensitive action &mdash; memory writes are never silent
 - Editable base system prompt layered over a protected, non-editable grounding floor — versioned, revertible, and receipted on every change, so the model's framing can be tuned but its honesty constraints cannot be edited away
 - Resource-memory governor (resource-aware execution; VRAM and RAM thresholds) — a hardware concern distinct from the owner-controlled memory above
 - Local document repository and Ollama-based embeddings

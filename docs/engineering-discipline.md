@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **more than 1,800 automated tests** across 240-plus test files. They are organized into tiers, each answering a different question:
+The private build is covered by **more than 1,800 automated tests** across 260-plus test files. They are organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
@@ -31,7 +31,7 @@ The point of the tiering is the **contract** layer. Most test suites prove that 
 
 ## Contract tests: invariants that are enforced, not promised
 
-More than 170 contract tests, across more than two dozen modules, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
+More than 270 contract tests, across more than forty modules, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
 
 - **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls &mdash; and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
 - **Sensitive work cannot self-authorize.** Tests assert that a SENSITIVE step parks for Owner confirmation and does not execute on the model's say-so.
@@ -60,7 +60,7 @@ Trust is accrued from behavior over time and is inspectable. It is not granted b
 
 Every change that touches security posture, capability permissions, memory semantics, the OS&harr;Core contract, or connectivity posture is recorded in an **append-only development ledger** before the change is considered done. The ledger is chronological and never edited after the fact.
 
-In the current build it holds **more than seventy entries spanning over four months** of continuous work, and **nearly every entry carries a configuration fingerprint** (below). Routine formatting and cosmetic edits are deliberately *excluded* &mdash; the ledger is a record of consequential change, not a commit log.
+In the current build it holds **nearly eighty entries spanning more than four months** of continuous work, and **nearly every entry carries a configuration fingerprint** (below). Routine formatting and cosmetic edits are deliberately *excluded* &mdash; the ledger is a record of consequential change, not a commit log.
 
 The discipline this enforces is simple: **if a meaningful change isn't in the ledger, it isn't finished.**
 
