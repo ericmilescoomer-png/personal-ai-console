@@ -32,7 +32,8 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Action receipt spine and an append-only audit trail, separate from the main data.
 - Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
 - Owner-controlled memory; a local document repository and local embeddings.
-- Standing intelligence watches over local system state &mdash; deterministic scheduled evaluation, receipted on every run, with matches promotable into approval-gated plans.
+- Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
+- A single intelligence feed of record: watch results and specialist mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation.
@@ -73,7 +74,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 
 ### Reach
 
-- **Standing watches (expanding)** — owner-defined watches over local system state already run under policy, with receipts (see "Now"). Watching *external sources* under posture rules — connected, allowlisted, robots-respecting — is the direction.
+- **Standing watches (expanding)** — owner-defined watches now run over both local system state and external URLs under posture rules — Connected-only, brokered, robots-respecting — with receipts (see "Now"). Richer external source types and extraction are the direction.
 - **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
 - **Specialized agent workers** — task-specific agents, potentially running different models per worker.
 - **Deployment profiles** — bringing the same governance spine to other hardware:
