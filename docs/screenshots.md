@@ -56,4 +56,20 @@ The Kora station's Inbox brings the Owner only the calls that need them &mdash; 
 
 ---
 
+## A Specialist Reports Back
+
+![Specialist report in the inspector](../assets/screenshots/07-specialist-report.png)
+
+Kora doesn't work alone &mdash; she operates a crew of scoped specialists. Here, the Records Specialist has verified the backup from the earlier walkthrough and filed a report: the mission opens as a document in the right-hand inspector &mdash; the queue keeps its one-verb cards, and everything that needs reading lives in the rail. The report cites what was checked, what was found, and the receipts behind it (inherited from the plan the mission verified), and closes on the standard PAC gives its own summaries: *the restore point is provable*. The composer at the bottom lets the Owner question the result or request a revision &mdash; the deliverable is a conversation piece, not a dead file.
+
+---
+
+## One Feed of Record
+
+![Intel feed with a specialist report open](../assets/screenshots/08-intel-feed.png)
+
+Specialist reports don't scatter into separate surfaces &mdash; they join the same intelligence feed as everything else Kora watches, labeled **REPORT** with the specialist's chip naming the author. Opening one reads the deliverable through from its single source of record (no copies), with lineage links back to the **Mission** and the **Plan** that produced it &mdash; the provenance is one click deep, always. The **Promote to follow-up mission** action routes through the same approval gate as any other governed work: even acting on intelligence asks first.
+
+---
+
 *These screenshots will be supplemented with a demo walkthrough as the public showcase matures. See [README](../README.md) for current product scope.*

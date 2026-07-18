@@ -38,7 +38,7 @@ That is the honest shape of a single-owner local system scored against a standar
 
 ## The gaps, in priority order
 
-1. **Adversarial red-team pass** &mdash; a structured attempt to break the hardened system, recorded like everything else (C11).
+1. **Adversarial red-team pass** &mdash; a structured attempt to break the hardened system, recorded like everything else (C11). *In progress: the first scripted attack suites are now pinned as permanent regression tests, starting with the memory lifecycle (recall injection, write authority, deletion hygiene); the full structured pass is still ahead.*
 2. **Asymmetric signing** &mdash; move the audit, receipt, and per-agent bindings from keyed tamper-evidence to true non-repudiation, provable to a third party (C9.4, C12).
 3. **ML-based detection and drift** &mdash; classifier-based screening and statistical anomaly/drift monitoring on top of the heuristic layer (C2, C12).
 
