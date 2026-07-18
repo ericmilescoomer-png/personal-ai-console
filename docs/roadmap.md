@@ -32,6 +32,7 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Action receipt spine and an append-only audit trail, separate from the main data.
 - Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
 - Owner-controlled memory; a local document repository and local embeddings.
+- Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending.
 - Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
 - A single intelligence feed of record: watch results and specialist mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
@@ -67,7 +68,7 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 The monitoring primitives for these already run as PAC OS agents (session signatures, preference learning, ambient state, network/WAN awareness). What's still ahead is the owner-facing experience built on top of them:
 
-- **Re-entry brief** — turning ambient-state tracking into a concise, sourced handoff on return from idle: what happened, what's pending, what changed, what's awaiting attention.
+- **Re-entry brief (deepening)** — the watch-turnover handoff on return from deep idle is shipped (see "Now"); making it richer is the direction: deeper session handoff, sourced links from every sentence to its evidence, and an on-demand "after-action report" over any time window.
 - **Experience search** — maturing today's cross-surface search into a polished, meaning-based "search everything" across journal, receipts, deliverables, and documents, with provenance and freshness.
 - **Fuller preference learning** — the preference-learner agent already records inspectable, owner-deletable preferences from the work loop; deeper standing grants and session handoff are the direction.
 - **Broader connectivity handling** — WAN polling and deferred-plan resurfacing already run; wider graceful-degradation behavior is the direction.

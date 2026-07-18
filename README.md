@@ -178,6 +178,8 @@ The current private PAC Desktop build includes the following. These are describe
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - Mission and deliverable data model for report, research, draft, status, and audit work
+- Owner-authored standing orders: durable directives Kora carries into all of her work &mdash; scoped, prioritized, and expirable, so a temporary order lapses on its own instead of quietly becoming permanent
+- A watch-turnover brief on return: after a deep-idle gap, Kora hands over the watch in a few sentences &mdash; time away, what happened, what's pending &mdash; generated from ambient state and session context rather than dumped as raw logs
 - Standing intelligence watches: owner-defined watch conditions (thresholds, staleness, status changes, content change) evaluated deterministically on a schedule &mdash; no model in the evaluation loop &mdash; with every run receipted and matches promotable into governed, approval-gated plans
 - External URL watches under posture: a watch may target a public web page, but it fetches only while the owner has Connected posture open, routes through the governed network broker, respects robots.txt, and records every skipped or denied fetch as an explicit gap in the result &mdash; never a silent miss
 - One intelligence feed of record: watch results and specialist mission reports share a single feed &mdash; reports appear as first-class entries read directly from the mission deliverable (one source of record, no copies), are indexed for local semantic search, and can be promoted into follow-up missions through the same approval gate as everything else
