@@ -48,4 +48,12 @@ Kora can suggest something worth remembering, but she cannot change long-term me
 
 ---
 
+## The Inbox: Decisions, Not Noise
+
+![Kora inbox](../assets/screenshots/06-kora-inbox.png)
+
+The Kora station's Inbox brings the Owner only the calls that need them &mdash; each card is one clear decision, in Kora's own voice, with a colored chip naming who did the work. Attention has a real lifecycle: glancing at an item doesn't count as handling it (*seen* and *done* are tracked separately), **Later** sets an item aside and resurfaces it on schedule, and nothing is dismissed silently. The top card is the previous section's promise kept, live: Kora *asking permission to remember* &mdash; the save is a proposal awaiting the Owner's **Approve**, gated exactly like any other sensitive action.
+
+---
+
 *These screenshots will be supplemented with a demo walkthrough as the public showcase matures. See [README](../README.md) for current product scope.*
