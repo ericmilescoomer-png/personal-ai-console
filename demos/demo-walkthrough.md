@@ -39,7 +39,7 @@ This is the heart of PAC: the owner sees what was requested, what is proposed, a
 
 ![Action receipt](../assets/screenshots/02-action-receipt.png)
 
-Once the Owner approves, the steps execute and the completed plan carries its evidence. Each step shows its capability and a **done** status, and Kora's summary names the gate that just held: *"The plan required confirmation due to its SENSITIVE tier; all three steps executed without errors."* Note the closing line in the screenshot &mdash; rather than overclaiming, Kora points the Owner at receipt verification as the proof that outranks her own summary. That restraint is the truth-first policy at work.
+Once the Owner approves, the steps execute and the completed plan carries its evidence. The trace shows each step's capability and a **done** status, and Kora's summary names the gate that just held: *"I verified system health and disk capacity, then executed the sensitive backup step after your approval."* She even cites the freshness of the evidence she checked &mdash; the ops metrics were fourteen seconds old when read &mdash; because in PAC, how *current* the evidence is matters as much as what it says. Note the closing line in the screenshot: *"the receipt confirms the restore point is now provable."* Not "the backup worked" &mdash; the receipt is the proof, and Kora's summary defers to it. That restraint is the truth-first policy at work.
 
 As far as PAC is concerned, an action without a receipt didn't happen. The completed view is the receipt: what was planned, what was approved, what ran, and the verification behind it.
 
