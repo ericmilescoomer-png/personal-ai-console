@@ -77,7 +77,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0) organizes AI governance into 
 **Measure** &mdash; *analyze, assess, and track AI risk.*
 - The earned-autonomy ratchet is a measured threshold, not a judgment call. Agent promotion (draft &rarr; trial &rarr; active &rarr; proven) requires recorded performance statistics over time. An agent that has not earned trust is not granted it.
 - Configuration fingerprinting detects drift in the trust-relevant configuration (system prompt, capability registry, agent set). Unexplained drift is a signal, not a silent state change.
-- More than 160 contract tests pin the trust invariants &mdash; the coverage is against the governance properties, not just functional behavior.
+- More than 160 of the build's 340-plus contract tests pin the trust invariants specifically &mdash; the coverage is against the governance properties, not just functional behavior.
 
 **Manage** &mdash; *treat, respond to, and recover from AI risk.*
 - The kill switch halts all autonomous execution immediately and survives restart.

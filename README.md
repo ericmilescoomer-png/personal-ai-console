@@ -161,9 +161,10 @@ The current private PAC Desktop build includes the following. These are describe
 - Working chat context, disclosed: drag-in file attachments (PDFs and images read locally; scanned pages are OCR'd on-device, never sent anywhere), a visible context meter, and long conversations condensed by a rolling summary with the fold disclosed rather than silently applied
 - Thread search and reach-back through full chat history, plus per-reply regenerate and copy
 - Inbox attention lifecycle: everything Kora raises tracks *seen* and *done* separately &mdash; a glance doesn't count as handled &mdash; with a one-tap Done and a Later verb that snoozes an item and resurfaces it on schedule; nothing is silently dismissed
-- System operational awareness in Settings: workflow impact stated plainly (what's blocked, why, and what would unlock it), active alerts, and a per-source liveness ledger that recomputes every age at render time &mdash; stale evidence is labeled *not current*, never presented as fresh
+- Kora's working journal: a filterable, running record of what she has done and observed, with an on-demand reflection that turns recent activity into a short narrative in her own voice
+- System operational awareness in Settings: workflow impact stated plainly (what's blocked, why, and what would unlock it), active alerts, and a per-source liveness ledger that recomputes every age at render time &mdash; stale evidence is labeled *not current*, never presented as fresh; the full picture exports as a one-click diagnostic bundle, and a built-in interpreter renders current operational state in plain sentences
 - Settings organized as seven panels: Personal (appearance, voice, startup), Kora (behavior, memory, learning), Privacy (posture, data handling, kill switch), Models, Storage (retention, backups, export/import), System (runtime, monitors, and health), and Advanced (diagnostics, the editable system prompt, and developer controls)
-- Local neural voice synthesis using Kokoro, fully offline
+- Voice in both directions, fully offline: local neural speech synthesis (Kokoro) with per-reply read-aloud in chat, and local voice input for dictating work &mdash; nothing spoken or heard ever leaves the machine
 
 **Core runtime** &mdash; the engine that decides what's allowed and remembers what happened.
 
@@ -173,22 +174,23 @@ The current private PAC Desktop build includes the following. These are describe
 - Kora planning and execution engine
 - Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
-- Three connectivity postures: Sovereign (local-only default), Limited (allowlist-only outbound), Connected (owner-opened open outbound, blocklist always wins); degraded conditions surface as operational state, never permission
+- Three connectivity postures: Sovereign (local-only default), Limited (allowlist-only outbound), Connected (owner-opened open outbound, blocklist always wins); degraded conditions surface as operational state, never permission; and a one-touch panic control that drops everything back to Sovereign instantly
 - Graduated autonomy profiles, plus a persistent, fail-closed kill switch that halts all autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - Mission and deliverable data model for report, research, draft, status, and audit work
 - Owner-authored standing orders: durable directives Kora carries into all of her work &mdash; scoped, prioritized, and expirable, so a temporary order lapses on its own instead of quietly becoming permanent
-- A watch-turnover brief on return: after a deep-idle gap, Kora hands over the watch in a few sentences &mdash; time away, what happened, what's pending &mdash; generated from ambient state and session context rather than dumped as raw logs
+- A watch-turnover brief on return: after a deep-idle gap, Kora hands over the watch in a few sentences &mdash; time away, what happened, what's pending &mdash; generated from ambient state and session context rather than dumped as raw logs. The brief renders on Home as the first card you see when you return, with a play control to hear it in Kora's voice and an optional auto-speak-on-return toggle that is off by default: no surprise audio
+- On-demand after-action briefs through the same work loop: ask for a brief over any time window (&ldquo;what happened yesterday &mdash; what ran, what changed, what needs me&rdquo;) and Kora plans it, gathers the evidence through governed read-only steps scoped to that window by the system &mdash; not by the model's discretion &mdash; and files a receipted report deliverable whose claims carry structured references to the receipts behind them
 - Standing intelligence watches: owner-defined watch conditions (thresholds, staleness, status changes, content change) evaluated deterministically on a schedule &mdash; no model in the evaluation loop &mdash; with every run receipted and matches promotable into governed, approval-gated plans
 - External URL watches under posture: a watch may target a public web page, but it fetches only while the owner has Connected posture open, routes through the governed network broker, respects robots.txt, and records every skipped or denied fetch as an explicit gap in the result &mdash; never a silent miss
-- One intelligence feed of record: watch results and specialist mission reports share a single feed &mdash; reports appear as first-class entries read directly from the mission deliverable (one source of record, no copies), are indexed for local semantic search, and can be promoted into follow-up missions through the same approval gate as everything else
+- One intelligence feed of record: watch results and specialist mission reports share a single feed &mdash; reports appear as first-class entries read directly from the mission deliverable (one source of record, no copies), are indexed for local semantic search, and can be promoted into follow-up missions through the same approval gate as everything else &mdash; and every feed entry takes owner feedback, so the owner tunes what the watch desk brings them
 - Owner-controlled memory governance: every record carries provenance and trust metadata (confidence, authority chain); consolidation is surfaced as reviewable proposals (merge / conflict / stale) rather than silent edits; memory is organized into owner-defined spaces; and the full set supports export, import, and versioned rollback. In-chat memory commands (save / recall / forget, behind a default-off flag) route every save and delete through the same approval gates as any sensitive action &mdash; memory writes are never silent
 - Editable base system prompt layered over a protected, non-editable grounding floor — versioned, revertible, and receipted on every change, so the model's framing can be tuned but its honesty constraints cannot be edited away
 - Resource-memory governor (resource-aware execution; VRAM and RAM thresholds) — a hardware concern distinct from the owner-controlled memory above
 - Local document repository and Ollama-based embeddings
 - Library workspace for offline documents and system knowledge
-- Agent lifecycle management (draft, trial, active, proven)
+- A working specialist crew under Kora &mdash; a dozen scoped workers across building, research, records, planning, knowledge, and policy &mdash; each bound to a least-privilege capability pack, with full lifecycle management (draft, trial, active, proven), a create-a-specialist wizard, and a per-agent dossier covering authority, operation, trust record, and proof
 
 **System layer (PAC OS)** &mdash; the local evidence and runtime substrate underneath Core.
 
@@ -209,6 +211,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Filesystem guard: sensitive-path blocking
 - Trusted workspace roots
 - Rate limiting
+- Single-owner key access: status surfaced in Settings, rotatable on demand
 
 ---
 
@@ -219,7 +222,7 @@ Not everything in Personal A.I. Console is finished. The work loop is most matur
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete.
 - Some UI surfaces are catching up to backend capability.
-- Mission deliverable synthesis is partially implemented.
+- Mission deliverable synthesis is strongest for report-style work &mdash; receipted, evidence-grounded reports run end to end; long-form document drafting is still maturing.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
 - An episodic-memory surface was built, then deliberately pulled from the current build pending a redesign; the owner-controlled memory system above is unaffected.
 - Read-only governed web research exists but is experimental and off by default; broadening it (source storage, extraction, citations) is ongoing.

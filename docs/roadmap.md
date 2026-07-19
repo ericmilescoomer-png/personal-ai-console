@@ -32,12 +32,15 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Action receipt spine and an append-only audit trail, separate from the main data.
 - Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
 - Owner-controlled memory; a local document repository and local embeddings.
-- Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending.
+- Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending &mdash; surfaced on Home, with an optional spoken turnover that is off by default.
+- On-demand after-action briefs over any time window, produced through the governed work loop as receipted report deliverables whose claims carry structured references to the receipts behind them.
+- Two-way offline voice: local neural speech synthesis with read-aloud, and local voice input.
+- A specialist crew under Kora &mdash; scoped, least-privilege workers with a full lifecycle (draft &rarr; trial &rarr; active &rarr; proven), owner-facing dossiers, and a mission inspector showing a mission's request, plan, sources, and receipts in one panel.
 - Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
 - A single intelligence feed of record: watch results and specialist mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
-- A durable single-owner key/access model for local operation.
+- A durable single-owner key/access model for local operation, with owner-initiated key rotation.
 - Governed, read-only web research behind an off-by-default flag (only when outbound is open — Limited or Connected — SSRF-hardened) &mdash; experimental.
 
 ---
@@ -58,17 +61,16 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Mission expansion
 
-- **Deliverable drafting** — Kora drafts long-form output (document, report, draft) into a mission deliverable, optionally saved to the local library.
+- **Deliverable drafting (deepening)** — receipted report deliverables are shipped (see "Now"); long-form document and draft work, optionally saved to the local library, is the direction.
 - **Governed web research (expanding)** — read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
 - **Mission templates** — reusable mission shapes for recurring patterns.
-- **Mission inspector** — a context-aware panel showing a mission's request, plan, steps, artifacts, receipts, and journal in one place.
 - **Multi-step / multi-agent missions** — longer-running work and mission-to-mission dependencies, only as real workflows demand.
 
 ### Ambient infrastructure
 
 The monitoring primitives for these already run as PAC OS agents (session signatures, preference learning, ambient state, network/WAN awareness). What's still ahead is the owner-facing experience built on top of them:
 
-- **Re-entry brief (deepening)** — the watch-turnover handoff on return from deep idle is shipped (see "Now"); making it richer is the direction: deeper session handoff, sourced links from every sentence to its evidence, and an on-demand "after-action report" over any time window.
+- **Re-entry brief (deepening)** — the watch-turnover handoff on return from deep idle is shipped and spoken, and after-action briefs over arbitrary windows now ship as receipted deliverables (see "Now"); the direction is deeper session handoff and extending today's claim-to-receipt references into sourced links from every sentence.
 - **Experience search** — maturing today's cross-surface search into a polished, meaning-based "search everything" across journal, receipts, deliverables, and documents, with provenance and freshness.
 - **Fuller preference learning** — the preference-learner agent already records inspectable, owner-deletable preferences from the work loop; deeper standing grants and session handoff are the direction.
 - **Broader connectivity handling** — WAN polling and deferred-plan resurfacing already run; wider graceful-degradation behavior is the direction.
@@ -77,12 +79,12 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 
 - **Standing watches (expanding)** — owner-defined watches now run over both local system state and external URLs under posture rules — Connected-only, brokered, robots-respecting — with receipts (see "Now"). Richer external source types and extraction are the direction.
 - **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
-- **Specialized agent workers** — task-specific agents, potentially running different models per worker.
+- **Specialized agent workers (expanding)** — the scoped specialist crew is shipped (see "Now"); different models per worker are the direction.
 - **Deployment profiles** — bringing the same governance spine to other hardware:
   - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
   - (The current build is the offline reference profile.)
-- **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing. (See "Out of scope" for the current boundary.)
+- **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing beyond today's rotatable owner key. (See "Out of scope" for the current boundary.)
 - **Signed receipts (non-repudiation).** Hash-chaining of the receipt and audit spine is **done** — the record is now tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step is *asymmetric signing*, so the record's authenticity is provable to a third party and cannot be re-forged even by the key holder.
 - **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
 - **Smart-home / IoT control plane** — the project's origin, returning as a governed surface.

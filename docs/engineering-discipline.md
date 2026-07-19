@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **more than 1,900 automated tests** across 270-plus test files. They are organized into tiers, each answering a different question:
+The private build is covered by **more than 2,100 automated tests** across 280-plus test files. They are organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
