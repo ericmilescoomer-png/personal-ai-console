@@ -160,6 +160,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Per-turn evidence disclosure in chat: when a reply drew on something or did something, the turn says so &mdash; attachments read (with match strength), saved conversations recalled, and any tool actions taken, with their receipts grouped under the disclosure &mdash; and turns that used nothing claim nothing
 - Working chat context, disclosed: drag-in file attachments (PDFs and images read locally; scanned pages are OCR'd on-device, never sent anywhere), a visible context meter, and long conversations condensed by a rolling summary with the fold disclosed rather than silently applied
 - Thread search and reach-back through full chat history, plus per-reply regenerate and copy
+- Hand work to a named specialist straight from chat: the specialist is resolved deterministically &mdash; an ambiguous name fails closed rather than guessing &mdash; the instruction travels verbatim into the mission objective, and the same approval gate is raised as anywhere else, stating plainly when a hired cloud brain means the composition step will leave the device
 - Inbox attention lifecycle: everything Kora raises tracks *seen* and *done* separately &mdash; a glance doesn't count as handled &mdash; with a one-tap Done and a Later verb that snoozes an item and resurfaces it on schedule; nothing is silently dismissed
 - Kora's working journal: a filterable, running record of what she has done and observed, with an on-demand reflection that turns recent activity into a short narrative in her own voice
 - System operational awareness in Settings: workflow impact stated plainly (what's blocked, why, and what would unlock it), active alerts, and a per-source liveness ledger that recomputes every age at render time &mdash; stale evidence is labeled *not current*, never presented as fresh; the full picture exports as a one-click diagnostic bundle, and a built-in interpreter renders current operational state in plain sentences
@@ -173,6 +174,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Governed model lifecycle: plain-English per-model verdicts and a per-machine role recommendation derived from locally measured evaluation; pulling a new model is treated as an egress event (posture-gated, audited, one at a time); any measured model exports as a portable model card
 - Kora planning and execution engine
 - Plan lifecycle: draft, preview, owner confirmation, execution, and receipt-backed completion
+- Approvals that cannot be replayed: an approval opens its door exactly once &mdash; re-approving finished work returns the recorded receipt instead of a second execution, and unapproved work refuses to run through any door
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, code-enforced
 - Three connectivity postures: Sovereign (local-only default), Limited (allowlist-only outbound), Connected (owner-opened open outbound, blocklist always wins); degraded conditions surface as operational state, never permission; and a one-touch panic control that drops everything back to Sovereign instantly
 - Graduated autonomy profiles, plus a persistent, fail-closed kill switch that halts all autonomous execution and survives restart
@@ -191,6 +193,7 @@ The current private PAC Desktop build includes the following. These are describe
 - Local document repository and Ollama-based embeddings
 - Library workspace for offline documents and system knowledge
 - A working specialist crew under Kora &mdash; a dozen scoped workers across building, research, records, planning, knowledge, and policy &mdash; each bound to a least-privilege capability pack, with full lifecycle management (draft, trial, active, proven), a create-a-specialist wizard, and a per-agent dossier covering authority, operation, trust record, and proof
+- A governed build workspace for the Builder specialist: patch-and-test cycles inside a PAC-managed sandbox &mdash; path-confined, sensitive files blocked, and no version-control access by design &mdash; where a run that completes with failing tests reports red honestly, and a failed build files a failure report as its deliverable, with the evidence, instead of vanishing
 
 **System layer (PAC OS)** &mdash; the local evidence and runtime substrate underneath Core.
 
@@ -202,6 +205,12 @@ The current private PAC Desktop build includes the following. These are describe
 
 - WAN awareness: deferred plans surface when the network restores
 - Network broker module for governed outbound (architecture in place; specific connectors not yet shipped)
+- A governed cloud lane &mdash; hired brains: the owner can hire a frontier cloud model (Anthropic today) as the composition brain of a specific specialist. Hiring is an owner act in Settings; the key is held locally and is never echoed, logged, or left sitting in the interface. The brain is pinned when a mission starts &mdash; a later change never leaks into running work &mdash; and every cloud-composed deliverable carries its brain provenance
+- The cloud stops at the artifact boundary: a hired brain composes deliverables and gives second opinions &mdash; it never drafts plans, never executes, and never holds a capability. Authority stays local, whole and undivided
+- Posture governs the cloud lane like everything else: under Sovereign the call is killed before the network is touched and the mission fails honestly &mdash; and the refusal receipt still records the SHA-256 fingerprint and byte count of exactly what *would have* left the machine
+- Egress accountability on every cloud call: the receipt carries the fingerprint of exactly what left, token counts, and cost; the mission inspector renders it plainly &mdash; &ldquo;what left&rdquo; on a real call, &ldquo;blocked before send&rdquo; on a refusal
+- Cloud consult, priced in cents: a specialist can bring in a hired reviewer for a receipted second opinion &mdash; in the first live accounting, the reviewer caught a real defect the local model had missed, for three cents
+- An environment-isolated cloud client: ambient proxy settings can never become an undisclosed second party, redirects are refused, and a modern TLS floor is enforced
 - Governed, read-only web research: an off-by-default Research Specialist that performs public-web reads only, allowed solely when outbound is open (Limited or Connected) and SSRF-hardened. Experimental.
 
 **Security** &mdash; defenses in depth around input, secrets, and the filesystem.
@@ -217,7 +226,7 @@ The current private PAC Desktop build includes the following. These are describe
 
 ## What's Not Built Yet
 
-Not everything in Personal A.I. Console is finished. The work loop is most mature through the approval stage &mdash; observation, policy enforcement, planning, and owner approval; execution sandboxing and outcome verification are the areas being hardened next (see the [roadmap](docs/roadmap.md)).
+Not everything in Personal A.I. Console is finished. The work loop is most mature through the approval stage &mdash; observation, policy enforcement, planning, and owner approval; the first governed execution sandbox is now live, and outcome verification is the area being hardened next (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete.
@@ -227,7 +236,7 @@ Not everything in Personal A.I. Console is finished. The work loop is most matur
 - An episodic-memory surface was built, then deliberately pulled from the current build pending a redesign; the owner-controlled memory system above is unaffected.
 - Read-only governed web research exists but is experimental and off by default; broadening it (source storage, extraction, citations) is ongoing.
 - Outbound *action* connectors &mdash; pushing to external services &mdash; are not shipped. The network broker is in place, but governed outbound *writes* to third-party services are still roadmap.
-- Remote model providers are direction, not part of the current validated release.
+- Remote model use is deliberately narrow: one provider (Anthropic) is integrated today, and hired brains work only at the artifact boundary &mdash; composition and consult. A broader provider roster is direction; cloud models planning, executing, or holding capability is not a gap but a boundary that will stay.
 - The system is built for local, owner-controlled deployment. It is not hardened for public internet exposure or multi-user hosting.
 - Smart-home and IoT control surfaces are on the roadmap but not present in the current desktop build.
 

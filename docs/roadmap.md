@@ -17,7 +17,7 @@ PAC's capability grows in a strict sequence. Each rung must be solid before the 
 5. **Execution** — approved actions run within declared scope, with a receipt.
 6. **Verification** — deterministic checks confirm the outcome before the receipt closes.
 
-The current build is solid through **Approvals (rung 4)**. **Execution sandboxing and Verification (rungs 5–6)** are what unlock next. The roadmap below is organized around extending that foundation, not around adding ungoverned capability on top of it.
+The current build is solid through **Approvals (rung 4)**, and **Execution sandboxing (rung 5)** now has its first real surface &mdash; a governed, path-confined build workspace whose test runs report red or green as evidence. Hardening **Verification (rung 6)** across all governed work is what unlocks next. The roadmap below is organized around extending that foundation, not around adding ungoverned capability on top of it.
 
 ---
 
@@ -39,6 +39,8 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
 - A single intelligence feed of record: watch results and specialist mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
+- A governed cloud lane at the artifact boundary &mdash; owner-hired cloud brains (Anthropic today) for deliverable composition and receipted consults: brain pinned per mission, provenance on the deliverable, the call killed pre-network under Sovereign posture, and an egress fingerprint &mdash; the hash and byte count of exactly what left, or would have left &mdash; on every receipt, refusals included, with tokens and cost.
+- A governed build workspace for the Builder specialist &mdash; sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation, with owner-initiated key rotation.
 - Governed, read-only web research behind an off-by-default flag (only when outbound is open — Limited or Connected — SSRF-hardened) &mdash; experimental.
@@ -79,7 +81,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 
 - **Standing watches (expanding)** — owner-defined watches now run over both local system state and external URLs under posture rules — Connected-only, brokered, robots-respecting — with receipts (see "Now"). Richer external source types and extraction are the direction.
 - **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
-- **Specialized agent workers (expanding)** — the scoped specialist crew is shipped (see "Now"); different models per worker are the direction.
+- **Specialized agent workers (expanding)** — the scoped specialist crew is shipped, and a specialist can now carry its own hired cloud brain at the artifact boundary (see "Now"); different local models per worker are the direction.
 - **Deployment profiles** — bringing the same governance spine to other hardware:
   - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
@@ -97,7 +99,7 @@ Explicitly **not** current capabilities, and not on the near-term path:
 
 - **Public internet exposure / hardened remote deployment.** PAC is built for local, single-owner use. Internet-exposure hardening is future work, not a current property.
 - **Multi-operator / multi-seat / hosted deployments.** PAC is single-owner by design.
-- **Cloud-hosted model providers.** PAC is provider-agnostic; if cloud models are ever used, they would arrive through the governed connector/broker system under policy — not as a default.
+- **Cloud models as a default or as authority-holders.** Cloud model access arrived the way this roadmap said it would &mdash; through the governed lane, under policy, posture-gated and receipted, at the artifact boundary (see "Now"). What remains out of scope is any version where a cloud model is the default path, holds a capability, or acts as an authority.
 - **Cross-platform validation** beyond Windows.
 - **A public source-code release.** This repository is a product showcase, not an open-source distribution — see [NOTICE.md](../NOTICE.md).
 
