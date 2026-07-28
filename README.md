@@ -11,7 +11,7 @@ A local-first command center for governed AI. One owner, one machine, in full co
 Plenty of tools show you what an AI is doing. I built Personal A.I. Console (PAC) for the harder half: deciding what an AI is *allowed* to do, and proving what it *did*, on hardware I own. You hand work to a crew that operates under your intent, approve the calls that need you, read the rest as plain-language watch reports, and keep a receipt for every action. A dashboard reports; PAC commands.
 
 <p align="center">
-  <img src="assets/screenshots/01-plan-preview.png" alt="A plan awaiting owner confirmation: three steps, plain-language impact, and an explicit approval gate" width="800">
+  <img src="assets/screenshots/01-plan-preview.png" alt="A plan awaiting owner confirmation in the inspector rail: three steps with capability tiers, the backup step marked Sensitive, and the Approve verb on the queue card" width="800">
 </p>
 <p align="center"><i>A plan parked at the approval gate. The model proposed it; nothing runs until the Owner says so. More in <a href="docs/screenshots.md">docs/screenshots.md</a>.</i></p>
 

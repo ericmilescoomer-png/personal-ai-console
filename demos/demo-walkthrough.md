@@ -20,16 +20,16 @@ Before any work happens, PAC presents its own state: the active local model, cur
 
 ![Plan preview and approval](../assets/screenshots/01-plan-preview.png)
 
-The Owner's request becomes a **plan**, not an immediate action. Kora drafts the steps and presents them *before* anything runs:
+The Owner's request becomes a **plan**, not an immediate action. Kora drafts the steps and presents them in the inspector rail *before* anything runs, each carrying the tier the capability registry assigned it:
 
-1. Check system health before backup &mdash; **SAFE**
-2. Confirm available disk capacity &mdash; **SAFE**
-3. Create a backup of the local library &mdash; **SENSITIVE**
+1. Check system health before backup &mdash; **Read-only**
+2. Confirm available disk capacity &mdash; **Read-only**
+3. Create a backup of the local library &mdash; **Sensitive**
 
 Two things are happening underneath this screen:
 
 - Each step's **tier** comes from PAC's capability registry, not from the model. The model proposes work; it does not get to declare its own work "safe."
-- A deterministic policy evaluation runs over the plan. Because step 3 is **SENSITIVE**, the plan's outcome is *requires confirmation* &mdash; so the plan pauses, awaiting the Owner's **Go ahead / Not now** decision. The read-only checks could run on their own; the consequential step cannot.
+- A deterministic policy evaluation runs over the plan. Because step 3 is **Sensitive**, the plan's outcome is *requires confirmation* &mdash; so the plan pauses as *awaiting confirmation*, and the queue card carries the one verb that can move it: **Approve**. The read-only checks could run on their own; the consequential step cannot.
 
 This is the heart of PAC: the owner sees what was requested, what is proposed, and exactly what will need their say-so &mdash; before it happens.
 
@@ -39,7 +39,7 @@ This is the heart of PAC: the owner sees what was requested, what is proposed, a
 
 ![Action receipt](../assets/screenshots/02-action-receipt.png)
 
-Once the Owner approves, the steps execute and the completed plan carries its evidence. The trace shows each step's capability and a **done** status, and Kora's summary names the gate that just held: *"I verified system health and disk capacity, then executed a backup of the local library after you approved the sensitive step."* The detail line keeps the same shape &mdash; evidence checked *before* the consequential step ran: *"The OS metrics confirmed all monitors were running without failures"* before the backup was triggered. Order matters in PAC: evidence first, action second, receipt after. And the summary stops short of declaring victory &mdash; the *proof* lives in the receipt chain, which is exactly where the specialist mission in [screenshots.md](../docs/screenshots.md) goes to verify this same backup before calling the restore point *provable*.
+Once the Owner approves, the steps execute and the same rail follows the plan to its completed state &mdash; the chip flips to **completed**, and the Receipts tab carries the evidence. The trail reads in the order PAC insists on: the **policy check** first, then the plan's creation, each step's start and finish, and the execution record &mdash; every entry timestamped, attributed to who acted (system, kora, or user), and expandable to its raw form. Kora's own summary of the run names the gate that just held: *"I verified system health and disk capacity, then executed a sensitive backup trigger for the local library after you approved it."* &mdash; and it stops short of declaring victory: the *proof* lives in this receipt chain, which is exactly where the specialist mission in [screenshots.md](../docs/screenshots.md) goes to verify this same backup before calling the restore point *provable*.
 
 As far as PAC is concerned, an action without a receipt didn't happen. The completed view is the receipt: what was planned, what was approved, what ran, and the verification behind it.
 

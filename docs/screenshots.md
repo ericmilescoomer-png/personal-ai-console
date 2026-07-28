@@ -12,7 +12,7 @@ For the architecture behind these views, see [architecture.md](architecture.md);
 
 ![Plan preview and approval](../assets/screenshots/01-plan-preview.png)
 
-Before governed work begins, Kora prepares a plan and presents it to the Owner: the goal, the steps she intends to take, and what each step should produce. Nothing sensitive runs on the model's say-so &mdash; the Owner approves, declines, or asks for changes first. Here, a routine "back up the local library" request is paused awaiting the Owner's confirmation.
+Before governed work begins, Kora prepares a plan and presents it in the inspector rail: the goal, the steps she intends to take, what each step should produce, and the capability tier each step runs under. Two steps here are Read-only; the backup step is marked Sensitive, and nothing sensitive runs on the model's say-so. The queue card carries the single Approve verb; the rail carries the full brief. Here, a routine "back up the local library" request is paused awaiting the Owner's confirmation.
 
 ---
 
@@ -20,7 +20,7 @@ Before governed work begins, Kora prepares a plan and presents it to the Owner: 
 
 ![Action receipt](../assets/screenshots/02-action-receipt.png)
 
-After approval, the work executes and leaves evidence behind. The completed plan shows each step, its outcome, and a verification that the work actually happened. As far as the system is concerned, an action without a receipt didn't happen.
+After approval, the work executes and leaves evidence behind. The same rail now shows the plan completed, with its receipt trail: the policy check, the plan's creation, each step's start and finish, and the execution record. Every entry is timestamped, attributed to who acted, and expandable to its raw form. As far as the system is concerned, an action without a receipt didn't happen.
 
 ---
 
