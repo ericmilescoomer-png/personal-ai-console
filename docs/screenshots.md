@@ -72,4 +72,4 @@ Specialist reports don't scatter into separate surfaces &mdash; they join the sa
 
 ---
 
-*These screenshots will be supplemented with a demo walkthrough as the public showcase matures. See [README](../README.md) for current product scope.*
+*For these screenshots tied together as one governed task, see the [demo walkthrough](../demos/demo-walkthrough.md). See [README](../README.md) for current product scope.*
