@@ -47,7 +47,7 @@ Counts verified against the private build on 2026-07-27. They are descriptive sn
 
 ## Why This Exists
 
-PAC started when Clawdbot blew up. I wanted the same thing running local, but inside safeguards. The design borrows from watchstanding, the way ships run a crew: a watchstander operates on defined authority, and nothing consequential happens on one person's say-so. The model stands watch. It doesn't command.
+PAC started when Clawdbot blew up. I wanted the same thing running local, but inside safeguards. The design borrows from submarine watchstanding: a watchstander operates on defined authority, and nothing consequential happens on one person's say-so. The model stands watch. It doesn't command.
 
 Prompt injection is still unsolved, and the labs building these models say so themselves. Nobody serious is promising injection-proof models anymore; the working consensus is to treat the model as untrusted and design so that doesn't matter. So the question worth building around isn't how to stop a model from being fooled. It's what happens in your system the moment it is fooled. If the answer is "whatever the model decides," that isn't an agent problem. That's an authority problem.
 
