@@ -8,7 +8,7 @@ A local-first command center for governed AI. One owner, one machine, in full co
 
 > *Status: active private prototype. Working software, not a shipped product. This repository is the public showcase; the implementation stays private.*
 
-Plenty of tools show you what an AI is doing. I built Personal A.I. Console (PAC) for the harder half: deciding what an AI is *allowed* to do, and proving what it *did*, on hardware I own. You hand work to a crew that operates under your intent, approve the calls that need you, read the rest as plain-language watch reports, and keep a receipt for every action.
+Plenty of tools show you what an AI is doing. I built Personal A.I. Console (PAC) for the harder half: deciding what an AI is *allowed* to do, and proving what it *did*, on hardware I own. You hand work to a crew that operates under your intent, approve the calls that need you, read the rest as plain-language watch reports, and keep a receipt for every action. A dashboard reports; PAC commands.
 
 <p align="center">
   <img src="assets/screenshots/01-plan-preview.png" alt="A plan awaiting owner confirmation: three steps, plain-language impact, and an explicit approval gate" width="800">
@@ -47,7 +47,11 @@ Counts verified against the private build on 2026-07-27. They are descriptive sn
 
 ## Why This Exists
 
-PAC started with Clawdbot. Like a lot of people, I watched an AI agent with standing access to a real machine and real messages do genuinely useful work, and nobody could give a hard answer to two questions: what exactly is it allowed to do, and what exactly did it do? I wanted the same capability with those two questions answered in code. That project grew into this one.
+PAC started when Clawdbot blew up. I wanted the same thing running local, but inside safeguards. The design borrows from watchstanding, the way ships run a crew: a watchstander operates on defined authority, and nothing consequential happens on one person's say-so. The model stands watch. It doesn't command.
+
+Prompt injection is still unsolved, and the labs building these models say so themselves. Nobody serious is promising injection-proof models anymore; the working consensus is to treat the model as untrusted and design so that doesn't matter. So the question worth building around isn't how to stop a model from being fooled. It's what happens in your system the moment it is fooled. If the answer is "whatever the model decides," that isn't an agent problem. That's an authority problem.
+
+Under this architecture, a fully hijacked model can't act. It can only ask. A successful injection collapses from a catastrophe into a suspicious request that got denied, on the record.
 
 AI is moving from chat interfaces toward agentic systems that plan, use tools, and complete real work on a user's behalf. The default version of that future runs in the cloud, where someone else owns the assistant, the context, the data, and the permissions. That's convenient, and for plenty of tasks it's fine. But it's a trade, and most people are making it without deciding to.
 
@@ -92,7 +96,9 @@ PAC is a command center you operate, an owner's cockpit for one person's AI, org
 | **Library** | The evidence room: documents, memory, and the receipts of past work. |
 | **Settings** | The controls: posture, models, authority, and appearance. |
 
-Routine work the crew handles on its own shows up in Operations as a watch report: what was done, what it means, and who did it. Anything that needs your authority is lifted into the Inbox as one clear call: approve, review, or recover. Either way, the proof sits one tap away. For the command model this borrows from (mission command, watchstanding, crew discipline) see [docs/operating-doctrine.md](docs/operating-doctrine.md).
+The model reasons. Kora commands within the owner's authority. The owner stays in the commander's seat.
+
+Routine work the crew handles on its own shows up in Operations as a watch report: what was done, what it means, and who did it. Anything that needs your authority is lifted into the Inbox as one clear call: approve, review, or recover. Either way, the proof sits one tap away. That is the difference PAC cares about: a dashboard tells you what happened; a command deck tells you what it means, whether you're needed, and where the proof is. For the command model this borrows from (mission command, watchstanding, crew discipline) see [docs/operating-doctrine.md](docs/operating-doctrine.md).
 
 ---
 
@@ -107,7 +113,7 @@ flowchart LR
 
 Quick questions stay light. Meaningful work gets a visible lifecycle: what was requested, what was proposed, what required approval, what executed, what evidence exists, what was delivered.
 
-Every step that touches the system is classified into one of three tiers, and the model never decides its own tier:
+Every step that touches the system is classified into one of three tiers. The model never holds authority: it proposes; policy disposes. And it never decides its own tier:
 
 | Tier | Behavior |
 |---|---|
