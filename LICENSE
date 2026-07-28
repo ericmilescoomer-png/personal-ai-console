@@ -1,0 +1,30 @@
+Personal A.I. Console(TM) - Proprietary License
+
+Copyright (c) 2026 Eric Coomer. All rights reserved.
+
+This repository contains documentation, architecture descriptions, design
+materials, screenshots, and sample artifacts for Personal A.I. Console
+(the "Materials"). The Materials are made publicly viewable for portfolio
+and evaluation purposes only.
+
+No license is granted. Without prior written permission from the copyright
+holder, you may not:
+
+  1. Copy, reproduce, or redistribute the Materials, in whole or in part;
+  2. Modify the Materials or create derivative works from them;
+  3. Use the Materials, or the designs and architectures they describe,
+     to build, train, or market a competing product or service;
+  4. Sublicense, sell, or commercialize the Materials in any form.
+
+Viewing this repository on GitHub, and the limited rights GitHub's Terms
+of Service grant (such as forking within GitHub for viewing), are not a
+grant of any further rights by the copyright holder.
+
+"Personal A.I. Console" is the subject of pending U.S. trademark
+application Serial No. 99527085. See TRADEMARK.md for trademark notice
+and permitted use.
+
+The Personal A.I. Console implementation (source code) is private, is not
+part of this repository, and is not available for distribution.
+
+For permission requests: personal.aiconsole@gmail.com
