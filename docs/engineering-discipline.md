@@ -81,6 +81,9 @@ The most unusual discipline is the least glamorous: the project is built to **di
 - **Code is the only hard truth.** Where a design note and the running system disagree, the system wins, and the note is corrected &mdash; not the other way around.
 - **Verify against code, not memory.** Claims about how something behaves are re-checked against the implementation before they are relied on. (This very document's numbers were verified against the build before publication.)
 - **Documents flag their own gaps.** Internal specs carry status tags (current / target / needs-reconciliation), and the build's own audits openly record where the implementation does not yet meet a stated goal &mdash; rather than papering over it.
+- **Stale documentation is treated as a defect, and enforced as one.** The operator-facing entrance documents are pinned by a contract test. Volatile figures such as test totals and agent totals may not be asserted in prose at all, and anything that genuinely must be counted derives from the runtime registry that owns it rather than from a number typed into a file by hand. A count cannot quietly go stale when the count is not there to go stale.
+
+That last practice was earned rather than designed. An outside technical review found the entrance documents trailing the implementation, while the system they described held up under inspection. Deleting the stale numbers was the repair. The test is what makes the repair permanent, and it is the same move this document opens with: a claim becomes a property at the moment something fails when it stops being true.
 
 This is the same standard applied to the public repository: every claim here is meant to be **true now**, not true eventually. Where something is partial, the [README](../README.md) and [roadmap.md](roadmap.md) say so plainly.
 
