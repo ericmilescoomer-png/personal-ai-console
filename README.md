@@ -19,12 +19,12 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-07-27. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-07-31. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 2,243 across 296 test files |
-| Contract tests pinning trust invariants | 503 across 88 modules |
+| Automated tests | 2,278 across 302 test files |
+| Contract tests pinning trust invariants | 533 across 94 modules |
 | Registered runtime monitor agents | 21 |
 | Append-only dev ledger | 125 entries over 5 months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
@@ -160,7 +160,7 @@ Everything below runs in the current private build. Product level only; implemen
 - Kora's filterable working journal, with on-demand reflection in her own voice
 - Operational awareness in Settings: what's blocked, why, and what would unlock it; per-source liveness that labels stale evidence *not current*; one-click diagnostic bundle
 - Seven Settings panels: Personal, Kora, Privacy, Models, Storage, System, Advanced
-- Voice both directions, fully offline: local neural synthesis (Kokoro) and local dictation; nothing spoken or heard leaves the machine
+- Voice both directions, fully offline: local neural synthesis (Kokoro), local dictation, and a full voice-conversation mode — start a voice thread, speak, Kora answers aloud, interrupt her mid-reply; nothing spoken or heard leaves the machine
 
 **Core runtime**
 

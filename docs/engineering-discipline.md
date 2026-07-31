@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **2,243 automated tests** across **296 test files** (counts verified against the build on 2026-07-27). They are organized into tiers, each answering a different question:
+The private build is covered by **2,278 automated tests** across **302 test files** (counts verified against the build on 2026-07-31). They are organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
@@ -31,7 +31,7 @@ The point of the tiering is the **contract** layer. Most test suites prove that 
 
 ## Contract tests: invariants that are enforced, not promised
 
-**503 contract tests, across 88 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
+**533 contract tests, across 94 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
 
 - **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls &mdash; and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
 - **Sensitive work cannot self-authorize.** Tests assert that a SENSITIVE step parks for Owner confirmation and does not execute on the model's say-so.
