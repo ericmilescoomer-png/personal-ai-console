@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-07-31. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-08-04. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 2,278 across 302 test files |
-| Contract tests pinning trust invariants | 533 across 94 modules |
+| Automated tests | 2,395 across 304 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 543 across 95 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 125 entries over 5 months, never edited after the fact |
+| Append-only dev ledger | 150 entries over six months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -220,7 +220,7 @@ The work loop is most mature through the approval stage. The first governed exec
 - Outbound *action* connectors (governed writes to third-party services) are not shipped; the broker is in place.
 - Remote model use is deliberately narrow: one provider today, artifact boundary only. A broader roster is direction; cloud models planning, executing, or holding capability is a boundary that stays, not a gap.
 - Built for local, owner-controlled deployment; not hardened for public internet exposure or multi-user hosting.
-- Smart-home and IoT control are on the roadmap, not in the current build.
+- Smart-home and IoT control are not in the desktop build. The smart-home node is now under active construction as its own governed deployment — its commissioning authority and Ed25519-signed receipt chain already hold under a 105-test acceptance suite — but no device control has shipped.
 
 ---
 
@@ -286,7 +286,7 @@ Autonomy is a dial here, with graduated profiles from observe up to time-bounded
 
 ## Roadmap
 
-Product direction: a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane.
+Product direction: a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane — now under construction as PAC's second governed node.
 
 See **[docs/roadmap.md](docs/roadmap.md)** for the earned-autonomy model, what's built now, and what's explicitly out of scope.
 

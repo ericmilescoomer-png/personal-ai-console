@@ -85,11 +85,11 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 - **Deployment profiles** — bringing the same governance spine to other hardware:
   - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
-  - (The current build is the offline reference profile.)
+  - (The current build is the offline reference profile. An installable packaged build of it is in active work; freeze-and-boot viability is proven.)
 - **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing beyond today's rotatable owner key. (See "Out of scope" for the current boundary.)
-- **Signed receipts (non-repudiation).** Hash-chaining of the receipt and audit spine is **done** — the record is now tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step is *asymmetric signing*, so the record's authenticity is provable to a third party and cannot be re-forged even by the key holder.
+- **Signed receipts (asymmetric).** Hash-chaining of the receipt and audit spine is **done** — the record is tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step on the desktop spine is *asymmetric signing*, so a record's authenticity can be verified without holding the key. That pattern has now shipped in the smart-home extension: its receipt chain is Ed25519-signed at append time, atomic with the state it attests, and proven under a 105-test acceptance suite — the desktop adopts a design already holding in the family.
 - **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
-- **Smart-home / IoT control plane** — the project's origin, returning as a governed surface.
+- **Smart-home / IoT control plane** — the project's origin, returning as a governed surface, and now under active construction as PAC's second node: commissioning authority modeled as a state machine, a pairing ceremony with per-principal keys, and an Ed25519-signed receipt chain, all holding under a 105-test acceptance suite. Deliberately governance-first: the receipt spine is being proven before any device control ships.
 
 ---
 
