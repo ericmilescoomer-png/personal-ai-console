@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-08-04. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-08-06. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 2,395 across 304 test files, including the smart-home extension's 105-test acceptance suite |
+| Automated tests | 2,425 across 314 test files, including the smart-home extension's 105-test acceptance suite |
 | Contract tests pinning trust invariants | 543 across 95 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 150 entries over six months, never edited after the fact |
+| Append-only dev ledger | 151 entries over six months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -143,6 +143,8 @@ The command agent that drives PAC is named **Kora**. She is the planning and exe
 
 The model provides reasoning and language. Kora's authority comes from the owner's delegation and the policy layer. Her continuity (journal, receipts, standing orders, mission history, preferences) lives in the system around the model. Swap the model, Kora persists.
 
+Her conduct follows a deference doctrine: she advises, objects, and names risks in the open — but she does not veto lawful work. Refusal is reserved for a short, enumerated hard floor, not for vibes. Judgment belongs to the owner; candor belongs to her.
+
 ---
 
 ## What's Built
@@ -155,6 +157,7 @@ Everything below runs in the current private build. Product level only; implemen
 - Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, and did, receipts attached; turns that used nothing claim nothing
 - Drag-in attachments read locally (PDFs and images, on-device OCR), a visible context meter, and disclosed conversation folding
 - Thread search across full chat history; per-reply regenerate and copy
+- A plan born in conversation stays in it: the chat card tracks the plan's lifecycle live — draft, approval, run, outcome — and approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
 - Hand work to a named specialist straight from chat; an ambiguous name fails closed, and the same approval gate is raised as anywhere else
 - Inbox lifecycle that tracks *seen* and *done* separately, with Done and Later verbs; nothing is silently dismissed
 - Kora's filterable working journal, with on-demand reflection in her own voice
@@ -173,6 +176,7 @@ Everything below runs in the current private build. Product level only; implemen
 - Graduated autonomy profiles, and a fail-closed kill switch that halts autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
+- One error language: every API error carries a machine-readable code in a canonical envelope — unhandled failures included, so no client ever meets a bare plain-text 500 — and the operational event stream has its own read-only evidence tab
 - Owner-authored standing orders: scoped, prioritized, and expirable, so a temporary order lapses instead of quietly becoming permanent
 - Watch-turnover brief on return: after a deep-idle gap, Kora hands over the watch in a few sentences, with optional voice playback (off by default)
 - On-demand after-action briefs over any time window, gathered through governed read-only steps scoped by the system, filed as receipted report deliverables
@@ -211,7 +215,7 @@ Everything below runs in the current private build. Product level only; implemen
 The work loop is most mature through the approval stage. The first governed execution sandbox is live, and outcome verification is the area being hardened next (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
-- The validated platform is Windows; cross-platform work is incomplete.
+- The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end, and a real installer is now the active workstream — but no installable release has shipped yet.
 - Some UI surfaces are catching up to backend capability.
 - Deliverable synthesis is strongest for report-style work; long-form document drafting is still maturing.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
@@ -278,7 +282,7 @@ model reasoning
    + visible missions
 ```
 
-Agent governance (policy, approvals, audit, least privilege) is becoming its own category, and nearly all of it targets fleets of agents in the enterprise cloud. PAC takes the same problem from the other end: the local-first, single-owner version, where the agent, the policy, the evidence, and the receipts are one integrated system on the owner's machine. The enterprise convergence on governed specialist crews with exception-based human oversight is a good sign the shape is right. The difference is who owns it.
+Agent governance (policy, approvals, audit, least privilege) is becoming its own category, and nearly all of it targets fleets of agents in the enterprise cloud. PAC takes the same problem from the other end: the local-first, single-owner version, where the agent, the policy, the evidence, and the receipts are one integrated system on the owner's machine. The parts of this stack now exist as enterprise libraries and draft standards, which is a good sign the shape is right; what still exists nowhere else is the assembled whole — one owner, one machine, operated rather than integrated. The difference is who owns it.
 
 Autonomy is a dial here, with graduated profiles from observe up to time-bounded control, and one guarantee: turning the dial up changes how often PAC asks, never what it is permitted to do.
 
