@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-08-06. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-08-14. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 2,425 across 314 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 543 across 95 modules |
+| Automated tests | 2,610 across 315 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 666 across 100 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 151 entries over six months, never edited after the fact |
+| Append-only dev ledger | 185 entries over six months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -155,10 +155,14 @@ Everything below runs in the current private build. Product level only; implemen
 
 - Six-station command center: Home, Kora, Chat, Agents, Library, Settings
 - Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, and did, receipts attached; turns that used nothing claim nothing
-- Drag-in attachments read locally (PDFs and images, on-device OCR), a visible context meter, and disclosed conversation folding
-- Thread search across full chat history; per-reply regenerate and copy
-- A plan born in conversation stays in it: the chat card tracks the plan's lifecycle live — draft, approval, run, outcome — and approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
-- Hand work to a named specialist straight from chat; an ambiguous name fails closed, and the same approval gate is raised as anywhere else
+- Attachments read locally, dragged or pasted: PDFs, Word and Excel documents, and images, with on-device OCR; a photograph is kept as the original file, shown inside the message it arrived with, and grouped in the Library with a real preview — and a local vision model lets Kora describe what's actually in the picture, all offline
+- A visible context meter and disclosed conversation folding
+- Replies render richly through one hand-built renderer shared across surfaces — tables, copyable code blocks, and native math (LaTeX to MathML, no libraries, no fonts, no CDN) — and a whole thread exports as markdown
+- Thread search across full chat history; per-reply regenerate and copy; stop a reply mid-stream and rewind — your own words return to the composer to edit and resend
+- A plan born in conversation stays in it for its whole life: the chat card tracks the plan's lifecycle live — draft, approval, run, outcome — and never vanishes at a turn boundary; approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
+- Three distinct answers to a pending plan, each with its own recorded state: deny cancels it on the record, not-now defers it, abort stops a run — and a plan that failed resurfaces as failed, never as a fresh suggestion
+- Per-thread standing permissions: approve a tool once for a thread and Kora stops asking there; every grant is explicit, receipted, readable in plain language, and revocable — and a grouped permissions card in Settings holds the tool-family switches under one master control
+- Hand work to a named agent straight from chat; an ambiguous name fails closed, and the same approval gate is raised as anywhere else
 - Inbox lifecycle that tracks *seen* and *done* separately, with Done and Later verbs; nothing is silently dismissed
 - Kora's filterable working journal, with on-demand reflection in her own voice
 - Operational awareness in Settings: what's blocked, why, and what would unlock it; per-source liveness that labels stale evidence *not current*; one-click diagnostic bundle
@@ -169,6 +173,8 @@ Everything below runs in the current private build. Product level only; implemen
 
 - FastAPI local backend; models via Ollama (Qwen in the reference build), configurable in Settings
 - Governed model lifecycle: plain-English verdicts from locally measured evaluation, a per-machine role recommendation, model pulls treated as posture-gated egress, portable model cards
+- The model seat is contested, not assumed: when a successor model shipped, it was benchmarked head-to-head on local instruments — evidence discipline, tier accuracy, citation honesty, vision, latency — and the incumbent held the seat; both baselines are persisted, so the next challenge costs minutes, not days
+- Retrieval that knows sources are not all the same kind of thing: owner-settable authority weights by source kind, an adjustable retrieval budget, and a gate that turns off automatic reaching entirely
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
@@ -182,11 +188,12 @@ Everything below runs in the current private build. Product level only; implemen
 - On-demand after-action briefs over any time window, gathered through governed read-only steps scoped by the system, filed as receipted report deliverables
 - Standing intelligence watches evaluated deterministically on a schedule, with no model in the evaluation loop; every run receipted; matches promotable into approval-gated plans
 - External URL watches under posture: fetches only while Connected is open, through the broker, honoring robots.txt; every denied fetch is recorded as an explicit gap
-- One intelligence feed of record: watch results and specialist reports in a single feed, read from the source deliverable, semantically searchable, every entry taking owner feedback
+- One intelligence feed of record: watch results and agent reports in a single feed, read from the source deliverable, semantically searchable, every entry taking owner feedback
 - Owner-controlled memory: provenance and trust metadata on every record, consolidation as reviewable proposals rather than silent edits, owner-defined spaces, export, import, and versioned rollback; in-chat memory commands gated like any sensitive action
 - Editable base system prompt over a protected grounding floor: framing can be tuned, honesty constraints cannot be edited away; every change versioned and receipted
-- A specialist crew of a dozen scoped workers on least-privilege capability packs, with a measured lifecycle (draft, trial, active, proven), a create-a-specialist wizard, and per-agent dossiers
-- A governed build workspace for the Builder specialist: sandboxed patch-and-test cycles, path-confined, no version-control access; failing tests report red honestly, and a failed build files a failure report with the evidence
+- An agent crew of a dozen scoped workers, each defined the way the industry now defines an agent — name, description, charter, capabilities, trigger, brain, autonomy — and holding exactly the capabilities the owner granted it; authorization reads each agent's own granted set, fail-closed, and an agent with zero capabilities is legal: it just talks
+- A measured agent lifecycle (draft, trial, active, proven), a create-an-agent wizard with capability presets and an à-la-carte checklist, and per-agent dossiers that show the actual grants, not a label
+- A governed build workspace for the Builder agent: sandboxed patch-and-test cycles, path-confined, no version-control access; failing tests report red honestly, and a failed build files a failure report with the evidence
 
 **System layer (PAC OS)**
 
@@ -197,7 +204,7 @@ Everything below runs in the current private build. Product level only; implemen
 **Connectivity**
 
 - Network broker for governed outbound; WAN awareness resurfaces deferred plans when the network restores
-- A governed cloud lane, hired brains: the owner can hire a frontier cloud model (Anthropic today) as the composition brain of a specific specialist; the key is held locally and never echoed or logged; the brain is pinned when a mission starts, and every cloud-composed deliverable carries its provenance
+- A governed cloud lane, hired brains: the owner can hire a frontier cloud model (Anthropic today) as the composition brain of a specific agent; the key is held locally and never echoed or logged; the brain is pinned when a mission starts, and every cloud-composed deliverable carries its provenance
 - The cloud stops at the artifact boundary: a hired brain composes deliverables and gives second opinions; it never drafts plans, never executes, never holds a capability
 - Egress accountability on every call: SHA-256 fingerprint of exactly what left, byte count, token counts, and cost; under Sovereign the call is killed before the network is touched, and the refusal receipt still records what *would have* left
 - Cloud consult, priced in cents: in the first live accounting, a hired reviewer caught a real defect the local model had missed, for three cents
@@ -244,7 +251,7 @@ This repository makes the project visible while keeping the implementation priva
 *Trust & security*
 - [docs/trust-model.md](docs/trust-model.md): owner authority, tiers, postures, memory, oversight
 - [docs/trust-quartet.md](docs/trust-quartet.md): the four invariants, freshness as truth, why a refusal isn't an error
-- [docs/agent-governance.md](docs/agent-governance.md): packs, the trust ratchet, propose-don't-apply
+- [docs/agent-governance.md](docs/agent-governance.md): granted capabilities, the trust ratchet, propose-don't-apply
 - [docs/threat-model.md](docs/threat-model.md): threats PAC resists and what it explicitly doesn't claim
 - [docs/owasp-agentic-mapping.md](docs/owasp-agentic-mapping.md): self-assessment against the OWASP Agentic AI Top 10
 - [docs/aisvs-self-assessment.md](docs/aisvs-self-assessment.md): chapter-level scoring against OWASP AISVS 1.0, gaps stated plainly

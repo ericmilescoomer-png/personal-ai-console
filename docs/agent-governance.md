@@ -8,24 +8,26 @@ For the higher-level trust architecture, see [trust-model.md](trust-model.md); f
 
 ---
 
-## Two kinds of worker
+## One kind of worker, defined explicitly
 
-- **Specialists** own a domain and produce a mission deliverable the Owner can read.
-- **Helpers** are single-purpose and emit one structured observation, not a free-roaming process.
+An agent in PAC is defined by a small, explicit set of properties &mdash; the same shape the industry has converged on: a **name**, a **description**, a **charter** (what it is for, in the owner's words), a **capability set** (what it may do), a **trigger** (when it runs), a **brain** (which model reasons for it), and an **autonomy** setting. Nothing about an agent's authority is implied by its title.
 
-Neither kind is a general agent that "figures out what to do." Each is scoped to a job.
+An earlier build carried a second worker class &mdash; single-purpose "helpers" walled off from mission work. That split was deliberately retired: its only mechanical effect was gating which workers could produce a mission deliverable, and encoding that as a species turned out to be ontology where a property belonged. Every agent is mission-eligible now; the historical records of the retired class remain readable in the audit trail.
+
+No agent is a general process that "figures out what to do." Each is scoped to a job by its charter and bounded by its grants.
 
 ---
 
-## Authority comes from a pack, not from the agent
+## Authority is granted, not claimed
 
-An agent in PAC does **not** carry its own list of powers. It is bound to a **capability pack** &mdash; a named, code-registered grant that defines exactly which capabilities the agent may use and at what trust tier.
+An agent does **not** carry its own list of powers. It holds exactly the **capability set the Owner granted it** &mdash; chosen from a preset as a starting point or assembled item by item, with the grant's provenance recorded either way.
 
-- The pack is the agent's entire authority. There is no "and also" the agent can reach for.
-- Pack enforcement is **fail-closed**: an agent attempting a capability outside its pack is refused at execution time, intersected with the same SAFE / SENSITIVE / FORBIDDEN tier gate every action passes through.
+- The granted set is the agent's entire authority. There is no "and also" the agent can reach for.
+- Enforcement is **fail-closed**: an agent attempting a capability outside its granted set is refused at execution time, intersected with the same SAFE / SENSITIVE / FORBIDDEN tier gate every action passes through. If the grant set cannot be resolved, the refusal is the answer.
+- An agent with **zero capabilities is valid**: it can converse and advise, and can do nothing else. Least privilege starts at nothing.
 - This is least-privilege by construction: an agent built to summarize documents cannot reach a capability that touches the network or the filesystem, no matter what it proposes.
 
-A plan an agent produces is still subject to the deterministic policy gate. The pack narrows what the agent may attempt; the gate decides whether a given attempt proceeds. Neither can be talked out of its decision by the model.
+A plan an agent produces is still subject to the deterministic policy gate. The grant narrows what the agent may attempt; the gate decides whether a given attempt proceeds. Neither can be talked out of its decision by the model.
 
 ---
 
@@ -71,7 +73,7 @@ Agents do not message each other, and they do not message Kora directly. The coo
 
 - An agent **publishes** its typed output and its receipts.
 - PAC Core **records** that output as evidence.
-- **Kora routes** a filtered context pack to whoever needs it &mdash; not the full history, and never an open channel between workers.
+- **Kora routes** a filtered context bundle to whoever needs it &mdash; not the full history, and never an open channel between workers.
 
 Before Kora relies on an agent's result, it passes a **validation gate**: the evidence must actually exist, it must support the claim, it must respect the capability tier and posture, and the deliverable must be in scope. Anything that fails is flagged for the Owner, not silently accepted. There is no agent-to-agent mesh to compromise, and no path for one worker to smuggle instructions to another. (See [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI07.)
 
@@ -79,8 +81,8 @@ Before Kora relies on an agent's result, it passes a **validation gate**: the ev
 
 ## What this does *not* claim
 
-- **Intelligent agent routing** &mdash; Kora choosing the right specialist automatically from a task description &mdash; is product direction, not a current property. Today, delegation is to a named agent.
-- Specialized workers running **different models per worker** are on the [roadmap](roadmap.md), not shipped.
+- **Intelligent agent routing** &mdash; Kora choosing the right agent automatically from a task description &mdash; is product direction, not a current property. Today, delegation is to a named agent.
+- An agent can carry a **brain preference** &mdash; the local model by default, or an owner-hired cloud brain at the artifact boundary (see the [README](../README.md#whats-built)). Different *local* models per worker are on the [roadmap](roadmap.md), not shipped.
 - Adding a multi-agent worker mesh in the future would reintroduce inter-agent surface that this single-owner, publish-and-route design currently avoids &mdash; and would require revisiting the guarantees above.
 
 ---

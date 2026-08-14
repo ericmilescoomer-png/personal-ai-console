@@ -52,7 +52,13 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 ## Authority and capability
 
+**Agent** — a scoped worker Kora operates, defined by an explicit set of properties: name, description, charter, capabilities, trigger, brain, and autonomy. An agent's authority is exactly the capability set the Owner granted it; an agent with no capabilities is valid and simply converses. See [agent-governance.md](agent-governance.md).
+
 **Capability** — a governed action PAC can perform, registered with a fixed tier. The model cannot invent capabilities or change their tier.
+
+**Capability grant** — the explicit, owner-chosen set of capabilities an agent holds, assembled from a preset or item by item, with provenance recorded. Enforcement is fail-closed: a capability outside the grant is refused at execution time.
+
+**Standing permission** — a per-thread grant that lets a specific tool run in that conversation without re-asking. Every grant is explicit, receipted, readable in plain language, and revocable.
 
 **Capability tier** — the risk classification applied to every step that touches the system:
 - **SAFE** — may execute without owner confirmation; still governed and recorded.

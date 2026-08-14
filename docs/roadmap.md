@@ -35,12 +35,13 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending &mdash; surfaced on Home, with an optional spoken turnover that is off by default.
 - On-demand after-action briefs over any time window, produced through the governed work loop as receipted report deliverables whose claims carry structured references to the receipts behind them.
 - Two-way offline voice: local neural speech synthesis with read-aloud, and local voice input.
-- A specialist crew under Kora &mdash; scoped, least-privilege workers with a full lifecycle (draft &rarr; trial &rarr; active &rarr; proven), owner-facing dossiers, and a mission inspector showing a mission's request, plan, sources, and receipts in one panel.
+- Local attachments and vision: PDFs, Word and Excel documents, and images read on-device (originals kept, OCR local), with a local vision model that lets Kora describe what is in a picture.
+- An agent crew under Kora &mdash; scoped, least-privilege workers, each defined by an explicit set of properties (name, description, charter, capabilities, trigger, brain, autonomy) and holding exactly the capabilities the owner granted &mdash; with a full lifecycle (draft &rarr; trial &rarr; active &rarr; proven), owner-facing dossiers, and a mission inspector showing a mission's request, plan, sources, and receipts in one panel.
 - Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
-- A single intelligence feed of record: watch results and specialist mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
+- A single intelligence feed of record: watch results and agent mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
 - A governed cloud lane at the artifact boundary &mdash; owner-hired cloud brains (Anthropic today) for deliverable composition and receipted consults: brain pinned per mission, provenance on the deliverable, the call killed pre-network under Sovereign posture, and an egress fingerprint &mdash; the hash and byte count of exactly what left, or would have left &mdash; on every receipt, refusals included, with tokens and cost.
-- A governed build workspace for the Builder specialist &mdash; sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
+- A governed build workspace for the Builder agent &mdash; sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation, with owner-initiated key rotation.
 - Governed, read-only web research behind an off-by-default flag (only when outbound is open — Limited or Connected — SSRF-hardened) &mdash; experimental.
@@ -81,7 +82,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 
 - **Standing watches (expanding)** — owner-defined watches now run over both local system state and external URLs under posture rules — Connected-only, brokered, robots-respecting — with receipts (see "Now"). Richer external source types and extraction are the direction.
 - **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
-- **Specialized agent workers (expanding)** — the scoped specialist crew is shipped, and a specialist can now carry its own hired cloud brain at the artifact boundary (see "Now"); different local models per worker are the direction.
+- **Specialized agent workers (expanding)** — the scoped agent crew is shipped, and an agent can now carry its own hired cloud brain at the artifact boundary (see "Now"); different local models per worker are the direction.
 - **Deployment profiles** — bringing the same governance spine to other hardware:
   - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.

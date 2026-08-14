@@ -12,11 +12,11 @@ For the trust architecture underneath this, see [trust-model.md](trust-model.md)
 
 A commander gives **intent** &mdash; the purpose, the constraints, the result that's wanted &mdash; and the crew decides *how* to execute within that boundary. Authority is delegated; the boundary is not.
 
-That is the relationship between the Owner, Kora, and the specialists:
+That is the relationship between the Owner, Kora, and the agent crew:
 
 - The **Owner** sets intent and holds final authority.
 - **Kora** understands the objective and coordinates the work.
-- **Specialists** act *within* their granted clearance &mdash; never outside it.
+- **Agents** act *within* their granted capabilities &mdash; never outside them.
 - **PAC Core** enforces the boundary in code, so delegated initiative can't quietly become more than it was granted.
 
 The point of mission command is that work moves without the commander touching every step &mdash; *and* without the commander losing the boundary. That's exactly what PAC's capability tiers and policy gate are for: Kora can act, but only within intent.
@@ -50,7 +50,7 @@ PAC refuses to flatten everything into "the AI did X." Work is **attributed to t
 
 Attribution isn't decoration. It's how the Owner keeps situational awareness over a system doing work on their behalf &mdash; and how a wrong move is traceable to a specific actor instead of a vague "the assistant."
 
-The crew is **owner-curated**, not a fixed cast. PAC ships a small set of scoped specialists &mdash; for example **Builder** (prepares code and file changes inside an isolated safe workspace for the Owner to approve, never against live files), **Research** (treats the public web as evidence and returns cited digests, never as a speaker to obey), and a **Records Specialist** (indexes receipts and links them to the work they belong to). The Owner adds and shapes the crew over time. Whatever the roster, the rule underneath is constant: a specialist's title is just a label &mdash; its real authority is a **capability pack** (least privilege) and a scoped charter, and it earns trust on a measured ladder before it's relied on. See [agent-governance.md](agent-governance.md).
+The crew is **owner-curated**, not a fixed cast. PAC ships a small set of scoped agents &mdash; for example **Builder** (prepares code and file changes inside an isolated safe workspace for the Owner to approve, never against live files), **Research** (treats the public web as evidence and returns cited digests, never as a speaker to obey), and **Records** (indexes receipts and links them to the work they belong to). The Owner adds and shapes the crew over time. Whatever the roster, the rule underneath is constant: an agent's title is just a label &mdash; its real authority is an **owner-granted capability set** (least privilege) and a scoped charter, and it earns trust on a measured ladder before it's relied on. See [agent-governance.md](agent-governance.md).
 
 ---
 
@@ -79,7 +79,7 @@ That is SBAR without looking like SBAR: situation, meaning, next state, proof on
 | The official logbook | **Receipts / Journal** | Durable proof of what happened. |
 | Records office | **Library** | Durable knowledge and artifacts. |
 | Standing orders | **Rules / Permissions / Policy** | What Kora and the crew may do without asking. |
-| Staff sections / crew | **Agents / Specialists** | An owner-curated crew, each bound to a capability pack and scoped to a job &mdash; e.g. Builder (safe-workspace changes), Research (cited web evidence), Records Specialist (receipts &amp; indexing). |
+| Staff sections / crew | **Agents** | An owner-curated crew, each carrying an owner-granted capability set and scoped to a job &mdash; e.g. Builder (safe-workspace changes), Research (cited web evidence), Records (receipts &amp; indexing). |
 | Engineering control room | **System** | Health, monitors, runtime, services. |
 | The watch officer | **Kora** | Coordinates the crew, briefs the Owner, escalates when authority is needed. |
 
