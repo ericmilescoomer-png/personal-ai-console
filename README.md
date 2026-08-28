@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-08-14. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-08-28. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 2,610 across 315 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 666 across 100 modules |
+| Automated tests | 3,086 across 325 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 956 across 106 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 185 entries over six months, never edited after the fact |
+| Append-only dev ledger | 224 entries over six months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -154,7 +154,7 @@ Everything below runs in the current private build. Product level only; implemen
 **Interface**
 
 - Six-station command center: Home, Kora, Chat, Agents, Library, Settings
-- Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, and did, receipts attached; turns that used nothing claim nothing
+- Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, did, and computed — tools named, receipts attached; turns that used nothing claim nothing
 - Attachments read locally, dragged or pasted: PDFs, Word and Excel documents, and images, with on-device OCR; a photograph is kept as the original file, shown inside the message it arrived with, and grouped in the Library with a real preview — and a local vision model lets Kora describe what's actually in the picture, all offline
 - A visible context meter and disclosed conversation folding
 - Replies render richly through one hand-built renderer shared across surfaces — tables, copyable code blocks, and native math (LaTeX to MathML, no libraries, no fonts, no CDN) — and a whole thread exports as markdown
@@ -178,6 +178,8 @@ Everything below runs in the current private build. Product level only; implemen
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
+- Typed compute, never a code runner: sixteen governed math operations — arithmetic through calculus, exact unit conversion, matrices, base and float representation — as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
+- Real deadlines on governed work: every long-running path is killed or bounded when its time is up — a timeout here is enforced, not advisory
 - Three postures plus a one-touch panic control that drops everything back to Sovereign instantly
 - Graduated autonomy profiles, and a fail-closed kill switch that halts autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
@@ -189,7 +191,11 @@ Everything below runs in the current private build. Product level only; implemen
 - Standing intelligence watches evaluated deterministically on a schedule, with no model in the evaluation loop; every run receipted; matches promotable into approval-gated plans
 - External URL watches under posture: fetches only while Connected is open, through the broker, honoring robots.txt; every denied fetch is recorded as an explicit gap
 - One intelligence feed of record: watch results and agent reports in a single feed, read from the source deliverable, semantically searchable, every entry taking owner feedback
-- Owner-controlled memory: provenance and trust metadata on every record, consolidation as reviewable proposals rather than silent edits, owner-defined spaces, export, import, and versioned rollback; in-chat memory commands gated like any sensitive action
+- Owner-governed memory with tiered intake: routine observations from conversation are captured silently, every write receipted and one-click revertible; anything sensitive — money, health, legal, a judgment about the owner, or a contradiction of something the owner said — asks first. An observed fact must recur across separate conversations before it becomes durable; one-off mentions expire on their own. Provenance and trust metadata ride every record, with owner-defined spaces, export, import, and versioned rollback
+- A memory firewall at the write door: personal memory is seeded only by the owner's own words in conversation — document, web, and tool content is refused, and a silent write can never claim the owner's authority
+- Kora's memory card: what she knows about you, rendered exactly as the model receives it, each fact labeled with its standing — you said it, you approved it, or observed — plus a change feed with a receipt and a revert on every change, and a capture switch that pauses silent memory work entirely
+- Work reports back: a finished mission lands as a delivery record behind a notification bell, and Kora closes the loop in the conversation that started the work, in her own voice — a result lands on the record instead of evaporating at a turn boundary
+- Ask Kora where things stand and she answers from her own recorded actions — plans, missions, deliveries — not from the model's impression of them
 - Editable base system prompt over a protected grounding floor: framing can be tuned, honesty constraints cannot be edited away; every change versioned and receipted
 - An agent crew of a dozen scoped workers, each defined the way the industry now defines an agent — name, description, charter, capabilities, trigger, brain, autonomy — and holding exactly the capabilities the owner granted it; authorization reads each agent's own granted set, fail-closed, and an agent with zero capabilities is legal: it just talks
 - A measured agent lifecycle (draft, trial, active, proven), a create-an-agent wizard with capability presets and an à-la-carte checklist, and per-agent dossiers that show the actual grants, not a label

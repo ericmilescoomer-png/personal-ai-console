@@ -44,7 +44,7 @@ PAC treats the model as a replaceable component. The model provider is configura
 
 ![Memory governance](../assets/screenshots/05-memory-governance.png)
 
-Kora can suggest something worth remembering, but she cannot change long-term memory on her own. Persistent memory is treated as owner-controlled state, changed only through an action the Owner takes &mdash; so nothing is remembered, edited, or forgotten behind the owner's back. Each memory also carries its **provenance** (where it came from and how far to trust it), and the system surfaces cleanups &mdash; duplicates, conflicts, stale entries &mdash; as **reviewable proposals** rather than editing the record on its own.
+What Kora remembers is owner-governed, in tiers: a routine observation from conversation is captured silently &mdash; every write receipted and revertible in one click &mdash; while anything sensitive, or anything contradicting what the Owner has said, is proposed and waits for approval. Personal memory can be seeded only by the Owner's own words; document, web, and tool content is refused at the write door. Each memory carries its **provenance** (where it came from and how far to trust it), and what Kora knows about the Owner is rendered on her memory card exactly as the model receives it &mdash; so nothing is remembered, edited, or forgotten off the record.
 
 ---
 
@@ -52,7 +52,7 @@ Kora can suggest something worth remembering, but she cannot change long-term me
 
 ![Kora inbox](../assets/screenshots/06-kora-inbox.png)
 
-The Kora station's Inbox brings the Owner only the calls that need them &mdash; each card is one clear decision, in Kora's own voice, with a colored chip naming who did the work. Attention has a real lifecycle: glancing at an item doesn't count as handling it (*seen* and *done* are tracked separately), **Later** sets an item aside and resurfaces it on schedule, and nothing is dismissed silently. The top card is the previous section's promise kept, live: Kora *asking permission to remember* &mdash; the save is a proposal awaiting the Owner's **Approve**, gated exactly like any other sensitive action.
+The Kora station's Inbox brings the Owner only the calls that need them &mdash; each card is one clear decision, in Kora's own voice, with a colored chip naming who did the work. Attention has a real lifecycle: glancing at an item doesn't count as handling it (*seen* and *done* are tracked separately), **Later** sets an item aside and resurfaces it on schedule, and nothing is dismissed silently. The top card is the previous section's promise kept, live: Kora *asking permission to remember* &mdash; a sensitive save is a proposal awaiting the Owner's **Approve**, gated exactly like any other sensitive action.
 
 ---
 

@@ -49,7 +49,7 @@ As far as PAC is concerned, an action without a receipt didn't happen. The compl
 
 ![Memory governance](../assets/screenshots/05-memory-governance.png)
 
-Throughout, Kora can *suggest* what's worth remembering, but cannot change long-term memory on her own. Persistent memory is owner-controlled state, changed only through an action the Owner takes &mdash; so nothing is remembered, edited, or forgotten behind the owner's back.
+Throughout, what Kora remembers stays governed. Routine observations from conversation are captured silently &mdash; each write leaves a receipt and reverts in one click from her memory card &mdash; while anything sensitive, or anything that contradicts what the Owner has said, is proposed and waits for approval. Content from documents, the web, or tools can never seed personal memory; only the Owner's own words can. Nothing is remembered, edited, or forgotten off the record.
 
 ---
 
@@ -68,7 +68,7 @@ The reasoning above came from a local model (Ollama, running Qwen in the referen
 | The model doesn't set its own permissions | Tiers come from the registry (step 2) |
 | Sensitive work needs explicit owner approval | The plan paused on the SENSITIVE step (step 2) |
 | Consequential work leaves evidence | The verified receipt (step 3) |
-| Memory is owner-controlled | Kora can suggest, not write (step 4) |
+| Memory is owner-governed | Silent captures carry receipts and revert; sensitive saves ask (step 4) |
 | The model is a component, not the authority | Configurable provider (step 5) |
 | Local-first by default | Sovereign posture, no outbound (step 1) |
 

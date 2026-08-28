@@ -78,18 +78,20 @@ Outbound is **never the default**. The owner opens Limited or Connected delibera
 
 ---
 
-## Owner-Controlled Memory
+## Owner-Governed Memory
 
-PAC treats long-term memory as **owner-controlled state, not model-owned state.**
+PAC treats long-term memory as **owner-governed state, not model-owned state.**
 
-- Kora may *retrieve* permitted memory as context, and may *suggest* that something be remembered.
-- Kora does **not** write memory on her own. Memory creation, promotion, and deletion happen only through owner-controlled paths — Kora has no self-serve capability to persist memory through her own action surface.
-- Nothing is silently logged into long-term memory as a side effect of a conversation.
+For most of the project's life the rule was simpler: Kora could suggest a memory and never write one. That rule was honest, and it did not survive contact with real use — a memory that asks permission for every routine observation trains its owner to stop reading the asks. The current design keeps the authority and drops the ceremony, in tiers:
 
-Beyond *who* may write memory, PAC governs *what each memory is worth trusting*:
-
-- **Provenance and trust metadata.** Every memory carries where it came from — an **authority chain** (owner-stated, owner-approved, observed pattern, agent-derived, or imported) — alongside a confidence level and when it was last confirmed or used. A fact the owner stated and a pattern an agent merely noticed are not treated as equally authoritative.
-- **Consolidation is a proposal, not an edit.** When memory accumulates duplicates, conflicts, or stale entries, the system *proposes* a cleanup (merge / resolve-conflict / retire-stale) for the owner to review. It does not silently rewrite or delete what it thinks is redundant. Originals are soft-retired, never destroyed on the system's own judgment.
+- **Routine observations flow in silently — on the record.** A low-sensitivity fact captured from conversation is saved without a prompt, and every such write leaves a receipt, appears in the change feed on Kora's memory card, and reverts in one click. Silent never means invisible.
+- **Sensitive memory still asks first.** Anything touching money, health, or legal matters, any judgment *about* the owner, and any change that contradicts something the owner stated is proposed for an explicit decision before it lands.
+- **Durability is earned with evidence.** An observed fact must recur across separate conversations before it becomes durable; a one-off mention becomes a working note that expires on its own, and a time-bound fact carries its expiry date.
+- **A silent write can never claim the owner's authority.** Every memory carries an **authority chain** (owner-stated, owner-approved, observed pattern, agent-derived, or imported) alongside a confidence level and when it was last confirmed or used. Machine-observed facts are capped below the owner-stated tiers; only the owner's own word or approval mints those.
+- **Content cannot seed memory.** Personal memory is seeded only by the owner's own words in conversation. Document, web, and tool content is refused at the memory write door — the write-path answer to memory-poisoning attacks, where planted text tries to persist across sessions.
+- **What Kora knows is rendered, not implied.** The always-loaded core of what she knows about the owner is assembled deterministically and shown on her memory card exactly as the model receives it — and it reaches the model as data, never as instructions.
+- **Consolidation stays on the record.** Duplicates, conflicts, and stale entries are cleaned up under the same tiering: routine cleanups apply with receipts, anything touching an owner-stated record asks, and originals are soft-retired (superseded), never destroyed on the system's own judgment.
+- **One switch pauses it all.** Memory capture can be paused entirely, from Kora's card or from Settings.
 - **Memory spaces.** Memory is organized into owner-defined spaces, and retrieval is scoped — so context from one area of life isn't silently pulled into an unrelated one.
 - **Portability and rollback.** The owner can export and import their memory set, with versioned history and rollback. The record is the owner's to move, inspect, and revert.
 

@@ -82,7 +82,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0) organizes AI governance into 
 **Manage** &mdash; *treat, respond to, and recover from AI risk.*
 - The kill switch halts all autonomous execution immediately and survives restart.
 - Connectivity postures fail toward caution: Sovereign (no outbound) is the default and the resting state. A degraded network condition is surfaced as operational state, not treated as permission to bypass posture rules.
-- Memory consolidation is a proposal for owner review, not a silent edit. The system does not rewrite what the owner knows based on its own judgment.
+- Memory intake is tiered: routine observations apply silently but always with a receipt and a one-click revert, while sensitive memory changes are proposals for owner review. The system never changes what it knows about the owner without leaving the owner a visible record and a handle to undo it.
 - Agent lifecycle management includes structured rollback: an agent in trial can be retired without affecting the rest of the system.
 
 ---
@@ -97,7 +97,7 @@ The EU AI Act classifies AI systems by risk level and imposes requirements propo
 
 **Accuracy, robustness, and cybersecurity (Article 15):** The input firewall sanitizes untrusted content before it reaches the model. The secret scanner redacts sensitive patterns. The filesystem guard blocks sensitive paths. These are explicit defenses, not assumed properties.
 
-**Data and data governance (Article 10):** Memory is owner-controlled, provenance-tagged, and never silently modified. The owner can export, inspect, and roll back their memory set. What the system knows about the owner belongs to the owner.
+**Data and data governance (Article 10):** Memory is owner-governed, provenance-tagged, and never modified off the record: every change carries a receipt and can be reverted, sensitive changes require approval first, and the owner can export, inspect, and roll back their memory set. What the system knows about the owner belongs to the owner &mdash; and is rendered to the owner exactly as the model receives it.
 
 *This is a design-level mapping, not a compliance certification or legal opinion. PAC is a private prototype, not a commercial AI system subject to regulatory certification.*
 

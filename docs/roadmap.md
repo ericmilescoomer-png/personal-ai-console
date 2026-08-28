@@ -30,8 +30,10 @@ Working today on a local, owner-controlled, Windows-validated build:
 - The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
+- A return spine for dispatched work: a finished mission lands as a delivery record behind a notification bell, Kora reports the outcome in the conversation that started the work, and a status question is answered from her own recorded actions rather than the model's impression of them.
+- Typed compute &mdash; sixteen governed math operations as a capability with no filesystem, network, or process surface, never a code runner &mdash; with every computed answer disclosed as computed.
 - Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
-- Owner-controlled memory; a local document repository and local embeddings.
+- Owner-governed memory under tiered intake &mdash; routine observations captured silently with a receipt and a one-click revert, sensitive changes owner-approved, a write-door firewall so document, web, and tool content can never seed personal memory, and Kora's memory card rendering what she knows exactly as the model receives it; a local document repository and local embeddings.
 - Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending &mdash; surfaced on Home, with an optional spoken turnover that is off by default.
 - On-demand after-action briefs over any time window, produced through the governed work loop as receipted report deliverables whose claims carry structured references to the receipts behind them.
 - Two-way offline voice: local neural speech synthesis with read-aloud, and local voice input.

@@ -87,11 +87,13 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 **Local evidence** — structured observations PAC OS writes about machine state, which Core can read to reason about what is currently true.
 
-**Memory governance** — the principle that long-term memory is owner-controlled state. Kora may suggest memory changes but cannot create, promote, or delete memory on her own.
+**Memory governance** — the principle that long-term memory is owner-governed state, under tiered intake: routine observations are captured silently, each with a receipt and a one-click revert; sensitive changes are proposed for owner approval before they land.
+
+**Memory firewall** — the write-door rule that personal memory is seeded only by the owner's own words in conversation. Document, web, and tool content is refused as a memory source, so planted text cannot persist across sessions.
 
 **Provenance / trust metadata** — the record kept with each memory of where it came from and how far to trust it: an authority chain (owner-stated, owner-approved, observed pattern, agent-derived, imported), a confidence level, and when it was last confirmed or used.
 
-**Consolidation proposal** — a system-suggested memory cleanup (merge a duplicate, resolve a conflict, retire a stale entry) presented for Owner review. Consolidation never silently rewrites or destroys memory; originals are soft-retired, not deleted on the system's own judgment.
+**Consolidation** — memory cleanup (merge a duplicate, resolve a conflict, retire a stale entry) under the same tiering as intake: routine cleanups apply with receipts and a revert, anything touching an owner-stated record is presented for Owner review, and originals are soft-retired, not deleted on the system's own judgment.
 
 **Memory space** — an owner-defined partition of memory. Retrieval is scoped to relevant spaces, so context from one area isn't silently pulled into an unrelated one.
 
