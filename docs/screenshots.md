@@ -12,7 +12,7 @@ For the architecture behind these views, see [architecture.md](architecture.md);
 
 ![Plan preview and approval](../assets/screenshots/01-plan-preview.png)
 
-Before governed work begins, Kora prepares a plan and presents it in the inspector rail: the goal, the steps she intends to take, what each step should produce, and the capability tier each step runs under. Two steps here are Read-only; the backup step is marked Sensitive, and nothing sensitive runs on the model's say-so. The queue card carries the single Approve verb; the rail carries the full brief. Here, a routine "back up the local library" request is paused awaiting the Owner's confirmation.
+Before governed work begins, Kora prepares a plan and presents it in the inspector rail: her reasoning, the steps she intends to take, the named capability each step calls, what it should produce, and how it will be verified. Two steps here are Read-only; the backup step is marked Sensitive, and nothing sensitive runs on the model's say-so &mdash; the policy line reads *require confirmation*, so the plan pauses as *awaiting confirmation* until the Owner acts. The rail carries the full brief and the verbs that can move it, **Approve** first among them. Here, a routine "back up the local library" request is paused awaiting the Owner's word.
 
 ---
 
@@ -20,7 +20,7 @@ Before governed work begins, Kora prepares a plan and presents it in the inspect
 
 ![Action receipt](../assets/screenshots/02-action-receipt.png)
 
-After approval, the work executes and leaves evidence behind. The same rail now shows the plan completed, with its receipt trail: the policy check, the plan's creation, each step's start and finish, and the execution record. Every entry is timestamped, attributed to who acted, and expandable to its raw form. As far as the system is concerned, an action without a receipt didn't happen.
+After approval, the work executes and leaves evidence behind. The same rail now shows the plan completed &mdash; **3 steps &middot; 3 done** &mdash; with the approval recorded by name and time: *Approved by you*, to the second. Each step carries its own receipt inline: start and finish timestamps, duration, the result it returned, and its raw result data one click away. Below it all, a composer invites the Owner to ask about the result or request a revision. As far as the system is concerned, an action without a receipt didn't happen.
 
 ---
 
@@ -32,11 +32,11 @@ The home view presents PAC as a local-first command center: current posture, ove
 
 ---
 
-## Model Settings
+## Neural Core
 
-![Model settings](../assets/screenshots/04-model-settings.png)
+![Neural Core](../assets/screenshots/04-neural-core.png)
 
-PAC treats the model as a replaceable component. The model provider is configurable through Settings; the reference build reasons with a local model via Ollama. Swap the model, and the governed system around it &mdash; authority, memory, receipts &mdash; persists.
+PAC treats the model as a replaceable component &mdash; and verifies it rather than trusting it. The Neural Core runs the local engine (Ollama in the reference build): what's loaded, where the VRAM went, and a proof-of-apply line confirming that everything actually routes to the selected model. Installed models carry readiness states, and a model that hasn't been evaluated on this machine is labeled exactly that &mdash; *untested* &mdash; until its checks run. Swap the model, and the governed system around it &mdash; authority, memory, receipts &mdash; persists, because none of it lives in the model.
 
 ---
 
@@ -52,23 +52,15 @@ What Kora remembers is owner-governed, in tiers: a routine observation from conv
 
 ![Kora inbox](../assets/screenshots/06-kora-inbox.png)
 
-The Kora station's Inbox brings the Owner only the calls that need them &mdash; each card is one clear decision, in Kora's own voice, with a colored chip naming who did the work. Attention has a real lifecycle: glancing at an item doesn't count as handling it (*seen* and *done* are tracked separately), **Later** sets an item aside and resurfaces it on schedule, and nothing is dismissed silently. The top card is the previous section's promise kept, live: Kora *asking permission to remember* &mdash; a sensitive save is a proposal awaiting the Owner's **Approve**, gated exactly like any other sensitive action.
+The Kora station's Inbox brings the Owner only the calls that need them &mdash; each card is one clear decision, in Kora's own voice, with a colored chip naming who did the work. Attention has a real lifecycle: glancing at an item doesn't count as handling it (*seen* and *done* are tracked separately), **Later** sets an item aside and resurfaces it on schedule, and nothing is dismissed silently. Here the completed backup has come back as a card that is *ready for review*: the work is done, but it isn't handled until the Owner says so. The strip above the queue is the governance band &mdash; Rules, Permissions, Memory, and Learning each show their live state, one click from their controls.
 
 ---
 
 ## A Specialist Reports Back
 
-![Specialist report in the inspector](../assets/screenshots/07-specialist-report.png)
+![Specialist report open over the intelligence feed](../assets/screenshots/07-specialist-report.png)
 
-Kora doesn't work alone &mdash; she operates a crew of scoped specialists. Here, the Records Specialist has verified the backup from the earlier walkthrough and filed a report: the mission opens as a document in the right-hand inspector &mdash; the queue keeps its one-verb cards, and everything that needs reading lives in the rail. The report cites what was checked, what was found, and the receipts behind it (inherited from the plan the mission verified), and closes on the standard PAC gives its own summaries: *the restore point is provable*. The composer at the bottom lets the Owner question the result or request a revision &mdash; the deliverable is a conversation piece, not a dead file.
-
----
-
-## One Feed of Record
-
-![Intel feed with a specialist report open](../assets/screenshots/08-intel-feed.png)
-
-Specialist reports don't scatter into separate surfaces &mdash; they join the same intelligence feed as everything else Kora watches, labeled **REPORT** with the specialist's chip naming the author. Opening one reads the deliverable through from its single source of record (no copies), with lineage links back to the **Mission** and the **Plan** that produced it &mdash; the provenance is one click deep, always. The **Promote to follow-up mission** action routes through the same approval gate as any other governed work: even acting on intelligence asks first.
+Kora doesn't work alone &mdash; she operates a crew of scoped specialists. Here, a specialist has verified the backup from the earlier walkthrough and filed its report into the intelligence feed &mdash; the one feed of record everything Kora watches flows through, so deliverables never scatter into side surfaces. The report opens in the right-hand inspector with its lineage one click deep: links back to the **Mission** and the **Plan** that produced it, and tabs for the signals, sources, and receipts behind the findings. It cites what was checked and what was found, and closes on the standard PAC gives its own summaries: *the restore point is provable*. The **Promote to follow-up mission** action routes through the same approval gate as any other governed work &mdash; even acting on intelligence asks first.
 
 ---
 

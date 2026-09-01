@@ -12,7 +12,7 @@ The point of the walkthrough is to show *how PAC behaves*, not just what it look
 
 ![System overview](../assets/screenshots/03-system-overview.png)
 
-Before any work happens, PAC presents its own state: the active local model, current **posture** (Sovereign &mdash; local only, no outbound), overall health, and local resource use &mdash; all on the owner's hardware. This is the command surface the rest of the flow happens under. Nothing here depends on a cloud service.
+Before any work happens, PAC presents its own state: the active local model, its current **posture** and connectivity chips (Sovereign, with connectivity deliberately limited), overall health, and local resource use &mdash; all on the owner's hardware. This is the command surface the rest of the flow happens under. Nothing here depends on a cloud service.
 
 ---
 
@@ -22,9 +22,11 @@ Before any work happens, PAC presents its own state: the active local model, cur
 
 The Owner's request becomes a **plan**, not an immediate action. Kora drafts the steps and presents them in the inspector rail *before* anything runs, each carrying the tier the capability registry assigned it:
 
-1. Check system health before backup &mdash; **Read-only**
-2. Confirm available disk capacity &mdash; **Read-only**
-3. Create a backup of the local library &mdash; **Sensitive**
+1. Identify library location and scope &mdash; **Read-only**
+2. Verify backup service health &mdash; **Read-only**
+3. Execute library backup &mdash; **Sensitive**
+
+Each step names the capability it will call, what it should produce, and how the result will be verified &mdash; declared up front, before anything runs.
 
 Two things are happening underneath this screen:
 
@@ -39,7 +41,7 @@ This is the heart of PAC: the owner sees what was requested, what is proposed, a
 
 ![Action receipt](../assets/screenshots/02-action-receipt.png)
 
-Once the Owner approves, the steps execute and the same rail follows the plan to its completed state &mdash; the chip flips to **completed**, and the Receipts tab carries the evidence. The trail reads in the order PAC insists on: the **policy check** first, then the plan's creation, each step's start and finish, and the execution record &mdash; every entry timestamped, attributed to who acted (system, kora, or user), and expandable to its raw form. Kora's own summary of the run names the gate that just held: *"I verified system health and disk capacity, then executed a sensitive backup trigger for the local library after you approved it."* &mdash; and it stops short of declaring victory: the *proof* lives in this receipt chain, which is exactly where the specialist mission in [screenshots.md](../docs/screenshots.md) goes to verify this same backup before calling the restore point *provable*.
+Once the Owner approves, the steps execute and the same rail follows the plan to its completed state &mdash; the chip flips to **completed**, the header reads **3 steps &middot; 3 done**, and the approval itself is part of the record: *Approved by you*, timestamped to the second. Each step now carries its receipt inline &mdash; start and finish times, duration, the result it returned, and its raw result data one click away &mdash; and a composer below invites the Owner to ask about the result or request a revision, because a completed plan is a conversation piece, not a dead file. The rail stops short of declaring victory: the *proof* lives in this receipt chain, which is exactly where the specialist mission in [screenshots.md](../docs/screenshots.md) goes to verify this same backup before calling the restore point *provable*.
 
 As far as PAC is concerned, an action without a receipt didn't happen. The completed view is the receipt: what was planned, what was approved, what ran, and the verification behind it.
 
@@ -55,9 +57,9 @@ Throughout, what Kora remembers stays governed. Routine observations from conver
 
 ## 5. The model is a replaceable part
 
-![Model settings](../assets/screenshots/04-model-settings.png)
+![Neural Core](../assets/screenshots/04-neural-core.png)
 
-The reasoning above came from a local model (Ollama, running Qwen in the reference build), configurable through Settings. Swap the model, and everything that made the flow trustworthy &mdash; the tiers, the approval gate, the receipt, the posture &mdash; persists, because none of it lives in the model.
+The reasoning above came from a local model (Ollama, running Qwen in the reference build), managed in the **Neural Core**. The view shows the engine as it actually is &mdash; what's loaded, where the VRAM went, and a proof-of-apply line confirming everything routes to the selected model &mdash; and treats every installed model as unproven until readiness checks run on this machine. Swap the model, and everything that made the flow trustworthy &mdash; the tiers, the approval gate, the receipt, the posture &mdash; persists, because none of it lives in the model.
 
 ---
 
@@ -70,7 +72,7 @@ The reasoning above came from a local model (Ollama, running Qwen in the referen
 | Consequential work leaves evidence | The verified receipt (step 3) |
 | Memory is owner-governed | Silent captures carry receipts and revert; sensitive saves ask (step 4) |
 | The model is a component, not the authority | Configurable provider (step 5) |
-| Local-first by default | Sovereign posture, no outbound (step 1) |
+| Local-first by default | Sovereign posture on the owner's hardware (step 1) |
 
 The capability tiers, autonomy levels, and policy behavior shown here are described further in [how-it-works.md](../docs/how-it-works.md) and [trust-model.md](../docs/trust-model.md). For the shapes of the artifacts a flow like this produces, see [`../examples/`](../examples/).
 

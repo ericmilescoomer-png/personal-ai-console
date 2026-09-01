@@ -22,7 +22,7 @@ Within that scope, the default stance is **assume unsafe &rarr; verify &rarr; pr
 
 PAC starts from the assumption that prompt injection is **not reliably preventable** &mdash; the labs building frontier models say as much. So the load-bearing defense is architectural, not linguistic: **the model holds no authority.** Nothing in the rows below depends on the model resisting manipulation. Sanitization and content framing reduce exposure; the *guarantee* comes from what a fooled model still cannot do &mdash; tiers it cannot rewrite, approvals it cannot skip, capabilities it cannot reach, and receipts it cannot avoid leaving.
 
-Several of these defenses are visible in the [screenshots](screenshots.md): the policy gate overriding a step's tier and pausing for approval in the plan preview, and the receipt trail on the completed plan.
+Several of these defenses are visible in the [screenshots](screenshots.md): the registry assigning each step its tier and the policy gate pausing the plan for approval in the plan preview, and the per-step receipts on the completed plan.
 
 ## Threats and defenses
 
