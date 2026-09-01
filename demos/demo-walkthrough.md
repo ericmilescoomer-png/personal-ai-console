@@ -12,7 +12,7 @@ The point of the walkthrough is to show *how PAC behaves*, not just what it look
 
 ![System overview](../assets/screenshots/03-system-overview.png)
 
-Before any work happens, PAC presents its own state: the active local model, its current **posture** and connectivity chips (Sovereign, with connectivity deliberately limited), overall health, and local resource use &mdash; all on the owner's hardware. This is the command surface the rest of the flow happens under. Nothing here depends on a cloud service.
+Before any work happens, PAC presents its own state: the active local model, the current **posture** (Sovereign) beside an honest chip reporting observed network reachability, overall health, and local resource use &mdash; all on the owner's hardware. The posture is a stance the owner chose; the network chip is a condition the system measured &mdash; PAC keeps those distinct, and a degraded condition never loosens the stance. This is the command surface the rest of the flow happens under. Nothing here depends on a cloud service.
 
 ---
 

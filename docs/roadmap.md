@@ -88,7 +88,7 @@ The monitoring primitives for these already run as PAC OS agents (session signat
 - **Deployment profiles** — bringing the same governance spine to other hardware:
   - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
   - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
-  - (The current build is the offline reference profile. An installable packaged build of it is in active work; freeze-and-boot viability is proven.)
+  - (The current build is the offline reference profile. Freeze-and-boot viability is proven; an installable packaged build follows the stabilization pass now underway.)
 - **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing beyond today's rotatable owner key. (See "Out of scope" for the current boundary.)
 - **Signed receipts (asymmetric).** Hash-chaining of the receipt and audit spine is **done** — the record is tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step on the desktop spine is *asymmetric signing*, so a record's authenticity can be verified without holding the key. That pattern has now shipped in the smart-home extension: its receipt chain is Ed25519-signed at append time, atomic with the state it attests, and proven under a 105-test acceptance suite — the desktop adopts a design already holding in the family.
 - **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.

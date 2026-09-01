@@ -30,6 +30,8 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 **Owner** — the one person who owns the machine, the data, and the authority. The Owner grants capability, approves sensitive actions, and makes the final call. There is one Owner per system.
 
+**Operator** — Kora's role relative to the system: she operates PAC within the authority the Owner has granted. The Owner decides; the operator executes. Used in phrases like the *operator-delegable surface* (see [architecture.md](architecture.md)).
+
 ---
 
 ## The work loop

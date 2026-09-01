@@ -228,7 +228,7 @@ Everything below runs in the current private build. Product level only; implemen
 The work loop is most mature through the approval stage. The first governed execution sandbox is live, and outcome verification is the area being hardened next (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
-- The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end, and a real installer is now the active workstream — but no installable release has shipped yet.
+- The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end; a real installer is queued behind a stabilization pass now underway, and no installable release has shipped yet.
 - Some UI surfaces are catching up to backend capability.
 - Deliverable synthesis is strongest for report-style work; long-form document drafting is still maturing.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
