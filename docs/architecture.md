@@ -22,7 +22,7 @@ This document covers the architecture at a product level. It is not an implement
 
 ### Owner Interface
 
-The command center the Owner operates &mdash; browser-based, served locally. It is organized as six stations (Home, Kora, Chat, Agents, Library, Settings); see [The Command Center](../README.md#the-command-center) for what each one is for.
+The command center the Owner operates, browser-based and served locally. It is organized as six stations (Home, Kora, Chat, Agents, Library, Settings); see [The Command Center](../README.md#the-command-center) for what each one is for.
 
 The Owner Interface is intentionally thin. It presents state, accepts Owner input, and sends requests to PAC Core. It does not enforce policy, hold authority, or own system state. Authority decisions happen in PAC Core.
 
@@ -30,7 +30,7 @@ The Owner Interface is intentionally thin. It presents state, accepts Owner inpu
 
 The control plane. PAC Core holds the policy gate, capability registry, plan and mission lifecycle, the action receipt spine, the memory governor, and the audit trail. Capability-backed work flows through Core's policy decision before it can execute.
 
-Core also hosts **Kora** &mdash; the planning and execution engine that drafts plans, requests approval, executes through governed capabilities, and writes receipts.
+Core also hosts **Kora**, the planning and execution engine that drafts plans, requests approval, executes through governed capabilities, and writes receipts.
 
 ### PAC OS
 
@@ -64,7 +64,7 @@ The model never decides its own tier. Tier assignment lives in Core's capability
 
 ### Postures
 
-The system runs under three connectivity postures. Posture changes only how far Kora may reach outward — she always works locally:
+The system runs under three connectivity postures. Posture changes only how far Kora may reach outward; she always works locally:
 
 | Posture | Meaning |
 |---|---|
@@ -118,8 +118,8 @@ Not every chat message becomes a mission. Lightweight queries stay light. The li
 
 PAC OS runs a registry of runtime monitor agents. The agent control surface is intentionally split:
 
-- **Owner control surface** &mdash; the full registry of agents the Owner can see, restart, disable, or retune through Owner-facing controls.
-- **Operator-delegable surface** &mdash; a smaller subset of agents Kora may target through governed, policy-checked capabilities.
+- **Owner control surface**: the full registry of agents the Owner can see, restart, disable, or retune through Owner-facing controls.
+- **Operator-delegable surface**: a smaller subset of agents Kora may target through governed, policy-checked capabilities.
 
 Kora cannot restart agents that observe her own behavior, evaluate her learning, or alert on her actions. This split is enforced in code so that delegated authority cannot expand to cover the agents that watch the delegate.
 

@@ -1,6 +1,6 @@
 # Engineering Discipline
 
-The rest of this repository describes *what* Personal A.I. Console&trade; (PAC) is. This document is about *how it is built* &mdash; because for a system whose entire premise is trust, the engineering practice is part of the product, not a footnote to it.
+The rest of this repository describes *what* Personal A.I. Console&trade; (PAC) is. This document is about *how it is built*, because for a system whose entire premise is trust, the engineering practice is part of the product, not a footnote to it.
 
 It is written at a methodology level. It does not include source code, test code, file layouts, or internal interfaces. It describes the practices and the guarantees they produce. See [NOTICE.md](../NOTICE.md) for scope.
 
@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **3,086 automated tests** across **325 test files** (counts verified against the build on 2026-08-28) — including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
+The private build is covered by **3,086 automated tests** across **325 test files** (counts verified against the build on 2026-08-28), including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
@@ -25,7 +25,7 @@ The private build is covered by **3,086 automated tests** across **325 test file
 | **Integration** | Does a whole governed flow behave correctly end to end? |
 | **Runtime substrate** | Does the local evidence layer collect, validate, and persist state correctly? |
 
-The point of the tiering is the **contract** layer. Most test suites prove that functions return the right values. The contract tier proves that the *trust properties* are intact &mdash; the ones this repository makes claims about.
+The point of the tiering is the **contract** layer. Most test suites prove that functions return the right values. The contract tier proves that the *trust properties* are intact, the ones this repository makes claims about.
 
 ---
 
@@ -33,10 +33,10 @@ The point of the tiering is the **contract** layer. Most test suites prove that 
 
 **956 contract tests, across 106 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
 
-- **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls &mdash; and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
+- **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls, and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
 - **Sensitive work cannot self-authorize.** Tests assert that a SENSITIVE step parks for Owner confirmation and does not execute on the model's say-so.
 - **The approval surface can't be skipped.** A sensitive action with no way to reach the Owner does not quietly proceed.
-- **Least-privilege grants are enforced.** An agent attempting a capability outside its owner-granted capability set is refused at execution time, not merely discouraged &mdash; and an unresolvable grant set refuses rather than defaults open.
+- **Least-privilege grants are enforced.** An agent attempting a capability outside its owner-granted capability set is refused at execution time, not merely discouraged, and an unresolvable grant set refuses rather than defaults open.
 - **The trust ratchet is real.** Agent promotion thresholds (below) are asserted, so an agent cannot be promoted without meeting them.
 - **The public surface is allow-listed.** Which routes may be reached without authority is pinned, so the anonymous surface cannot silently widen.
 
@@ -50,7 +50,7 @@ Agents do not graduate by vibes. The lifecycle (draft &rarr; trial &rarr; active
 
 - **Trial &rarr; Active** requires a run of **consecutive successful trial runs** (default: 5 in a row).
 - **Active &rarr; Proven** requires **at least 20 total runs** *and* a **success rate of at least 95%**.
-- An Owner may override a promotion &mdash; and the override is **itself recorded** as a governed event, so the exception is visible rather than silent.
+- An Owner may override a promotion, and the override is **itself recorded** as a governed event, so the exception is visible rather than silent.
 
 Trust is accrued from behavior over time and is inspectable. It is not granted by assertion.
 
@@ -60,7 +60,7 @@ Trust is accrued from behavior over time and is inspectable. It is not granted b
 
 Every change that touches security posture, capability permissions, memory semantics, the OS&harr;Core contract, or connectivity posture is recorded in an **append-only development ledger** before the change is considered done. The ledger is chronological and never edited after the fact.
 
-In the current build it holds **224 entries spanning six months** of continuous work (March through August 2026), and **entries that touch the governed configuration carry a configuration fingerprint** (below; 97 of the 224 at last count). Routine formatting and cosmetic edits are deliberately *excluded* &mdash; the ledger is a record of consequential change, not a commit log.
+In the current build it holds **224 entries spanning six months** of continuous work (March through August 2026), and **entries that touch the governed configuration carry a configuration fingerprint** (below; 97 of the 224 at last count). Routine formatting and cosmetic edits are deliberately *excluded*; the ledger is a record of consequential change, not a commit log.
 
 The discipline this enforces is simple: **if a meaningful change isn't in the ledger, it isn't finished.**
 
@@ -68,9 +68,9 @@ The discipline this enforces is simple: **if a meaningful change isn't in the le
 
 ## Configuration drift detection
 
-PAC keeps a **fingerprint** of its own governing configuration &mdash; a hash over the system prompt, the tool/capability registry, and the set of runtime agents. Each ledger entry records the fingerprint *after* the change.
+PAC keeps a **fingerprint** of its own governing configuration: a hash over the system prompt, the tool/capability registry, and the set of runtime agents. Each ledger entry records the fingerprint *after* the change.
 
-If the fingerprint moves and the ledger does not explain why, the system is in a **drift state** &mdash; a signal to stop and find the unexplained change before doing more work. This makes silent, untracked changes to the trust-relevant configuration detectable rather than invisible.
+If the fingerprint moves and the ledger does not explain why, the system is in a **drift state**: a signal to stop and find the unexplained change before doing more work. This makes silent, untracked changes to the trust-relevant configuration detectable rather than invisible.
 
 ---
 
@@ -78,9 +78,9 @@ If the fingerprint moves and the ledger does not explain why, the system is in a
 
 The most unusual discipline is the least glamorous: the project is built to **distrust its own documentation**.
 
-- **Code is the only hard truth.** Where a design note and the running system disagree, the system wins, and the note is corrected &mdash; not the other way around.
+- **Code is the only hard truth.** Where a design note and the running system disagree, the system wins, and the note is corrected, not the other way around.
 - **Verify against code, not memory.** Claims about how something behaves are re-checked against the implementation before they are relied on. (This very document's numbers were verified against the build before publication.)
-- **Documents flag their own gaps.** Internal specs carry status tags (current / target / needs-reconciliation), and the build's own audits openly record where the implementation does not yet meet a stated goal &mdash; rather than papering over it.
+- **Documents flag their own gaps.** Internal specs carry status tags (current / target / needs-reconciliation), and the build's own audits openly record where the implementation does not yet meet a stated goal rather than papering over it.
 - **Stale documentation is treated as a defect, and enforced as one.** The operator-facing entrance documents are pinned by a contract test. Volatile figures such as test totals and agent totals may not be asserted in prose at all, and anything that genuinely must be counted derives from the runtime registry that owns it rather than from a number typed into a file by hand. A count cannot quietly go stale when the count is not there to go stale.
 
 That last practice was earned rather than designed. An outside technical review found the entrance documents trailing the implementation, while the system they described held up under inspection. Deleting the stale numbers was the repair. The test is what makes the repair permanent, and it is the same move this document opens with: a claim becomes a property at the moment something fails when it stops being true.
@@ -93,7 +93,7 @@ This is the same standard applied to the public repository: every claim here is 
 
 - It does **not** publish test code, counts as a contract, file structure, or internal interfaces. Numbers are descriptive snapshots of a private build at a point in time, not a guarantee.
 - It does **not** claim external audit, certification, or third-party verification. The tests are the project's own.
-- It does **not** claim the suite is exhaustive or that the system is defect-free &mdash; only that the trust-relevant guarantees are defended by tests and that change is tracked.
+- It does **not** claim the suite is exhaustive or that the system is defect-free, only that the trust-relevant guarantees are defended by tests and that change is tracked.
 
 ---
 

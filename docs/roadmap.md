@@ -10,47 +10,47 @@ For current detail see the [README](../README.md); for architecture and trust se
 
 PAC's capability grows in a strict sequence. Each rung must be solid before the next is allowed to matter:
 
-1. **Observability** — evidence exists, is timestamped, is fresh, and is surfaced to the owner.
-2. **Policy** — capability tiers are enforced in code; nothing runs without a policy evaluation.
-3. **Proposals** — structured plans with evidence, scope, and a risk summary.
-4. **Approvals** — the owner consents explicitly; never inferred.
-5. **Execution** — approved actions run within declared scope, with a receipt.
-6. **Verification** — deterministic checks confirm the outcome before the receipt closes.
+1. **Observability**: evidence exists, is timestamped, is fresh, and is surfaced to the owner.
+2. **Policy**: capability tiers are enforced in code; nothing runs without a policy evaluation.
+3. **Proposals**: structured plans with evidence, scope, and a risk summary.
+4. **Approvals**: the owner consents explicitly; never inferred.
+5. **Execution**: approved actions run within declared scope, with a receipt.
+6. **Verification**: deterministic checks confirm the outcome before the receipt closes.
 
-The current build is solid through **Approvals (rung 4)**, and **Execution sandboxing (rung 5)** now has its first real surface &mdash; a governed, path-confined build workspace whose test runs report red or green as evidence. Hardening **Verification (rung 6)** across all governed work is what unlocks next. The roadmap below is organized around extending that foundation, not around adding ungoverned capability on top of it.
+The current build is solid through **Approvals (rung 4)**, and **Execution sandboxing (rung 5)** now has its first real surface: a governed, path-confined build workspace whose test runs report red or green as evidence. Hardening **Verification (rung 6)** across all governed work is what unlocks next. The roadmap below is organized around extending that foundation, not around adding ungoverned capability on top of it.
 
 ---
 
-## Now — current build
+## Now: current build
 
 Working today on a local, owner-controlled, Windows-validated build:
 
 - Local-first command center with six stations (Home, Kora, Chat, Agents, Library, Settings).
 - **Kora**, the command agent: observes, drafts plans, requests approval, executes governed capabilities, and writes receipts.
-- The work loop — Observation → Plan → Approval → Execution → Receipt → Deliverable.
+- The work loop: Observation → Plan → Approval → Execution → Receipt → Deliverable.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
 - A return spine for dispatched work: a finished mission lands as a delivery record behind a notification bell, Kora reports the outcome in the conversation that started the work, and a status question is answered from her own recorded actions rather than the model's impression of them.
-- Typed compute &mdash; sixteen governed math operations as a capability with no filesystem, network, or process surface, never a code runner &mdash; with every computed answer disclosed as computed.
-- Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand — scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
-- Owner-governed memory under tiered intake &mdash; routine observations captured silently with a receipt and a one-click revert, sensitive changes owner-approved, a write-door firewall so document, web, and tool content can never seed personal memory, and Kora's memory card rendering what she knows exactly as the model receives it; a local document repository and local embeddings.
-- Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle &mdash; time away, what happened, what's pending &mdash; surfaced on Home, with an optional spoken turnover that is off by default.
+- Typed compute: sixteen governed math operations as a capability with no filesystem, network, or process surface, never a code runner, with every computed answer disclosed as computed.
+- Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand, scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
+- Owner-governed memory under tiered intake: routine observations captured silently with a receipt and a one-click revert, sensitive changes owner-approved, a write-door firewall so document, web, and tool content can never seed personal memory, and Kora's memory card rendering what she knows exactly as the model receives it; a local document repository and local embeddings.
+- Owner-authored standing orders (scoped, prioritized, expirable) that Kora carries into all of her work, and a watch-turnover brief on return from deep idle (time away, what happened, what's pending) surfaced on Home, with an optional spoken turnover that is off by default.
 - On-demand after-action briefs over any time window, produced through the governed work loop as receipted report deliverables whose claims carry structured references to the receipts behind them.
 - Two-way offline voice: local neural speech synthesis with read-aloud, and local voice input.
 - Local attachments and vision: PDFs, Word and Excel documents, and images read on-device (originals kept, OCR local), with a local vision model that lets Kora describe what is in a picture.
-- An agent crew under Kora &mdash; scoped, least-privilege workers, each defined by an explicit set of properties (name, description, charter, capabilities, trigger, brain, autonomy) and holding exactly the capabilities the owner granted &mdash; with a full lifecycle (draft &rarr; trial &rarr; active &rarr; proven), owner-facing dossiers, and a mission inspector showing a mission's request, plan, sources, and receipts in one panel.
-- Standing intelligence watches &mdash; deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected) &mdash; receipted on every run, with matches promotable into approval-gated plans.
+- An agent crew under Kora: scoped, least-privilege workers, each defined by an explicit set of properties (name, description, charter, capabilities, trigger, brain, autonomy) and holding exactly the capabilities the owner granted, with a full lifecycle (draft &rarr; trial &rarr; active &rarr; proven), owner-facing dossiers, and a mission inspector showing a mission's request, plan, sources, and receipts in one panel.
+- Standing intelligence watches: deterministic scheduled evaluation over local system state *and*, when the owner has opened Connected posture, external URLs (through the governed network broker, robots.txt respected), receipted on every run, with matches promotable into approval-gated plans.
 - A single intelligence feed of record: watch results and agent mission reports in one feed, read from one source of record, locally searchable, promotable into follow-up missions.
 - A configurable local model provider (Ollama, running Qwen in the reference build).
-- A governed cloud lane at the artifact boundary &mdash; owner-hired cloud brains (Anthropic today) for deliverable composition and receipted consults: brain pinned per mission, provenance on the deliverable, the call killed pre-network under Sovereign posture, and an egress fingerprint &mdash; the hash and byte count of exactly what left, or would have left &mdash; on every receipt, refusals included, with tokens and cost.
-- A governed build workspace for the Builder agent &mdash; sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
+- A governed cloud lane at the artifact boundary: owner-hired cloud brains (Anthropic today) for deliverable composition and receipted consults. Brain pinned per mission, provenance on the deliverable, the call killed pre-network under Sovereign posture, and an egress fingerprint (the hash and byte count of exactly what left, or would have left) on every receipt, refusals included, with tokens and cost.
+- A governed build workspace for the Builder agent: sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation, with owner-initiated key rotation.
-- Governed, read-only web research behind an off-by-default flag (only when outbound is open — Limited or Connected — SSRF-hardened) &mdash; experimental.
+- Governed, read-only web research behind an off-by-default flag (only when outbound is open, Limited or Connected, and SSRF-hardened); experimental.
 
 ---
 
-## Near-term — public showcase
+## Near-term: public showcase
 
 Making the project visible while keeping the engine private:
 
@@ -66,33 +66,33 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Mission expansion
 
-- **Deliverable drafting (deepening)** — receipted report deliverables are shipped (see "Now"); long-form document and draft work, optionally saved to the local library, is the direction.
-- **Governed web research (expanding)** — read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
-- **Mission templates** — reusable mission shapes for recurring patterns.
-- **Multi-step / multi-agent missions** — longer-running work and mission-to-mission dependencies, only as real workflows demand.
+- **Deliverable drafting (deepening)**: receipted report deliverables are shipped (see "Now"); long-form document and draft work, optionally saved to the local library, is the direction.
+- **Governed web research (expanding)**: read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
+- **Mission templates**: reusable mission shapes for recurring patterns.
+- **Multi-step / multi-agent missions**: longer-running work and mission-to-mission dependencies, only as real workflows demand.
 
 ### Ambient infrastructure
 
 The monitoring primitives for these already run as PAC OS agents (session signatures, preference learning, ambient state, network/WAN awareness). What's still ahead is the owner-facing experience built on top of them:
 
-- **Re-entry brief (deepening)** — the watch-turnover handoff on return from deep idle is shipped and spoken, and after-action briefs over arbitrary windows now ship as receipted deliverables (see "Now"); the direction is deeper session handoff and extending today's claim-to-receipt references into sourced links from every sentence.
-- **Experience search** — maturing today's cross-surface search into a polished, meaning-based "search everything" across journal, receipts, deliverables, and documents, with provenance and freshness.
-- **Fuller preference learning** — the preference-learner agent already records inspectable, owner-deletable preferences from the work loop; deeper standing grants and session handoff are the direction.
-- **Broader connectivity handling** — WAN polling and deferred-plan resurfacing already run; wider graceful-degradation behavior is the direction.
+- **Re-entry brief (deepening)**: the watch-turnover handoff on return from deep idle is shipped and spoken, and after-action briefs over arbitrary windows now ship as receipted deliverables (see "Now"); the direction is deeper session handoff and extending today's claim-to-receipt references into sourced links from every sentence.
+- **Experience search**: maturing today's cross-surface search into a polished, meaning-based "search everything" across journal, receipts, deliverables, and documents, with provenance and freshness.
+- **Fuller preference learning**: the preference-learner agent already records inspectable, owner-deletable preferences from the work loop; deeper standing grants and session handoff are the direction.
+- **Broader connectivity handling**: WAN polling and deferred-plan resurfacing already run; wider graceful-degradation behavior is the direction.
 
 ### Reach
 
-- **Standing watches (expanding)** — owner-defined watches now run over both local system state and external URLs under posture rules — Connected-only, brokered, robots-respecting — with receipts (see "Now"). Richer external source types and extraction are the direction.
-- **Focus areas** — owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
-- **Specialized agent workers (expanding)** — the scoped agent crew is shipped, and an agent can now carry its own hired cloud brain at the artifact boundary (see "Now"); different local models per worker are the direction.
-- **Deployment profiles** — bringing the same governance spine to other hardware:
-  - **PAC Lite** — entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
-  - **PAC Pro** — prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
+- **Standing watches (expanding)**: owner-defined watches now run over both local system state and external URLs under posture rules (Connected-only, brokered, robots-respecting) with receipts (see "Now"). Richer external source types and extraction are the direction.
+- **Focus areas**: owner-defined contexts ("desks") that tune Kora and filter content for a domain, without separate installations. A lens over one database, not isolated workspaces.
+- **Specialized agent workers (expanding)**: the scoped agent crew is shipped, and an agent can now carry its own hired cloud brain at the artifact boundary (see "Now"); different local models per worker are the direction.
+- **Deployment profiles**: bringing the same governance spine to other hardware:
+  - **PAC Lite**: entry-level hardware (≤16GB VRAM or CPU-only); a small model in both lanes; the bar is *working*, not *fast*.
+  - **PAC Pro**: prosumer hardware (24–32GB VRAM); mid-range models, possibly split fast/ops lanes.
   - (The current build is the offline reference profile. Freeze-and-boot viability is proven; an installable packaged build follows the stabilization pass now underway.)
-- **Connected-posture hardening** — strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing beyond today's rotatable owner key. (See "Out of scope" for the current boundary.)
-- **Signed receipts (asymmetric).** Hash-chaining of the receipt and audit spine is **done** — the record is tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step on the desktop spine is *asymmetric signing*, so a record's authenticity can be verified without holding the key. That pattern has now shipped in the smart-home extension: its receipt chain is Ed25519-signed at append time, atomic with the state it attests, and proven under a 105-test acceptance suite — the desktop adopts a design already holding in the family.
-- **OWASP Agentic alignment** — close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
-- **Smart-home / IoT control plane** — the project's origin, returning as a governed surface, and now under active construction as PAC's second node: commissioning authority modeled as a state machine, a pairing ceremony with per-principal keys, and an Ed25519-signed receipt chain, all holding under a 105-test acceptance suite. Deliberately governance-first: the receipt spine is being proven before any device control ships.
+- **Connected-posture hardening**: strengthening the system for connected and, eventually, more-exposed deployments, including stronger key/secret backing beyond today's rotatable owner key. (See "Out of scope" for the current boundary.)
+- **Signed receipts (asymmetric).** Hash-chaining of the receipt and audit spine is **done**: the record is tamper-evident against any modification made without the chain key, verifiable across the rotated archive. The remaining step on the desktop spine is *asymmetric signing*, so a record's authenticity can be verified without holding the key. That pattern has now shipped in the smart-home extension: its receipt chain is Ed25519-signed at append time, atomic with the state it attests, and proven under a 105-test acceptance suite. The desktop adopts a design already holding in the family.
+- **OWASP Agentic alignment**: close the partially-covered items in [owasp-agentic-mapping.md](owasp-agentic-mapping.md), notably stronger sandboxing.
+- **Smart-home / IoT control plane**: the project's origin, returning as a governed surface, and now under active construction as PAC's second node: commissioning authority modeled as a state machine, a pairing ceremony with per-principal keys, and an Ed25519-signed receipt chain, all holding under a 105-test acceptance suite. Deliberately governance-first: the receipt spine is being proven before any device control ships.
 
 ---
 
@@ -102,9 +102,9 @@ Explicitly **not** current capabilities, and not on the near-term path:
 
 - **Public internet exposure / hardened remote deployment.** PAC is built for local, single-owner use. Internet-exposure hardening is future work, not a current property.
 - **Multi-operator / multi-seat / hosted deployments.** PAC is single-owner by design.
-- **Cloud models as a default or as authority-holders.** Cloud model access arrived the way this roadmap said it would &mdash; through the governed lane, under policy, posture-gated and receipted, at the artifact boundary (see "Now"). What remains out of scope is any version where a cloud model is the default path, holds a capability, or acts as an authority.
+- **Cloud models as a default or as authority-holders.** Cloud model access arrived the way this roadmap said it would: through the governed lane, under policy, posture-gated and receipted, at the artifact boundary (see "Now"). What remains out of scope is any version where a cloud model is the default path, holds a capability, or acts as an authority.
 - **Cross-platform validation** beyond Windows.
-- **A public source-code release.** This repository is a product showcase, not an open-source distribution — see [NOTICE.md](../NOTICE.md).
+- **A public source-code release.** This repository is a product showcase, not an open-source distribution; see [NOTICE.md](../NOTICE.md).
 
 ---
 

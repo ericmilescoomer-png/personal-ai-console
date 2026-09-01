@@ -1,6 +1,6 @@
 # How It Works
 
-This document describes the *process* by which Personal A.I. Console&trade; (PAC) turns a request into governed work &mdash; the sequence, the decision points, and the guarantees at each one. [architecture.md](architecture.md) covers the *structure* (the layers); this covers the *flow* through them.
+This document describes the *process* by which Personal A.I. Console&trade; (PAC) turns a request into governed work: the sequence, the decision points, and the guarantees at each one. [architecture.md](architecture.md) covers the *structure* (the layers); this covers the *flow* through them.
 
 It is a behavior-level description. It is not an implementation guide and does not include source, real schemas, or the internal logic itself. For the principles behind it see [trust-model.md](trust-model.md); for a screenshot walkthrough see [demos/demo-walkthrough.md](../demos/demo-walkthrough.md).
 
@@ -41,15 +41,15 @@ sequenceDiagram
 
 ### 1. Tiers come from the registry, not the model
 
-Each step names a capability. The capability's **tier** &mdash; SAFE, SENSITIVE, or FORBIDDEN &mdash; is fixed in PAC's capability registry, which is the source of truth. A plan cannot lie about a step's tier; the registry's classification overrides whatever the plan proposed. The model can suggest *what* to do, but not *how dangerous it is allowed to call that*.
+Each step names a capability. The capability's **tier** (SAFE, SENSITIVE, or FORBIDDEN) is fixed in PAC's capability registry, which is the source of truth. A plan cannot lie about a step's tier; the registry's classification overrides whatever the plan proposed. The model can suggest *what* to do, but not *how dangerous it is allowed to call that*.
 
 ### 2. The policy gate is deterministic
 
 Before anything runs, the plan is evaluated by a policy gate with three properties:
 
-- **Deterministic** &mdash; the same plan produces the same decision every time.
-- **Registry-truthful** &mdash; it judges against the registry's tiers, not the plan's claims.
-- **Model-free** &mdash; it makes no model calls. No prompt or jailbreak can talk the gate into allowing forbidden or unconfirmed work. (Wording can still influence what the model *proposes*; it cannot change how a proposed step is *classified* &mdash; see ASI01 in the [OWASP self-assessment](owasp-agentic-mapping.md).)
+- **Deterministic**: the same plan produces the same decision every time.
+- **Registry-truthful**: it judges against the registry's tiers, not the plan's claims.
+- **Model-free**: it makes no model calls. No prompt or jailbreak can talk the gate into allowing forbidden or unconfirmed work. (Wording can still influence what the model *proposes*; it cannot change how a proposed step is *classified*; see ASI01 in the [OWASP self-assessment](owasp-agentic-mapping.md).)
 
 The outcomes are simple:
 
@@ -68,7 +68,7 @@ When a plan contains sensitive work, it pauses in an *awaiting confirmation* sta
 
 ### 4. Execution is scoped, and every step is recorded
 
-Approved steps run through governed capabilities. Each step's outcome is captured in a **receipt**, lifecycle-tracked from proposal through verification, and governed actions also write to an **append-only audit trail** kept separate from the main data. Read-only work generally doesn't produce receipts &mdash; receipts exist to make *consequential* work inspectable after the fact.
+Approved steps run through governed capabilities. Each step's outcome is captured in a **receipt**, lifecycle-tracked from proposal through verification, and governed actions also write to an **append-only audit trail** kept separate from the main data. Read-only work generally doesn't produce receipts; receipts exist to make *consequential* work inspectable after the fact.
 
 ---
 
@@ -76,7 +76,7 @@ Approved steps run through governed capabilities. Each step's outcome is capture
 
 PAC separates *how much an agent acts on its own* from *what it is allowed to touch*. These are two different dials, and the second one is never relaxed by the first.
 
-**Per-agent autonomy level** &mdash; set on each agent:
+**Per-agent autonomy level**, set on each agent:
 
 | Level | Behavior |
 |---|---|
@@ -85,7 +85,7 @@ PAC separates *how much an agent acts on its own* from *what it is allowed to to
 | `confirm_per_step` | Asks before each step |
 | `block` | May observe and propose, but not execute |
 
-**Global autonomy profile** &mdash; a system-wide stance for unattended work, classified into action buckets (A: read-only, B: bounded hygiene, C: control, D: destructive):
+**Global autonomy profile**, a system-wide stance for unattended work, classified into action buckets (A: read-only, B: bounded hygiene, C: control, D: destructive):
 
 | Profile | Auto-executes |
 |---|---|
@@ -96,7 +96,7 @@ PAC separates *how much an agent acts on its own* from *what it is allowed to to
 
 Destructive (Bucket D) work is never auto-executed under any profile. A **kill switch** can halt all auto-execution immediately.
 
-**The guarantee that ties it together:** autonomy level changes how often PAC pauses to confirm &mdash; it does **not** change what is permitted. Even an `auto` agent under `maintenance_window` is still bound by the policy gate: FORBIDDEN stays blocked, SENSITIVE tiers stay governed, and nothing escapes the registry's truth. The leash length is adjustable; the fence is not.
+**The guarantee that ties it together:** autonomy level changes how often PAC pauses to confirm; it does **not** change what is permitted. Even an `auto` agent under `maintenance_window` is still bound by the policy gate: FORBIDDEN stays blocked, SENSITIVE tiers stay governed, and nothing escapes the registry's truth. The leash length is adjustable; the fence is not.
 
 ---
 
@@ -106,11 +106,11 @@ Outbound access is governed by a system-wide **posture**, not by individual step
 
 | Posture | Outbound |
 |---|---|
-| **Sovereign** | None &mdash; local operation only (default); web-dependent steps are held and resurface when a window opens |
-| **Limited** | Allowlist only &mdash; outbound to explicitly approved sources; background web denied |
+| **Sovereign** | None; local operation only (default). Web-dependent steps are held and resurface when a window opens |
+| **Limited** | Allowlist only: outbound to explicitly approved sources; background web denied |
 | **Connected** | Owner-opened open outbound through a governed broker, minus a blocklist that always wins; standing until closed |
 
-In Sovereign posture, outbound capabilities are blocked outright, regardless of tier or autonomy &mdash; but local work continues, since posture governs only outward reach. A separate internal *Maintenance* state handles system upkeep and is not a user-facing mode. Degraded network or system conditions are surfaced as operational state &mdash; they never become permission to bypass posture rules. The system fails toward caution.
+In Sovereign posture, outbound capabilities are blocked outright, regardless of tier or autonomy, but local work continues, since posture governs only outward reach. A separate internal *Maintenance* state handles system upkeep and is not a user-facing mode. Degraded network or system conditions are surfaced as operational state; they never become permission to bypass posture rules. The system fails toward caution.
 
 ---
 

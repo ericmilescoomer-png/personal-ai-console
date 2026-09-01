@@ -1,4 +1,4 @@
-# Design Language &mdash; Calm by Default
+# Design Language: Calm by Default
 
 The trust architecture decides what Personal A.I. Console&trade; (PAC) is *allowed* to do. The design language decides how it *feels* to use. They are held to the same standard: the interface is built to keep the Owner oriented and in control, never to flatter, alarm, or obscure.
 
@@ -8,7 +8,7 @@ This document describes the design philosophy at a product level. It is not a st
 
 ## The philosophy: Calm Core, Active Edges
 
-PAC is one quiet command surface. Pages differ by structure, density, and behavior &mdash; not by decoration. Four principles govern every screen:
+PAC is one quiet command surface. Pages differ by structure, density, and behavior, not by decoration. Four principles govern every screen:
 
 - **Calm by default.** When the system is healthy, the interface is quiet. Visual escalation is *earned* by a real condition, not spent on ambient flourish. A nominal system looks matte and still.
 - **Whitespace is the container.** Information is grouped by space and alignment, not by stacking bordered boxes inside bordered boxes.
@@ -21,14 +21,14 @@ PAC is one quiet command surface. Pages differ by structure, density, and behavi
 
 PAC uses a deliberately small palette, and its discipline is the point:
 
-- **Two brand colors.** One signals *interactive* (links, buttons, focus, the active location); one is reserved for *the AI* &mdash; Kora and AI-generated content. They are never swapped or used decoratively.
-- **A brand gradient** appears in a small, fixed set of identity places (the product mark, the active-location indicator, the hero title, the generation glow) &mdash; and nowhere else.
-- **Semantic colors &mdash; green, amber, red &mdash; are reserved exclusively for state.** Green is healthy, amber is degraded, red is critical. They are never used for ordinary UI accents, so when one appears it always *means* something.
+- **Two brand colors.** One signals *interactive* (links, buttons, focus, the active location); one is reserved for *the AI*: Kora and AI-generated content. They are never swapped or used decoratively.
+- **A brand gradient** appears in a small, fixed set of identity places (the product mark, the active-location indicator, the hero title, the generation glow) and nowhere else.
+- **Semantic colors (green, amber, red) are reserved exclusively for state.** Green is healthy, amber is degraded, red is critical. They are never used for ordinary UI accents, so when one appears it always *means* something.
 - **Nominal is matte; glow is earned.** Motion and glow are reserved for degraded or critical conditions. A calm system does not pulse.
 
 ### The detail that captures the whole philosophy
 
-The Owner can recolor the *interactive* accent to taste &mdash; but the picker deliberately **excludes green, amber, and red.** A personalization choice is never allowed to impersonate a system state. You cannot accidentally (or deliberately) make "healthy green" your button color and lose the ability to tell health from preference. The aesthetic bends to the Owner; the meaning of color does not.
+The Owner can recolor the *interactive* accent to taste, but the picker deliberately **excludes green, amber, and red.** A personalization choice is never allowed to impersonate a system state. You cannot accidentally (or deliberately) make "healthy green" your button color and lose the ability to tell health from preference. The aesthetic bends to the Owner; the meaning of color does not.
 
 ---
 
@@ -38,18 +38,18 @@ Friction is matched to consequence, so routine work stays light and dangerous wo
 
 | Level | When | What the Owner sees |
 |---|---|---|
-| **0 &mdash; none** | Reads | Nothing; it just happens |
-| **1 &mdash; soft** | Reversible writes | A confirmation and a toast |
-| **2 &mdash; hard** | Deletes, posture changes | An explicit confirm dialog |
-| **3 &mdash; two-step** | High-consequence actions | A deliberate, two-step modal stating the consequence |
+| **0 &middot; none** | Reads | Nothing; it just happens |
+| **1 &middot; soft** | Reversible writes | A confirmation and a toast |
+| **2 &middot; hard** | Deletes, posture changes | An explicit confirm dialog |
+| **3 &middot; two-step** | High-consequence actions | A deliberate, two-step modal stating the consequence |
 
-The native browser `alert()` and `confirm()` pop-ups do not exist anywhere in PAC &mdash; every confirmation flows through one consistent, legible system, so a serious decision never looks like a stray browser dialog.
+The native browser `alert()` and `confirm()` pop-ups do not exist anywhere in PAC; every confirmation flows through one consistent, legible system, so a serious decision never looks like a stray browser dialog.
 
 ---
 
 ## State is always visible, never hunted for
 
-A fixed bar persists on every page &mdash; it does not scroll away. It always shows **where you are**, the current **posture** (with a live countdown when a time-bounded window is open), and the system's **health**. The Owner never has to go looking to answer "what is the system allowed to do right now, and is it okay?" The answer is always on screen. That, too, is the trust model expressed as interface: the boundary you are operating under is never hidden.
+A fixed bar persists on every page; it does not scroll away. It always shows **where you are**, the current **posture** (with a live countdown when a time-bounded window is open), and the system's **health**. The Owner never has to go looking to answer "what is the system allowed to do right now, and is it okay?" The answer is always on screen. That, too, is the trust model expressed as interface: the boundary you are operating under is never hidden.
 
 ---
 

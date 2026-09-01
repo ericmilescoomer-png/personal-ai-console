@@ -6,104 +6,104 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 ## Product and components
 
-**Personal A.I. Console** — the product. A local-first **command center** for governed AI, built for a single owner, where the system around the model &mdash; not the model itself &mdash; is the product.
+**Personal A.I. Console**: the product. A local-first **command center** for governed AI, built for a single owner, where the system around the model, not the model itself, is the product.
 
-**Command center** — what PAC *is*: an owner's cockpit for one person's AI, reachable from one local surface. You command from it; you don't build with it. It is not a framework, an SDK, or a developer harness.
+**Command center**: what PAC *is*: an owner's cockpit for one person's AI, reachable from one local surface. You command from it; you don't build with it. It is not a framework, an SDK, or a developer harness.
 
-**Station** — one of the six surfaces of the command center (Home, Kora, Chat, Agents, Library, Settings), each a place the Owner does a specific kind of work. See [README](../README.md#the-command-center).
+**Station**: one of the six surfaces of the command center (Home, Kora, Chat, Agents, Library, Settings), each a place the Owner does a specific kind of work. See [README](../README.md#the-command-center).
 
-**PAC** — the abbreviation for Personal A.I. Console.
+**PAC**: the abbreviation for Personal A.I. Console.
 
-**PAC Desktop** — the current private desktop implementation of Personal A.I. Console.
+**PAC Desktop**: the current private desktop implementation of Personal A.I. Console.
 
-**Kora** — the command agent inside PAC. She reads evidence, drafts plans, requests approval when needed, executes through governed capabilities, and writes receipts. Kora's authority comes from the owner's delegation and the policy layer, not from the model.
+**Kora**: the command agent inside PAC. She reads evidence, drafts plans, requests approval when needed, executes through governed capabilities, and writes receipts. Kora's authority comes from the owner's delegation and the policy layer, not from the model.
 
-**PAC Core** — the control plane. Holds policy, the capability registry, plan and mission lifecycle, the receipt spine, the memory governor, and the audit trail. PAC Core is the code-enforced authorization boundary.
+**PAC Core**: the control plane. Holds policy, the capability registry, plan and mission lifecycle, the receipt spine, the memory governor, and the audit trail. PAC Core is the code-enforced authorization boundary.
 
-**PAC OS** — the evidence plane. A local runtime of monitor agents that observe machine state and write structured evidence Core can read. It observes and reports; it does not decide policy.
+**PAC OS**: the evidence plane. A local runtime of monitor agents that observe machine state and write structured evidence Core can read. It observes and reports; it does not decide policy.
 
-**Local model provider** — the replaceable reasoning component. The reference build uses Ollama running Qwen; the model is configurable.
+**Local model provider**: the replaceable reasoning component. The reference build uses Ollama running Qwen; the model is configurable.
 
 ---
 
 ## Roles
 
-**Owner** — the one person who owns the machine, the data, and the authority. The Owner grants capability, approves sensitive actions, and makes the final call. There is one Owner per system.
+**Owner**: the one person who owns the machine, the data, and the authority. The Owner grants capability, approves sensitive actions, and makes the final call. There is one Owner per system.
 
-**Operator** — Kora's role relative to the system: she operates PAC within the authority the Owner has granted. The Owner decides; the operator executes. Used in phrases like the *operator-delegable surface* (see [architecture.md](architecture.md)).
+**Operator**: Kora's role relative to the system: she operates PAC within the authority the Owner has granted. The Owner decides; the operator executes. Used in phrases like the *operator-delegable surface* (see [architecture.md](architecture.md)).
 
 ---
 
 ## The work loop
 
-**Mission** — a unit of meaningful, accountable work with a visible lifecycle. Not every chat message becomes a mission.
+**Mission**: a unit of meaningful, accountable work with a visible lifecycle. Not every chat message becomes a mission.
 
-**Observation** — reading available evidence (machine state, memory, prior receipts, documents) before acting.
+**Observation**: reading available evidence (machine state, memory, prior receipts, documents) before acting.
 
-**Plan** — a sequence of steps Kora drafts, each tagged with a capability tier.
+**Plan**: a sequence of steps Kora drafts, each tagged with a capability tier.
 
-**Approval** — the gate where SAFE steps may proceed and SENSITIVE steps require explicit Owner confirmation.
+**Approval**: the gate where SAFE steps may proceed and SENSITIVE steps require explicit Owner confirmation.
 
-**Execution** — running approved steps through governed capabilities.
+**Execution**: running approved steps through governed capabilities.
 
-**Receipt** — the evidence record of work that executed, lifecycle-tracked from proposal through verification.
+**Receipt**: the evidence record of work that executed, lifecycle-tracked from proposal through verification.
 
-**Deliverable** — the typed output a completed mission produces (e.g., report, research, draft, status, audit).
+**Deliverable**: the typed output a completed mission produces (e.g., report, research, draft, status, audit).
 
 ---
 
 ## Authority and capability
 
-**Agent** — a scoped worker Kora operates, defined by an explicit set of properties: name, description, charter, capabilities, trigger, brain, and autonomy. An agent's authority is exactly the capability set the Owner granted it; an agent with no capabilities is valid and simply converses. See [agent-governance.md](agent-governance.md).
+**Agent**: a scoped worker Kora operates, defined by an explicit set of properties: name, description, charter, capabilities, trigger, brain, and autonomy. An agent's authority is exactly the capability set the Owner granted it; an agent with no capabilities is valid and simply converses. See [agent-governance.md](agent-governance.md).
 
-**Capability** — a governed action PAC can perform, registered with a fixed tier. The model cannot invent capabilities or change their tier.
+**Capability**: a governed action PAC can perform, registered with a fixed tier. The model cannot invent capabilities or change their tier.
 
-**Capability grant** — the explicit, owner-chosen set of capabilities an agent holds, assembled from a preset or item by item, with provenance recorded. Enforcement is fail-closed: a capability outside the grant is refused at execution time.
+**Capability grant**: the explicit, owner-chosen set of capabilities an agent holds, assembled from a preset or item by item, with provenance recorded. Enforcement is fail-closed: a capability outside the grant is refused at execution time.
 
-**Standing permission** — a per-thread grant that lets a specific tool run in that conversation without re-asking. Every grant is explicit, receipted, readable in plain language, and revocable.
+**Standing permission**: a per-thread grant that lets a specific tool run in that conversation without re-asking. Every grant is explicit, receipted, readable in plain language, and revocable.
 
-**Capability tier** — the risk classification applied to every step that touches the system:
-- **SAFE** — may execute without owner confirmation; still governed and recorded.
-- **SENSITIVE** — requires explicit owner confirmation before execution.
-- **FORBIDDEN** — blocked in code.
+**Capability tier**: the risk classification applied to every step that touches the system:
+- **SAFE**: may execute without owner confirmation; still governed and recorded.
+- **SENSITIVE**: requires explicit owner confirmation before execution.
+- **FORBIDDEN**: blocked in code.
 
 ---
 
 ## Posture and state
 
-**Posture** — a system-wide connectivity stance that changes only how far Kora may reach outward (she always works locally):
-- **Sovereign** — no outbound (default); local operation only. Web-dependent steps are held and resurface when a window opens.
-- **Limited** — outbound only to an explicit allowlist of approved sources; background web denied.
-- **Connected** — owner-opened open outbound through the governed broker, minus a blocklist that always wins; standing until closed.
-- **Maintenance** — an internal state for system upkeep (e.g., local model updates), *not* a user-facing posture.
+**Posture**: a system-wide connectivity stance that changes only how far Kora may reach outward (she always works locally):
+- **Sovereign**: no outbound (default); local operation only. Web-dependent steps are held and resurface when a window opens.
+- **Limited**: outbound only to an explicit allowlist of approved sources; background web denied.
+- **Connected**: owner-opened open outbound through the governed broker, minus a blocklist that always wins; standing until closed.
+- **Maintenance**: an internal state for system upkeep (e.g., local model updates), *not* a user-facing posture.
 
-**Blocklist** — an owner-defined denylist of domains that is refused in every posture, before any allowlist match. Block always wins; PAC's own protected sources (e.g., the local model check) are the only exemption.
+**Blocklist**: an owner-defined denylist of domains that is refused in every posture, before any allowlist match. Block always wins; PAC's own protected sources (e.g., the local model check) are the only exemption.
 
-**Degraded condition** — a network or system problem that is surfaced as operational state. It is **not** a posture, and it never becomes permission to bypass posture rules.
+**Degraded condition**: a network or system problem that is surfaced as operational state. It is **not** a posture, and it never becomes permission to bypass posture rules.
 
 ---
 
 ## Evidence and memory
 
-**Audit trail** — an append-only record of governed actions, policy decisions, and tool invocations, kept separate from the main working data.
+**Audit trail**: an append-only record of governed actions, policy decisions, and tool invocations, kept separate from the main working data.
 
-**Local evidence** — structured observations PAC OS writes about machine state, which Core can read to reason about what is currently true.
+**Local evidence**: structured observations PAC OS writes about machine state, which Core can read to reason about what is currently true.
 
-**Memory governance** — the principle that long-term memory is owner-governed state, under tiered intake: routine observations are captured silently, each with a receipt and a one-click revert; sensitive changes are proposed for owner approval before they land.
+**Memory governance**: the principle that long-term memory is owner-governed state, under tiered intake: routine observations are captured silently, each with a receipt and a one-click revert; sensitive changes are proposed for owner approval before they land.
 
-**Memory firewall** — the write-door rule that personal memory is seeded only by the owner's own words in conversation. Document, web, and tool content is refused as a memory source, so planted text cannot persist across sessions.
+**Memory firewall**: the write-door rule that personal memory is seeded only by the owner's own words in conversation. Document, web, and tool content is refused as a memory source, so planted text cannot persist across sessions.
 
-**Provenance / trust metadata** — the record kept with each memory of where it came from and how far to trust it: an authority chain (owner-stated, owner-approved, observed pattern, agent-derived, imported), a confidence level, and when it was last confirmed or used.
+**Provenance / trust metadata**: the record kept with each memory of where it came from and how far to trust it: an authority chain (owner-stated, owner-approved, observed pattern, agent-derived, imported), a confidence level, and when it was last confirmed or used.
 
-**Consolidation** — memory cleanup (merge a duplicate, resolve a conflict, retire a stale entry) under the same tiering as intake: routine cleanups apply with receipts and a revert, anything touching an owner-stated record is presented for Owner review, and originals are soft-retired, not deleted on the system's own judgment.
+**Consolidation**: memory cleanup (merge a duplicate, resolve a conflict, retire a stale entry) under the same tiering as intake: routine cleanups apply with receipts and a revert, anything touching an owner-stated record is presented for Owner review, and originals are soft-retired, not deleted on the system's own judgment.
 
-**Memory space** — an owner-defined partition of memory. Retrieval is scoped to relevant spaces, so context from one area isn't silently pulled into an unrelated one.
+**Memory space**: an owner-defined partition of memory. Retrieval is scoped to relevant spaces, so context from one area isn't silently pulled into an unrelated one.
 
-**Grounding floor** — the protected, non-editable layer of the system prompt holding PAC's non-negotiable honesty constraints (don't invent system behavior; know when data is missing; never present stale data as live). The Owner can edit the base prompt layered above it, but not the floor.
+**Grounding floor**: the protected, non-editable layer of the system prompt holding PAC's non-negotiable honesty constraints (don't invent system behavior; know when data is missing; never present stale data as live). The Owner can edit the base prompt layered above it, but not the floor.
 
-**Kill switch** — an Owner control that immediately halts all autonomous execution. It is persistent and fails closed: once engaged, it stays engaged across restart until the Owner clears it.
+**Kill switch**: an Owner control that immediately halts all autonomous execution. It is persistent and fails closed: once engaged, it stays engaged across restart until the Owner clears it.
 
-**Memory governor** — a separate, hardware-level concern: managing system resource memory (RAM/VRAM) before running work. Distinct from owner-controlled (semantic) memory; the two share a word, not a meaning.
+**Memory governor**: a separate, hardware-level concern: managing system resource memory (RAM/VRAM) before running work. Distinct from owner-controlled (semantic) memory; the two share a word, not a meaning.
 
 ---
 

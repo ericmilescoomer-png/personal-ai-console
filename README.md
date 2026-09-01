@@ -143,7 +143,7 @@ The command agent that drives PAC is named **Kora**. She is the planning and exe
 
 The model provides reasoning and language. Kora's authority comes from the owner's delegation and the policy layer. Her continuity (journal, receipts, standing orders, mission history, preferences) lives in the system around the model. Swap the model, Kora persists.
 
-Her conduct follows a deference doctrine: she advises, objects, and names risks in the open — but she does not veto lawful work. Refusal is reserved for a short, enumerated hard floor, not for vibes. Judgment belongs to the owner; candor belongs to her.
+Her conduct follows a deference doctrine: she advises, objects, and names risks in the open, but she does not veto lawful work. Refusal is reserved for a short, enumerated hard floor, not for vibes. Judgment belongs to the owner; candor belongs to her.
 
 ---
 
@@ -154,50 +154,50 @@ Everything below runs in the current private build. Product level only; implemen
 **Interface**
 
 - Six-station command center: Home, Kora, Chat, Agents, Library, Settings
-- Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, did, and computed — tools named, receipts attached; turns that used nothing claim nothing
-- Attachments read locally, dragged or pasted: PDFs, Word and Excel documents, and images, with on-device OCR; a photograph is kept as the original file, shown inside the message it arrived with, and grouped in the Library with a real preview — and a local vision model lets Kora describe what's actually in the picture, all offline
+- Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, did, and computed (tools named, receipts attached); turns that used nothing claim nothing
+- Attachments read locally, dragged or pasted: PDFs, Word and Excel documents, and images, with on-device OCR; a photograph is kept as the original file, shown inside the message it arrived with, and grouped in the Library with a real preview. A local vision model lets Kora describe what's actually in the picture, all offline
 - A visible context meter and disclosed conversation folding
-- Replies render richly through one hand-built renderer shared across surfaces — tables, copyable code blocks, and native math (LaTeX to MathML, no libraries, no fonts, no CDN) — and a whole thread exports as markdown
-- Thread search across full chat history; per-reply regenerate and copy; stop a reply mid-stream and rewind — your own words return to the composer to edit and resend
-- A plan born in conversation stays in it for its whole life: the chat card tracks the plan's lifecycle live — draft, approval, run, outcome — and never vanishes at a turn boundary; approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
-- Three distinct answers to a pending plan, each with its own recorded state: deny cancels it on the record, not-now defers it, abort stops a run — and a plan that failed resurfaces as failed, never as a fresh suggestion
-- Per-thread standing permissions: approve a tool once for a thread and Kora stops asking there; every grant is explicit, receipted, readable in plain language, and revocable — and a grouped permissions card in Settings holds the tool-family switches under one master control
+- Replies render richly through one hand-built renderer shared across surfaces: tables, copyable code blocks, and native math (LaTeX to MathML, no libraries, no fonts, no CDN). A whole thread exports as markdown
+- Thread search across full chat history; per-reply regenerate and copy; stop a reply mid-stream and rewind: your own words return to the composer to edit and resend
+- A plan born in conversation stays in it for its whole life: the chat card tracks the plan's lifecycle live (draft, approval, run, outcome) and never vanishes at a turn boundary; approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
+- Three distinct answers to a pending plan, each with its own recorded state: deny cancels it on the record, not-now defers it, abort stops a run. A plan that failed resurfaces as failed, never as a fresh suggestion
+- Per-thread standing permissions: approve a tool once for a thread and Kora stops asking there; every grant is explicit, receipted, readable in plain language, and revocable. A grouped permissions card in Settings holds the tool-family switches under one master control
 - Hand work to a named agent straight from chat; an ambiguous name fails closed, and the same approval gate is raised as anywhere else
 - Inbox lifecycle that tracks *seen* and *done* separately, with Done and Later verbs; nothing is silently dismissed
 - Kora's filterable working journal, with on-demand reflection in her own voice
 - Operational awareness in Settings: what's blocked, why, and what would unlock it; per-source liveness that labels stale evidence *not current*; one-click diagnostic bundle
 - Seven Settings panels: Personal, Kora, Privacy, Models, Storage, System, Advanced
-- Voice both directions, fully offline: local neural synthesis (Kokoro), local dictation, and a full voice-conversation mode — start a voice thread, speak, Kora answers aloud, interrupt her mid-reply; nothing spoken or heard leaves the machine
+- Voice both directions, fully offline: local neural synthesis (Kokoro), local dictation, and a full voice-conversation mode. Start a voice thread, speak, Kora answers aloud, interrupt her mid-reply; nothing spoken or heard leaves the machine
 
 **Core runtime**
 
 - FastAPI local backend; models via Ollama (Qwen in the reference build), configurable in Settings
 - Governed model lifecycle: plain-English verdicts from locally measured evaluation, a per-machine role recommendation, model pulls treated as posture-gated egress, portable model cards
-- The model seat is contested, not assumed: when a successor model shipped, it was benchmarked head-to-head on local instruments — evidence discipline, tier accuracy, citation honesty, vision, latency — and the incumbent held the seat; both baselines are persisted, so the next challenge costs minutes, not days
+- The model seat is contested, not assumed: when a successor model shipped, it was benchmarked head-to-head on local instruments (evidence discipline, tier accuracy, citation honesty, vision, latency) and the incumbent held the seat; both baselines are persisted, so the next challenge costs minutes, not days
 - Retrieval that knows sources are not all the same kind of thing: owner-settable authority weights by source kind, an adjustable retrieval budget, and a gate that turns off automatic reaching entirely
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
-- Typed compute, never a code runner: sixteen governed math operations — arithmetic through calculus, exact unit conversion, matrices, base and float representation — as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
-- Real deadlines on governed work: every long-running path is killed or bounded when its time is up — a timeout here is enforced, not advisory
+- Typed compute, never a code runner: sixteen governed math operations (arithmetic through calculus, exact unit conversion, matrices, base and float representation) as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
+- Real deadlines on governed work: every long-running path is killed or bounded when its time is up; a timeout here is enforced, not advisory
 - Three postures plus a one-touch panic control that drops everything back to Sovereign instantly
 - Graduated autonomy profiles, and a fail-closed kill switch that halts autonomous execution and survives restart
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
-- One error language: every API error carries a machine-readable code in a canonical envelope — unhandled failures included, so no client ever meets a bare plain-text 500 — and the operational event stream has its own read-only evidence tab
+- One error language: every API error carries a machine-readable code in a canonical envelope, unhandled failures included, so no client ever meets a bare plain-text 500; the operational event stream has its own read-only evidence tab
 - Owner-authored standing orders: scoped, prioritized, and expirable, so a temporary order lapses instead of quietly becoming permanent
 - Watch-turnover brief on return: after a deep-idle gap, Kora hands over the watch in a few sentences, with optional voice playback (off by default)
 - On-demand after-action briefs over any time window, gathered through governed read-only steps scoped by the system, filed as receipted report deliverables
 - Standing intelligence watches evaluated deterministically on a schedule, with no model in the evaluation loop; every run receipted; matches promotable into approval-gated plans
 - External URL watches under posture: fetches only while Connected is open, through the broker, honoring robots.txt; every denied fetch is recorded as an explicit gap
 - One intelligence feed of record: watch results and agent reports in a single feed, read from the source deliverable, semantically searchable, every entry taking owner feedback
-- Owner-governed memory with tiered intake: routine observations from conversation are captured silently, every write receipted and one-click revertible; anything sensitive — money, health, legal, a judgment about the owner, or a contradiction of something the owner said — asks first. An observed fact must recur across separate conversations before it becomes durable; one-off mentions expire on their own. Provenance and trust metadata ride every record, with owner-defined spaces, export, import, and versioned rollback
-- A memory firewall at the write door: personal memory is seeded only by the owner's own words in conversation — document, web, and tool content is refused, and a silent write can never claim the owner's authority
-- Kora's memory card: what she knows about you, rendered exactly as the model receives it, each fact labeled with its standing — you said it, you approved it, or observed — plus a change feed with a receipt and a revert on every change, and a capture switch that pauses silent memory work entirely
-- Work reports back: a finished mission lands as a delivery record behind a notification bell, and Kora closes the loop in the conversation that started the work, in her own voice — a result lands on the record instead of evaporating at a turn boundary
-- Ask Kora where things stand and she answers from her own recorded actions — plans, missions, deliveries — not from the model's impression of them
+- Owner-governed memory with tiered intake: routine observations from conversation are captured silently, every write receipted and one-click revertible; anything sensitive (money, health, legal, a judgment about the owner, or a contradiction of something the owner said) asks first. An observed fact must recur across separate conversations before it becomes durable; one-off mentions expire on their own. Provenance and trust metadata ride every record, with owner-defined spaces, export, import, and versioned rollback
+- A memory firewall at the write door: personal memory is seeded only by the owner's own words in conversation. Document, web, and tool content is refused, and a silent write can never claim the owner's authority
+- Kora's memory card: what she knows about you, rendered exactly as the model receives it, each fact labeled with its standing (you said it, you approved it, or observed), plus a change feed with a receipt and a revert on every change, and a capture switch that pauses silent memory work entirely
+- Work reports back: a finished mission lands as a delivery record behind a notification bell, and Kora closes the loop in the conversation that started the work, in her own voice, so a result lands on the record instead of evaporating at a turn boundary
+- Ask Kora where things stand and she answers from her own recorded actions (plans, missions, deliveries), not from the model's impression of them
 - Editable base system prompt over a protected grounding floor: framing can be tuned, honesty constraints cannot be edited away; every change versioned and receipted
-- An agent crew of a dozen scoped workers, each defined the way the industry now defines an agent — name, description, charter, capabilities, trigger, brain, autonomy — and holding exactly the capabilities the owner granted it; authorization reads each agent's own granted set, fail-closed, and an agent with zero capabilities is legal: it just talks
+- An agent crew of a dozen scoped workers, each defined the way the industry now defines an agent (name, description, charter, capabilities, trigger, brain, autonomy) and holding exactly the capabilities the owner granted it; authorization reads each agent's own granted set, fail-closed, and an agent with zero capabilities is legal: it just talks
 - A measured agent lifecycle (draft, trial, active, proven), a create-an-agent wizard with capability presets and an à-la-carte checklist, and per-agent dossiers that show the actual grants, not a label
 - A governed build workspace for the Builder agent: sandboxed patch-and-test cycles, path-confined, no version-control access; failing tests report red honestly, and a failed build files a failure report with the evidence
 
@@ -237,7 +237,7 @@ The work loop is most mature through the approval stage. The first governed exec
 - Outbound *action* connectors (governed writes to third-party services) are not shipped; the broker is in place.
 - Remote model use is deliberately narrow: one provider today, artifact boundary only. A broader roster is direction; cloud models planning, executing, or holding capability is a boundary that stays, not a gap.
 - Built for local, owner-controlled deployment; not hardened for public internet exposure or multi-user hosting.
-- Smart-home and IoT control are not in the desktop build. The smart-home node is now under active construction as its own governed deployment — its commissioning authority and Ed25519-signed receipt chain already hold under a 105-test acceptance suite — but no device control has shipped.
+- Smart-home and IoT control are not in the desktop build. The smart-home node is now under active construction as its own governed deployment (its commissioning authority and Ed25519-signed receipt chain already hold under a 105-test acceptance suite), but no device control has shipped.
 
 ---
 
@@ -303,7 +303,7 @@ Autonomy is a dial here, with graduated profiles from observe up to time-bounded
 
 ## Roadmap
 
-Product direction: a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane — now under construction as PAC's second governed node.
+Product direction: a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane, now under construction as PAC's second governed node.
 
 See **[docs/roadmap.md](docs/roadmap.md)** for the earned-autonomy model, what's built now, and what's explicitly out of scope.
 
