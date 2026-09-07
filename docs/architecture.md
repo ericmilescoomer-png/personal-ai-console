@@ -106,9 +106,9 @@ flowchart LR
 | **Observation** | The system reads available evidence (machine state, memory, prior receipts, documents). |
 | **Plan** | Kora drafts a sequence of steps, each tagged with a capability tier. |
 | **Approval** | SAFE steps may proceed. SENSITIVE steps require Owner confirmation. FORBIDDEN steps are blocked. |
-| **Execution** | Approved steps run through governed capabilities. |
+| **Execution** | Approved steps run through governed capabilities. Work that needs more than one plan iterates as a bounded loop of passes, each pass a plan through the same gate. |
 | **Receipt** | Each step's outcome is captured in the receipt spine. |
-| **Deliverable** | The completed mission produces a typed output (report, research, draft, status, audit). |
+| **Deliverable** | The completed mission produces a typed output (report, research, draft, status, audit), released as done only when an external judge finds the mission's locked criteria met. |
 
 Not every chat message becomes a mission. Lightweight queries stay light. The lifecycle applies to work that needs to be visible and accountable.
 
@@ -150,7 +150,7 @@ To prevent misreading, this is what the document above is **not** claiming:
 
 - Not claiming the system is hardened for public internet exposure.
 - Not claiming cross-platform validation (current validated platform is Windows).
-- Not claiming a finished mission deliverable loop.
+- Not claiming the mission loop is finished hardening: it iterates and judges its own done, and long-form quality is still being proven on live runs.
 - Not claiming shipped outbound connectors (the network broker exists; specific connectors are roadmap).
 - Not claiming any specific third-party integration or compliance certification.
 

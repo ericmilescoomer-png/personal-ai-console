@@ -28,9 +28,10 @@ Working today on a local, owner-controlled, Windows-validated build:
 - Local-first command center with six stations (Home, Kora, Chat, Agents, Library, Settings).
 - **Kora**, the command agent: observes, drafts plans, requests approval, executes governed capabilities, and writes receipts.
 - The work loop: Observation → Plan → Approval → Execution → Receipt → Deliverable.
+- Long work iterates: a mission runs as a bounded loop of receipted passes with its state on disk, under done criteria Kora proposes and the Owner locks at approval, judged by an external verifier working from evidence assembled in code, with measurement by code wherever a criterion can be measured, honest not-done checkpoints with a Continue that extends the budget, and self-extension up to a hard ceiling that stays the Owner's stop.
 - Code-enforced capability tiers (**SAFE / SENSITIVE / FORBIDDEN**) and three connectivity postures (**Sovereign / Limited / Connected**, with an owner-defined blocklist that always wins).
 - Action receipt spine and an append-only audit trail, separate from the main data.
-- A return spine for dispatched work: a finished mission lands as a delivery record behind a notification bell, Kora reports the outcome in the conversation that started the work, and a status question is answered from her own recorded actions rather than the model's impression of them.
+- A return spine for dispatched work: a finished mission lands as a delivery record behind a notification bell, Kora reports the outcome in the conversation that started the work, and a status question is answered from her own recorded actions rather than the model's impression of them; a chat turn runs to completion whether or not the page that asked is still open, and a turn that dies says so.
 - Typed compute: sixteen governed math operations as a capability with no filesystem, network, or process surface, never a code runner, with every computed answer disclosed as computed.
 - Tamper-evident evidence: the audit and receipt trail is cryptographically chained end to end, every governed actor carries an identity that binds its actions, model artifacts verify against approved digests, and the build produces an AI Bill of Materials on demand, scored honestly in the [AISVS self-assessment](aisvs-self-assessment.md).
 - Owner-governed memory under tiered intake: routine observations captured silently with a receipt and a one-click revert, sensitive changes owner-approved, a write-door firewall so document, web, and tool content can never seed personal memory, and Kora's memory card rendering what she knows exactly as the model receives it; a local document repository and local embeddings.
@@ -66,10 +67,10 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Mission expansion
 
-- **Deliverable drafting (deepening)**: receipted report deliverables are shipped (see "Now"); long-form document and draft work, optionally saved to the local library, is the direction.
+- **Deliverable drafting (hardening)**: the iterating mission loop is shipped and long-form drafts now come out of it as real files (see "Now"); coherence across sections, export beyond the mission's sandbox, and saving into the local library are the direction.
 - **Governed web research (expanding)**: read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
 - **Mission templates**: reusable mission shapes for recurring patterns.
-- **Multi-step / multi-agent missions**: longer-running work and mission-to-mission dependencies, only as real workflows demand.
+- **Multi-agent missions**: longer-running single missions are shipped (see "Now"); mission-to-mission dependencies and work split across agents, only as real workflows demand.
 
 ### Ambient infrastructure
 

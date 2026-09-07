@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **3,086 automated tests** across **325 test files** (counts verified against the build on 2026-08-28), including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
+The private build is covered by **3,406 automated tests** across **338 test files** (counts verified against the build on 2026-09-07), including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
@@ -31,7 +31,7 @@ The point of the tiering is the **contract** layer. Most test suites prove that 
 
 ## Contract tests: invariants that are enforced, not promised
 
-**956 contract tests, across 106 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
+**977 contract tests, across 106 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
 
 - **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls, and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
 - **Sensitive work cannot self-authorize.** Tests assert that a SENSITIVE step parks for Owner confirmation and does not execute on the model's say-so.
@@ -60,7 +60,7 @@ Trust is accrued from behavior over time and is inspectable. It is not granted b
 
 Every change that touches security posture, capability permissions, memory semantics, the OS&harr;Core contract, or connectivity posture is recorded in an **append-only development ledger** before the change is considered done. The ledger is chronological and never edited after the fact.
 
-In the current build it holds **224 entries spanning six months** of continuous work (March through August 2026), and **entries that touch the governed configuration carry a configuration fingerprint** (below; 97 of the 224 at last count). Routine formatting and cosmetic edits are deliberately *excluded*; the ledger is a record of consequential change, not a commit log.
+In the current build it holds **275 entries spanning seven months** of continuous work (March through September 2026), and **entries that touch the governed configuration declare what the change did to its fingerprint** (below; 139 of the 275 at last count, most of them recording it unchanged). Routine formatting and cosmetic edits are deliberately *excluded*; the ledger is a record of consequential change, not a commit log.
 
 The discipline this enforces is simple: **if a meaningful change isn't in the ledger, it isn't finished.**
 
@@ -68,7 +68,7 @@ The discipline this enforces is simple: **if a meaningful change isn't in the le
 
 ## Configuration drift detection
 
-PAC keeps a **fingerprint** of its own governing configuration: a hash over the system prompt, the tool/capability registry, and the set of runtime agents. Each ledger entry records the fingerprint *after* the change.
+PAC keeps a **fingerprint** of its own governing configuration: a hash over the system prompt, the tool/capability registry, and the set of runtime agents. A ledger entry that touches the governed configuration records the fingerprint *after* the change, or states that it did not move.
 
 If the fingerprint moves and the ledger does not explain why, the system is in a **drift state**: a signal to stop and find the unexplained change before doing more work. This makes silent, untracked changes to the trust-relevant configuration detectable rather than invisible.
 

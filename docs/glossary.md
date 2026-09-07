@@ -50,6 +50,12 @@ Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary def
 
 **Deliverable**: the typed output a completed mission produces (e.g., report, research, draft, status, audit).
 
+**Pass**: one bounded unit of mission work: a small plan of its own, gated and receipted like any other, planned from a fresh context assembled in code.
+
+**Done criteria**: the conditions a mission must satisfy, proposed by Kora when the mission opens, edited or approved by the Owner, and locked at approval. Only the verifier can mark one met.
+
+**Verifier**: the external judge of done. It works from evidence assembled in code, never the worker's self-assessment, measures by code whatever can be measured, and its verdict decides whether a mission is done, needs revision, or stops.
+
 ---
 
 ## Authority and capability

@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-08-28. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-09-07. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 3,086 across 325 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 956 across 106 modules |
+| Automated tests | 3,406 across 338 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 977 across 106 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 224 entries over six months, never edited after the fact |
+| Append-only dev ledger | 275 entries over seven months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -157,8 +157,10 @@ Everything below runs in the current private build. Product level only; implemen
 - Streaming chat with per-turn evidence disclosure: each reply lists what it read, recalled, did, and computed (tools named, receipts attached); turns that used nothing claim nothing
 - Attachments read locally, dragged or pasted: PDFs, Word and Excel documents, and images, with on-device OCR; a photograph is kept as the original file, shown inside the message it arrived with, and grouped in the Library with a real preview. A local vision model lets Kora describe what's actually in the picture, all offline
 - A visible context meter and disclosed conversation folding
+- Library uploads take any number of files in one pick; name collisions are asked about once at the end, and one line reports what landed, what was skipped, and what failed
 - Replies render richly through one hand-built renderer shared across surfaces: tables, copyable code blocks, and native math (LaTeX to MathML, no libraries, no fonts, no CDN). A whole thread exports as markdown
 - Thread search across full chat history; per-reply regenerate and copy; stop a reply mid-stream and rewind: your own words return to the composer to edit and resend
+- A reply outlives the page that asked for it: a turn keeps running to completion if the window closes or the Owner navigates away, and is waiting in the thread on return; stopping a reply is an explicit act that keeps the partial answer on the record, and a turn that dies says so instead of hanging
 - A plan born in conversation stays in it for its whole life: the chat card tracks the plan's lifecycle live (draft, approval, run, outcome) and never vanishes at a turn boundary; approval can be given right there; the Inbox ticket mirrors the same object, and a decision on either surface writes the same receipt
 - Three distinct answers to a pending plan, each with its own recorded state: deny cancels it on the record, not-now defers it, abort stops a run. A plan that failed resurfaces as failed, never as a fresh suggestion
 - Per-thread standing permissions: approve a tool once for a thread and Kora stops asking there; every grant is explicit, receipted, readable in plain language, and revocable. A grouped permissions card in Settings holds the tool-family switches under one master control
@@ -176,6 +178,10 @@ Everything below runs in the current private build. Product level only; implemen
 - The model seat is contested, not assumed: when a successor model shipped, it was benchmarked head-to-head on local instruments (evidence discipline, tier accuracy, citation honesty, vision, latency) and the incumbent held the seat; both baselines are persisted, so the next challenge costs minutes, not days
 - Retrieval that knows sources are not all the same kind of thing: owner-settable authority weights by source kind, an adjustable retrieval budget, and a gate that turns off automatic reaching entirely
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
+- Long work iterates under governance: a mission that needs more than one plan runs as a bounded loop of small passes, each pass a plan of its own through the same policy gate and executor as any other, so every pass is receipted by construction. The mission's state lives on disk, and each pass starts from a fresh, bounded context assembled in code from the records, never a growing chat history. One briefing approval covers the safe passes inside the approved objective and budget; a sensitive proposal pauses the mission before anything runs
+- Done is a contract, not an opinion: when a mission opens, Kora proposes the done criteria and a budget, the Owner edits or approves them, and they lock at approval. An external judge, never the worker, decides each criterion from evidence assembled in code (the criteria verbatim, the workspace listing, excerpts of the actual files, the step results), and a criterion that was met un-meets itself if its artifact disappears. Whatever PAC can measure (words written, documents read, citations checked, files present) it resolves by code every pass and never asks a model about
+- Every exit is honest: a budget hit, a stall, or a done-claim the judge rejects lands as a not-done checkpoint that leads with the work so far, and Continue extends the budget from there. A mission still making progress extends itself up to a hard ceiling that stays the Owner's stop; when it goes in circles, PAC steers itself if it can name the next action and asks the Owner only what it cannot answer. Every pass carries its cost (planner and judge calls, tokens, time) and whether it moved the work forward
+- The deliverable is proof first: a verified mission delivers a scorecard ahead of the artifact (each criterion met or unmet, with its evidence and receipt anchor, gaps declared), and the artifact itself is real files in the mission's own sandboxed workspace, which Kora can list, read, and write and the Owner opens from the rail
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
 - Typed compute, never a code runner: sixteen governed math operations (arithmetic through calculus, exact unit conversion, matrices, base and float representation) as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
@@ -225,12 +231,12 @@ Everything below runs in the current private build. Product level only; implemen
 
 ## What's Not Built Yet
 
-The work loop is most mature through the approval stage. The first governed execution sandbox is live, and outcome verification is the area being hardened next (see the [roadmap](docs/roadmap.md)).
+The work loop now runs end to end, iteration and verification included. What is being hardened is long-form work on live runs: the loop is exercised with fresh missions, and each stop those runs surface is traced to its cause in the records and repaired (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end; a real installer is queued behind a stabilization pass now underway, and no installable release has shipped yet.
 - Some UI surfaces are catching up to backend capability.
-- Deliverable synthesis is strongest for report-style work; long-form document drafting is still maturing.
+- Long-form document drafting runs through the mission loop now and is still maturing: coherence across sections and the loop's judgment of when to stop are the open questions. Report-style deliverables remain the most mature.
 - Unified cross-surface search exists, but the polished "search everything" experience is still evolving.
 - An episodic-memory surface was built, then deliberately pulled pending a redesign; owner-controlled memory is unaffected.
 - Read-only web research is experimental and off by default; source storage, extraction, and citations are ongoing.
@@ -303,7 +309,7 @@ Autonomy is a dial here, with graduated profiles from observe up to time-bounded
 
 ## Roadmap
 
-Product direction: a stronger mission deliverable loop, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane, now under construction as PAC's second governed node.
+Product direction: a hardened mission loop for long-form work, governed web research and outbound connectors, richer ambient briefs and search, specialized agent workers, expanded deployment profiles, and the return of the smart-home / IoT control plane, now under construction as PAC's second governed node.
 
 See **[docs/roadmap.md](docs/roadmap.md)** for the earned-autonomy model, what's built now, and what's explicitly out of scope.
 

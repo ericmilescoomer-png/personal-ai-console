@@ -70,6 +70,10 @@ When a plan contains sensitive work, it pauses in an *awaiting confirmation* sta
 
 Approved steps run through governed capabilities. Each step's outcome is captured in a **receipt**, lifecycle-tracked from proposal through verification, and governed actions also write to an **append-only audit trail** kept separate from the main data. Read-only work generally doesn't produce receipts; receipts exist to make *consequential* work inspectable after the fact.
 
+### 5. Long work iterates, and done is judged
+
+A mission that cannot finish in one plan runs as a bounded loop. Each pass is a small plan of its own, evaluated by the same policy gate and executed through the same governed capabilities as any other, so every pass leaves receipts by construction. The mission's state lives on disk, and each pass starts from a fresh context assembled in code from the records rather than a growing transcript. One briefing approval covers the safe passes inside the approved objective and budget; a sensitive proposal pauses the mission before anything runs. Done is decided by an external judge working from evidence assembled in code, never from the worker's own account, against criteria the owner locked at approval; whatever can be measured (words, documents read, citations checked, files present) is measured by code and never asked of a model. When the budget runs out, or the judge says no, the mission stops honestly as not done, with the work so far, and continues only by extending the budget.
+
 ---
 
 ## Autonomy: how much runs without asking
@@ -121,6 +125,7 @@ In Sovereign posture, outbound capabilities are blocked outright, regardless of 
 - The gate is deterministic and model-free; wording can't talk it into allowing forbidden or unconfirmed work.
 - Sensitive work waits for the owner; forbidden work is blocked.
 - Autonomy controls confirmation frequency, never permission.
+- Done is judged from evidence, never declared by the worker.
 - Outbound is posture-gated; Sovereign means local-only.
 - Consequential work leaves a receipt and an audit entry.
 
