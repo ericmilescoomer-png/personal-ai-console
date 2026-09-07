@@ -56,11 +56,11 @@ The Kora station's Inbox brings the Owner only the calls that need them: each ca
 
 ---
 
-## A Specialist Reports Back
+## An Agent Reports Back
 
-![Specialist report open over the intelligence feed](../assets/screenshots/07-specialist-report.png)
+![Agent report open over the intelligence feed](../assets/screenshots/07-agent-report.png)
 
-Kora doesn't work alone; she operates a crew of scoped specialists. Here, a specialist has verified the backup from the earlier walkthrough and filed its report into the intelligence feed: the one feed of record everything Kora watches flows through, so deliverables never scatter into side surfaces. The report opens in the right-hand inspector with its lineage one click deep: links back to the **Mission** and the **Plan** that produced it, and tabs for the signals, sources, and receipts behind the findings. It cites what was checked and what was found, and closes on the standard PAC gives its own summaries: *the restore point is provable*. The **Promote to follow-up mission** action routes through the same approval gate as any other governed work &mdash; even acting on intelligence asks first.
+Kora doesn't work alone; she operates a crew of scoped agents, each holding exactly the capabilities the Owner granted it. Here, one of those agents has verified the backup from the earlier walkthrough and filed its report into the intelligence feed: the one feed of record everything Kora watches flows through, so deliverables never scatter into side surfaces. The report opens in the right-hand inspector with its lineage one click deep: links back to the **Mission** and the **Plan** that produced it, and tabs for the signals, sources, and receipts behind the findings. It cites what was checked and what was found, and closes on the standard PAC gives its own summaries: *the restore point is provable*. The **Promote to follow-up mission** action routes through the same approval gate as any other governed work &mdash; even acting on intelligence asks first.
 
 ---
 

@@ -1,11 +1,12 @@
 {
   "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
-  "_purpose": "Show the shape of an agent definition, including its per-agent autonomy level. Autonomy level controls how often the agent pauses to confirm — it does NOT change what the agent is permitted to do; the capability tiers and policy gate still bound it. See docs/how-it-works.md.",
+  "_purpose": "Show the shape of an agent definition: its owner-granted capability set and its per-agent autonomy level. There is one kind of agent; nothing about its authority is implied by a title or class. Autonomy level controls how often the agent pauses to confirm — it does NOT change what the agent is permitted to do; the capability tiers and policy gate still bound it. See docs/how-it-works.md.",
 
   "agent_id": "example-agent-001",
   "name": "Meeting Notes Summarizer",
   "goal": "Summarize the morning's meeting notes into a report deliverable.",
-  "role_class": "specialist",
+  "capabilities": ["documents.read", "report.write"],
+  "_capabilities_note": "The granted set is the agent's entire authority. Enforcement is fail-closed: a capability outside this list is refused at execution time. An empty list is valid; the agent just converses.",
 
   "autonomy_level": "confirm_summary",
   "_autonomy_options": ["auto", "confirm_summary", "confirm_per_step", "block"],
