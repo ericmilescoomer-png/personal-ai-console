@@ -24,6 +24,11 @@ grant of any further rights by the copyright holder.
 application Serial No. 99527085. See TRADEMARK.md for trademark notice
 and permitted use.
 
+One exception: the framework page docs/earned-autonomy.md is licensed
+separately under Creative Commons Attribution 4.0 (CC BY 4.0), as stated
+at the bottom of that page. That grant covers only that page's text and
+grants no rights in the names or marks.
+
 The Personal A.I. Console implementation (source code) is private, is not
 part of this repository, and is not available for distribution.
 
