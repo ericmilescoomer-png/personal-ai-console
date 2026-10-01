@@ -12,7 +12,7 @@ It is written for someone who works in AI governance, AI risk, or AI compliance,
 
 PAC is a local, single-owner system, not an enterprise platform or a hosted service. The governance problems it solves are real ones, but they are scoped to that deployment target. Where enterprise patterns (multi-user, cloud-hosted, audited-by-third-parties) are different from what PAC does, this document says so plainly.
 
-Every claim here is grounded in behavior that exists in the private build. For honesty about what is not yet built, see [roadmap.md](roadmap.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md).
+Every claim here is grounded in behavior that exists in the private build. For honesty about what is not yet built, see [roadmap.md](roadmap.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md). The rules PAC runs on are stated as a standalone framework, with principles, controls, and levels, in [earned-autonomy.md](earned-autonomy.md).
 
 ---
 
@@ -77,13 +77,26 @@ The NIST AI Risk Management Framework (AI RMF 1.0) organizes AI governance into 
 **Measure**: *analyze, assess, and track AI risk.*
 - The earned-autonomy ratchet is a measured threshold, not a judgment call. Agent promotion (draft &rarr; trial &rarr; active &rarr; proven) requires recorded performance statistics over time. An agent that has not earned trust is not granted it.
 - Configuration fingerprinting detects drift in the trust-relevant configuration (system prompt, capability registry, agent set). Unexplained drift is a signal, not a silent state change.
-- A dedicated contract-test layer pins the trust invariants specifically: 977 tests across 106 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
+- A dedicated contract-test layer pins the trust invariants specifically: 1,048 tests across 107 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
 
 **Manage**: *treat, respond to, and recover from AI risk.*
 - The kill switch halts all autonomous execution immediately and survives restart.
 - Connectivity postures fail toward caution: Sovereign (no outbound) is the default and the resting state. A degraded network condition is surfaced as operational state, not treated as permission to bypass posture rules.
 - Memory intake is tiered: routine observations apply silently but always with a receipt and a one-click revert, while sensitive memory changes are proposals for owner review. The system never changes what it knows about the owner without leaving the owner a visible record and a handle to undo it.
 - Agent lifecycle management includes structured rollback: an agent in trial can be retired without affecting the rest of the system.
+
+---
+
+## Agent-Specific Guidance from NIST (2026)
+
+The AI RMF predates agents that act. In 2026 NIST began addressing that directly, and the questions it is asking are the questions PAC was built to answer.
+
+- **The AI Agent Standards Initiative** (launched 2026-02-17 by NIST's Center for AI Standards and Innovation) organizes the work into industry-led standards, community-led protocols, and research into agent authentication and identity. Its security track opened with a Request for Information on AI agent security in January 2026.
+- **The NCCoE concept paper on software and AI agent identity and authorization** (February 2026) frames the problem as identification, authentication, authorization, auditing, and prompt injection, and asks, among other things, how least privilege is established for an agent whose actions are not fully predictable, how an agent proves its authority to perform a specific action, how agent identity is bound to a human for human-in-the-loop authorization, and what limits the impact after an injection succeeds. PAC's answers, in order: a granted capability set resolved fail-closed; a registry tier the model cannot change and a deterministic gate; approval as an act by the owner that no process can supply; and a model that holds no authority, so a successful injection becomes a request that was denied on the record.
+- **CAISI's red-teaming results** (published 2026-03-23, with the UK AI Security Institute and Gray Swan) found at least one successful hijacking attack against every one of thirteen frontier models across more than 250,000 attempts. That is the premise this system starts from: the model will be fooled, and the architecture has to hold anyway.
+- **Control overlays for AI systems** (SP 800-53 overlays for single-agent and multi-agent deployments) were still in development at the time of writing. When they publish, this page will map against them.
+
+Framework crosswalk at the level of principles and controls: [earned-autonomy.md](earned-autonomy.md).
 
 ---
 
@@ -99,7 +112,7 @@ The EU AI Act classifies AI systems by risk level and imposes requirements propo
 
 **Data and data governance (Article 10):** Memory is owner-governed, provenance-tagged, and never modified off the record: every change carries a receipt and can be reverted, sensitive changes require approval first, and the owner can export, inspect, and roll back their memory set. What the system knows about the owner belongs to the owner, and is rendered to the owner exactly as the model receives it.
 
-*This is a design-level mapping, not a compliance certification or legal opinion. PAC is a private prototype, not a commercial AI system subject to regulatory certification.*
+*This is a design-level mapping, not a compliance certification or legal opinion. PAC is a private prototype, not a commercial AI system subject to regulatory certification. Note that the Digital Omnibus on AI, in force since July 2026, moved the compliance dates for high-risk systems into 2027 and 2028; the articles above are cited for their reasoning, not their deadlines.*
 
 ---
 
@@ -128,4 +141,4 @@ These are not governance-adjacent properties. They are the governance.
 
 ---
 
-*See also: [README](../README.md) &middot; [trust-model.md](trust-model.md) &middot; [owasp-agentic-mapping.md](owasp-agentic-mapping.md) &middot; [roadmap.md](roadmap.md) &middot; [NOTICE.md](../NOTICE.md)*
+*See also: [README](../README.md) &middot; [earned-autonomy.md](earned-autonomy.md) &middot; [trust-model.md](trust-model.md) &middot; [owasp-agentic-mapping.md](owasp-agentic-mapping.md) &middot; [roadmap.md](roadmap.md) &middot; [NOTICE.md](../NOTICE.md)*

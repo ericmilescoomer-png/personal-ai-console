@@ -1,0 +1,90 @@
+{
+  "_note": "Mock example only. Not generated from production data. Field names are illustrative and do not reflect the actual private schema.",
+  "_purpose": "Show the shape of a mission scorecard: the done criteria the Owner locked at approval, each judged met or unmet from evidence assembled in code, with the gap declared rather than hidden. Done is a contract, not an opinion; the worker never marks its own criterion met. See docs/how-it-works.md, section 5, and docs/earned-autonomy.md.",
+
+  "mission_id": "example-mission-001",
+  "title": "Summarize this morning's meeting notes",
+  "deliverable_kind": "report",
+
+  "criteria_locked_at": "2026-05-26T10:00:40Z",
+  "criteria_locked_by": "owner",
+  "_criteria_note": "Kora proposed these when the mission opened; the Owner edited one and approved the set. After this moment the worker cannot change them.",
+
+  "verdict": {
+    "status": "not_done",
+    "decided_by": "verifier",
+    "decided_at": "2026-05-26T10:21:04Z",
+    "pass": 6,
+    "product_hash": "sha256:3f1c…",
+    "_verdict_note": "The verifier is external to the worker. It reads the criteria verbatim, the workspace listing, excerpts of the actual files, and the step results. A criterion that was met un-meets itself if its artifact disappears."
+  },
+
+  "criteria": [
+    {
+      "id": "c1",
+      "text": "The summary is under 400 words.",
+      "measure": { "kind": "code", "metric": "words", "max": 400 },
+      "observed": 318,
+      "status": "met",
+      "evidence": { "file": "meeting-summary-2026-05-26.md", "receipt_id": "example-receipt-r3" },
+      "_note": "Whatever can be counted is counted by code on every pass and never asked of a model."
+    },
+    {
+      "id": "c2",
+      "text": "Every decision in the summary cites the line of the notes it came from.",
+      "measure": { "kind": "code", "metric": "citations_checked" },
+      "observed": { "claims": 4, "supported": 4, "unsupported": 0 },
+      "status": "met",
+      "evidence": { "file": "meeting-summary-2026-05-26.md", "receipt_id": "example-receipt-r4" },
+      "_note": "A citation check scores each claim against the passage it cites in the source document; a claim is checked whole, never as a fragment."
+    },
+    {
+      "id": "c3",
+      "text": "The summary covers every agenda item that appears in the notes.",
+      "measure": { "kind": "judgment" },
+      "status": "met",
+      "evidence": {
+        "file": "meeting-summary-2026-05-26.md",
+        "quote": "budget review, hiring plan, and launch",
+        "receipt_id": "example-receipt-r3"
+      },
+      "_note": "A judged criterion is met only when the verifier can quote consecutive words from the product itself as its evidence."
+    },
+    {
+      "id": "c4",
+      "text": "Each action item names an owner.",
+      "measure": { "kind": "judgment" },
+      "status": "unmet",
+      "reason": "Two of five action items name no owner; the notes do not state one.",
+      "evidence": { "file": "meeting-summary-2026-05-26.md", "receipt_id": "example-receipt-r3" },
+      "_note": "An unmet criterion is stated with its reason. A disclaimer cannot make it met."
+    }
+  ],
+
+  "gaps": [
+    {
+      "criterion": "c4",
+      "what_is_missing": "Owners for two action items.",
+      "why": "The source notes do not name them; nothing in the library supplies them.",
+      "what_would_change_it": "The Owner names the two owners, or approves the summary as is."
+    }
+  ],
+  "_gaps_note": "The missing-and-why list is rendered from records, never written by the model.",
+
+  "budget": {
+    "passes_used": 6,
+    "passes_allowed": 6,
+    "wall_seconds": 412,
+    "planner_calls": 6,
+    "judge_calls": 2,
+    "stop_reason": "budget_exhausted"
+  },
+
+  "delivery": {
+    "kind": "partial",
+    "files": [ { "path": "meeting-summary-2026-05-26.md", "bytes": 2104, "words": 318 } ],
+    "what_is_unresolved": "c4: two action items have no owner.",
+    "continue_available": true,
+    "_note": "Every final stop delivers the work so far with what is unresolved. A judge's refusal does not stop the mission; it sends the work back for repair. Only a budget stop, a block on the Owner's authority, or a genuine dead end ends a run."
+  }
+}

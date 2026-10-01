@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-09-07. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-10-01. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 3,406 across 338 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 977 across 106 modules |
+| Automated tests | 4,181 across 344 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 1,048 across 107 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 275 entries over seven months, never edited after the fact |
+| Append-only dev ledger | 297 entries over seven months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -180,7 +180,7 @@ Everything below runs in the current private build. Product level only; implemen
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
 - Long work iterates under governance: a mission that needs more than one plan runs as a bounded loop of small passes, each pass a plan of its own through the same policy gate and executor as any other, so every pass is receipted by construction. The mission's state lives on disk, and each pass starts from a fresh, bounded context assembled in code from the records, never a growing chat history. One briefing approval covers the safe passes inside the approved objective and budget; a sensitive proposal pauses the mission before anything runs
 - Done is a contract, not an opinion: when a mission opens, Kora proposes the done criteria and a budget, the Owner edits or approves them, and they lock at approval. An external judge, never the worker, decides each criterion from evidence assembled in code (the criteria verbatim, the workspace listing, excerpts of the actual files, the step results), and a criterion that was met un-meets itself if its artifact disappears. Whatever PAC can measure (words written, documents read, citations checked, files present) it resolves by code every pass and never asks a model about
-- Every exit is honest: a budget hit, a stall, or a done-claim the judge rejects lands as a not-done checkpoint that leads with the work so far, and Continue extends the budget from there. A mission still making progress extends itself up to a hard ceiling that stays the Owner's stop; when it goes in circles, PAC steers itself if it can name the next action and asks the Owner only what it cannot answer. Every pass carries its cost (planner and judge calls, tokens, time) and whether it moved the work forward
+- Every exit is honest: a done-claim the judge rejects sends the work back for repair, not to a stop. A budget hit, a stall, or a genuine dead end lands as a not-done checkpoint that leads with the work so far, and Continue extends the budget from there. A mission still making progress extends itself up to a hard ceiling that stays the Owner's stop; when it goes in circles, PAC steers itself if it can name the next action and asks the Owner only what it cannot answer. Every pass carries its cost (planner and judge calls, tokens, time) and whether it moved the work forward
 - The deliverable is proof first: a verified mission delivers a scorecard ahead of the artifact (each criterion met or unmet, with its evidence and receipt anchor, gaps declared), and the artifact itself is real files in the mission's own sandboxed workspace, which Kora can list, read, and write and the Owner opens from the rail
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
@@ -251,7 +251,7 @@ The work loop now runs end to end, iteration and verification included. What is 
 
 This repository makes the project visible while keeping the implementation private.
 
-**It is:** architecture, a trust model, a threat model, OWASP self-assessments, the engineering practices behind the build, screenshots, a demo walkthrough, sanitized examples, a glossary, and a roadmap.
+**It is:** architecture, a governance framework, a trust model, a threat model, OWASP self-assessments, the engineering practices behind the build, screenshots, a demo walkthrough, sanitized examples, a glossary, and a roadmap.
 
 **Documentation:**
 
@@ -261,6 +261,7 @@ This repository makes the project visible while keeping the implementation priva
 - [docs/operating-doctrine.md](docs/operating-doctrine.md): the command model, mapped to the surfaces
 
 *Trust & security*
+- [docs/earned-autonomy.md](docs/earned-autonomy.md): the governance framework PAC implements, stated so it can be applied to any agent system
 - [docs/trust-model.md](docs/trust-model.md): owner authority, tiers, postures, memory, oversight
 - [docs/trust-quartet.md](docs/trust-quartet.md): the four invariants, freshness as truth, why a refusal isn't an error
 - [docs/agent-governance.md](docs/agent-governance.md): granted capabilities, the trust ratchet, propose-don't-apply
