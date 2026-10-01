@@ -71,7 +71,7 @@ What a conforming system implements. Each control cites the principle it serves.
 
 - **Two dials, one fence.** A per-agent autonomy level and a system-wide profile change how often the system pauses to confirm. Neither changes what is permitted. Turning autonomy up never unlocks a tier.
 - **A fail-closed kill switch.** One control halts all autonomous execution immediately and survives restart.
-- **Two lanes.** Work the Owner is present for stays in the conversation and answers there. Work the Owner is absent for runs on receipts and returns as a delivery carrying who did it. Crossing between lanes is deliberate, never a side effect, so the default is to answer.
+- **Two lanes.** Work the Owner is present for stays in the conversation and answers there. Work the Owner is absent for runs on receipts and returns as a delivery carrying who did it. A plan exists only because something needs the Owner's authority; a mission exists only because the work outlives the Owner's attention. Anything that needs neither is an answer.
 - **The two-surface split.** The Owner controls the whole runtime. The operator may act on a smaller delegable subset, and the agents that watch the operator are excluded from it in code.
 
 ### Reach (P6)
@@ -85,7 +85,7 @@ What a conforming system implements. Each control cites the principle it serves.
 - **Receipts with a lifecycle.** Governed work is recorded from proposal through confirmation, execution, and verification, and the receipt is read back into both the Owner's disclosure and the operator's own context, so both narrate from the record.
 - **An append-only audit trail**, separate from working data, cryptographically chained so that any edit, deletion, reordering, or truncation is detectable.
 - **Identity on every actor.** Each governed actor carries an identity that binds its actions on the audit trail.
-- **A configuration fingerprint** over the system prompt, the capability registry, and the agent set, so a change to the governing configuration without a recorded reason is a visible drift state.
+- **A configuration fingerprint** over the system prompt, the capability registry, and the agent set, so a change to the governing configuration is detectable, and one without a recorded reason is treated as drift.
 - **Freshness labels** on every reported value, with the staleness threshold set per kind of value.
 
 ### Memory (P1, P2)
