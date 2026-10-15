@@ -1,6 +1,6 @@
 # OWASP Top 10 for Agentic Applications: PAC Self-Assessment
 
-This maps Personal A.I. Console&trade; (PAC) against the **[OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)**: the ten threat categories (commonly referenced by their **ASI01&ndash;ASI10** codes), published by the OWASP Gen AI Security Project.
+This maps Personal A.I. Console (PAC) against the **[OWASP Top 10 for Agentic Applications (2026)](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)**: the ten threat categories (commonly referenced by their **ASI01&ndash;ASI10** codes), published by the OWASP Gen AI Security Project.
 
 **Read this honestly:**
 - This is PAC's own self-assessment, **not** an external audit, certification, or compliance attestation.

@@ -1,6 +1,6 @@
 # Roadmap
 
-This roadmap separates what Personal A.I. Console&trade; (PAC) is **today** from where it is **headed**. It is deliberately honest about scope: PAC is an active private prototype, and most items below "Now" are direction, not shipped features.
+This roadmap separates what Personal A.I. Console (PAC) is **today** from where it is **headed**. It is deliberately honest about scope: PAC is an active private prototype, and most items below "Now" are direction, not shipped features.
 
 For current detail see the [README](../README.md); for architecture and trust see [architecture.md](architecture.md) and [trust-model.md](trust-model.md).
 
@@ -67,7 +67,7 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Mission expansion
 
-- **Deliverable drafting (hardening)**: the iterating mission loop is shipped and long-form drafts now come out of it as real files (see "Now"); coherence across sections, export beyond the mission's sandbox, and saving into the local library are the direction.
+- **Deliverable drafting (hardening)**: the iterating mission loop is shipped and long-form drafts now come out of it as real files (see "Now"). The loop is being generalized past its first test, a five-page paper, so the mission's own words decide what is checked and delivered; live runs resume after that pass. Coherence across sections, export beyond the mission's sandbox, and saving into the local library are the direction.
 - **Governed web research (expanding)**: read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
 - **Mission templates**: reusable mission shapes for recurring patterns.
 - **Multi-agent missions**: longer-running single missions are shipped (see "Now"); mission-to-mission dependencies and work split across agents, only as real workflows demand.

@@ -1,6 +1,6 @@
 # Threat Model (Local, Single-Owner)
 
-This document states the threats Personal A.I. Console&trade; (PAC) is designed to resist, and the threats it explicitly does **not** claim to handle. It complements the [OWASP Agentic self-assessment](owasp-agentic-mapping.md): the OWASP map answers "how does PAC line up against an industry framework," and this answers "what does PAC concretely assume an attacker might try, and what stops it."
+This document states the threats Personal A.I. Console (PAC) is designed to resist, and the threats it explicitly does **not** claim to handle. It complements the [OWASP Agentic self-assessment](owasp-agentic-mapping.md): the OWASP map answers "how does PAC line up against an industry framework," and this answers "what does PAC concretely assume an attacker might try, and what stops it."
 
 It is a behavior-level description: no source, no implementation detail. See [NOTICE.md](../NOTICE.md).
 

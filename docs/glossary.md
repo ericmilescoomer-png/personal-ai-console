@@ -1,6 +1,6 @@
 # Glossary
 
-Personal A.I. Console&trade; (PAC) uses a specific vocabulary. This glossary defines the terms as they are used across this repository. For how they fit together, see [architecture.md](architecture.md) and [trust-model.md](trust-model.md).
+Personal A.I. Console (PAC) uses a specific vocabulary. This glossary defines the terms as they are used across this repository. For how they fit together, see [architecture.md](architecture.md) and [trust-model.md](trust-model.md).
 
 ---
 

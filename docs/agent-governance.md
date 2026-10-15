@@ -1,6 +1,6 @@
 # Agent Governance
 
-Personal A.I. Console&trade; (PAC) lets the command agent, Kora, operate **other agents**: specialized workers that handle recurring or domain-specific work. That capability is exactly where an agentic system usually gets dangerous: agents that grant themselves powers, promote themselves, edit live systems, or quietly coordinate out of view.
+Personal A.I. Console (PAC) lets the command agent, Kora, operate **other agents**: specialized workers that handle recurring or domain-specific work. That capability is exactly where an agentic system usually gets dangerous: agents that grant themselves powers, promote themselves, edit live systems, or quietly coordinate out of view.
 
 PAC governs those agents with the same discipline it applies to Kora herself. This document describes how, at a product level: no source, no schemas, no configuration. See [NOTICE.md](../NOTICE.md).
 

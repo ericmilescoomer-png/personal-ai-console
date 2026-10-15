@@ -1,6 +1,6 @@
 # OWASP AISVS 1.0: PAC Chapter-Level Self-Assessment
 
-This scores Personal A.I. Console&trade; (PAC) against the **[OWASP Artificial Intelligence Security Verification Standard (AISVS) 1.0](https://github.com/OWASP/AISVS)**: 12 chapters, 191 testable requirements, published by the OWASP Foundation in 2026. Where the [OWASP Agentic Top 10 mapping](owasp-agentic-mapping.md) answers "how does PAC line up against the threat categories," this answers the harder question: "how does PAC score against the *verification* standard built to test them."
+This scores Personal A.I. Console (PAC) against the **[OWASP Artificial Intelligence Security Verification Standard (AISVS) 1.0](https://github.com/OWASP/AISVS)**: 12 chapters, 191 testable requirements, published by the OWASP Foundation in 2026. Where the [OWASP Agentic Top 10 mapping](owasp-agentic-mapping.md) answers "how does PAC line up against the threat categories," this answers the harder question: "how does PAC score against the *verification* standard built to test them."
 
 **Read this honestly:**
 

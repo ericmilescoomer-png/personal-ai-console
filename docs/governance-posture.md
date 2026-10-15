@@ -1,6 +1,6 @@
 # AI Governance Posture
 
-Personal A.I. Console&trade; (PAC) was not built to pass a compliance checklist. It was built by someone who believed that if AI is going to act on a person's behalf, there had to be a real system of controls around it: not a disclaimer, not a terms-of-service, not a trust-me.
+Personal A.I. Console (PAC) was not built to pass a compliance checklist. It was built by someone who believed that if AI is going to act on a person's behalf, there had to be a real system of controls around it: not a disclaimer, not a terms-of-service, not a trust-me.
 
 This document maps what PAC actually does to the vocabulary of AI governance: the frameworks, the concepts, and the controls that the field uses to evaluate whether an AI system is responsibly designed.
 
@@ -77,7 +77,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0) organizes AI governance into 
 **Measure**: *analyze, assess, and track AI risk.*
 - The earned-autonomy ratchet is a measured threshold, not a judgment call. Agent promotion (draft &rarr; trial &rarr; active &rarr; proven) requires recorded performance statistics over time. An agent that has not earned trust is not granted it.
 - Configuration fingerprinting detects drift in the trust-relevant configuration (system prompt, capability registry, agent set). Unexplained drift is a signal, not a silent state change.
-- A dedicated contract-test layer pins the trust invariants specifically: 1,048 tests across 107 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
+- A dedicated contract-test layer pins the trust invariants specifically: 1,058 tests across 107 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
 
 **Manage**: *treat, respond to, and recover from AI risk.*
 - The kill switch halts all autonomous execution immediately and survives restart.

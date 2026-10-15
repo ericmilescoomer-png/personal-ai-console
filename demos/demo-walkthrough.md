@@ -1,6 +1,6 @@
 # Demo Walkthrough
 
-This walks through a single governed task in Personal A.I. Console&trade; (PAC), end to end, using the screenshots in [`../assets/screenshots/`](../assets/screenshots/). It is captured from the current private prototype with demo data: the owner is shown simply as **Owner**, and nothing here exposes private implementation, paths, or personal data.
+This walks through a single governed task in Personal A.I. Console (PAC), end to end, using the screenshots in [`../assets/screenshots/`](../assets/screenshots/). It is captured from the current private prototype with demo data: the owner is shown simply as **Owner**, and nothing here exposes private implementation, paths, or personal data.
 
 The point of the walkthrough is to show *how PAC behaves*, not just what it looks like: a request becomes a plan, the plan is classified and gated, sensitive work waits for the owner, and the result leaves a receipt.
 

@@ -2,7 +2,7 @@
 
 *A governance framework for owner-controlled AI agents. Version 1.0, October 2026.*
 
-Personal A.I. Console&trade; (PAC) is a product. The rules it runs on are not product-specific, and this page states them as a framework so they can be read, argued with, and applied to a system that is not PAC. Everything here is implemented in the private build and described elsewhere in this repository at the product level; this page is the same material organized the way governance frameworks are organized: principles, controls, levels, and a crosswalk to the frameworks the field already uses.
+Personal A.I. Console (PAC) is a product. The rules it runs on are not product-specific, and this page states them as a framework so they can be read, argued with, and applied to a system that is not PAC. Everything here is implemented in the private build and described elsewhere in this repository at the product level; this page is the same material organized the way governance frameworks are organized: principles, controls, levels, and a crosswalk to the frameworks the field already uses.
 
 It is written at a behavior level. No source, schemas, or configuration. See [NOTICE.md](../NOTICE.md).
 
@@ -163,7 +163,7 @@ Twelve questions. A "no" names the gap; the framework does not grade on intent.
 
 ## License for this page
 
-This page, and only this page, is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Copy it, adapt it, build on it, commercially or not, as long as you credit Eric Coomer and link back to this repository, and say if you changed it. The rest of this repository stays under its [LICENSE](../LICENSE), and the names Personal A.I. Console, PAC, and Kora stay covered by [TRADEMARK.md](../TRADEMARK.md); this license grants no rights in them.
+This page, and only this page, is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Copy it, adapt it, build on it, commercially or not, as long as you credit Eric Coomer and link back to this repository, and say if you changed it. The rest of this repository stays under its [LICENSE](../LICENSE).
 
 Suggested attribution: *Earned Autonomy, v1.0, by Eric Coomer, CC BY 4.0.*
 

@@ -1,6 +1,6 @@
 # Screenshots
 
-These screenshots are from the current private prototype of Personal A.I. Console&trade; (PAC). They are captured with demo data on a local, owner-controlled build, and are intended to show product direction and real system behavior, not to expose private implementation, local paths, credentials, or personal data.
+These screenshots are from the current private prototype of Personal A.I. Console (PAC). They are captured with demo data on a local, owner-controlled build, and are intended to show product direction and real system behavior, not to expose private implementation, local paths, credentials, or personal data.
 
 The single owner is shown throughout simply as **Owner**, which is also how PAC refers to the principal in the system.
 

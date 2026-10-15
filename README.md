@@ -2,7 +2,7 @@
   <img src="assets/pac-logo.PNG" alt="Personal A.I. Console logo" width="360">
 </p>
 
-# Personal A.I. Console&trade;
+# Personal A.I. Console
 
 A local-first command center for governed AI. One owner, one machine, in full command.
 
@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-10-01. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-10-15. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 4,181 across 344 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 1,048 across 107 modules |
+| Automated tests | 4,802 across 345 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 1,058 across 107 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 297 entries over seven months, never edited after the fact |
+| Append-only dev ledger | 340 entries over eight months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -179,9 +179,9 @@ Everything below runs in the current private build. Product level only; implemen
 - Retrieval that knows sources are not all the same kind of thing: owner-settable authority weights by source kind, an adjustable retrieval budget, and a gate that turns off automatic reaching entirely
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
 - Long work iterates under governance: a mission that needs more than one plan runs as a bounded loop of small passes, each pass a plan of its own through the same policy gate and executor as any other, so every pass is receipted by construction. The mission's state lives on disk, and each pass starts from a fresh, bounded context assembled in code from the records, never a growing chat history. One briefing approval covers the safe passes inside the approved objective and budget; a sensitive proposal pauses the mission before anything runs
-- Done is a contract, not an opinion: when a mission opens, Kora proposes the done criteria and a budget, the Owner edits or approves them, and they lock at approval. An external judge, never the worker, decides each criterion from evidence assembled in code (the criteria verbatim, the workspace listing, excerpts of the actual files, the step results), and a criterion that was met un-meets itself if its artifact disappears. Whatever PAC can measure (words written, documents read, citations checked, files present) it resolves by code every pass and never asks a model about
+- Done is a contract, not an opinion: when a mission opens, Kora proposes the done criteria and a budget, the Owner edits or approves them, and they lock at approval. An external judge, never the worker, decides each criterion from evidence assembled in code (the criteria verbatim, the workspace listing, excerpts of the actual files, the step results), and a criterion that was met un-meets itself if its artifact disappears. Whatever PAC can measure (words written, documents read, citations checked, files present) it resolves by code every pass and never asks a model about. Each requirement in the Owner's ask is held as its own obligation and stays open until evidence settles it; a requirement PAC could not capture shows as an open gap, never as a silent pass
 - Every exit is honest: a done-claim the judge rejects sends the work back for repair, not to a stop. A budget hit, a stall, or a genuine dead end lands as a not-done checkpoint that leads with the work so far, and Continue extends the budget from there. A mission still making progress extends itself up to a hard ceiling that stays the Owner's stop; when it goes in circles, PAC steers itself if it can name the next action and asks the Owner only what it cannot answer. Every pass carries its cost (planner and judge calls, tokens, time) and whether it moved the work forward
-- The deliverable is proof first: a verified mission delivers a scorecard ahead of the artifact (each criterion met or unmet, with its evidence and receipt anchor, gaps declared), and the artifact itself is real files in the mission's own sandboxed workspace, which Kora can list, read, and write and the Owner opens from the rail
+- The deliverable is proof first: a verified mission delivers a scorecard ahead of the artifact (each criterion met or unmet, with its evidence and receipt anchor, gaps declared), and the artifact itself is real files in the mission's own sandboxed workspace, which Kora can list, read, and write and the Owner opens from the rail. The product is the set of files the mission names, not a fixed document layout: text files are judged, other files are listed and downloadable, and a named file not yet written shows as open work
 - Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
 - Typed compute, never a code runner: sixteen governed math operations (arithmetic through calculus, exact unit conversion, matrices, base and float representation) as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
@@ -231,7 +231,7 @@ Everything below runs in the current private build. Product level only; implemen
 
 ## What's Not Built Yet
 
-The work loop now runs end to end, iteration and verification included. What is being hardened is long-form work on live runs: the loop is exercised with fresh missions, and each stop those runs surface is traced to its cause in the records and repaired (see the [roadmap](docs/roadmap.md)).
+The work loop now runs end to end, iteration and verification included. What is being hardened is long-form work on live runs. Each stop a live run surfaces is traced to its cause in the records and repaired. The current pass generalizes the loop itself: its first long-form test was a five-page paper, and rules shaped to that one task had crept in. Those rules are being replaced so the mission's own words decide what is checked, what sources count, and what gets delivered. Live runs are paused until that pass lands (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end; a real installer is queued behind a stabilization pass now underway, and no installable release has shipped yet.
@@ -318,7 +318,7 @@ See **[docs/roadmap.md](docs/roadmap.md)** for the earned-autonomy model, what's
 
 ## Naming
 
-**Personal A.I. Console** is the product name. **PAC** is the abbreviation. **PAC Desktop** is the current private desktop implementation. See [TRADEMARK.md](TRADEMARK.md).
+**Personal A.I. Console** is the product name. **PAC** is the abbreviation. **PAC Desktop** is the current private desktop implementation.
 
 ## Contact
 
@@ -330,6 +330,6 @@ Please do not use this repository to request source-code access; the implementat
 
 &copy; 2026 Eric Coomer. All rights reserved. See [LICENSE](LICENSE).
 
-Personal A.I. Console&trade; is the subject of pending U.S. trademark application Serial No. 99527085 by Eric Coomer. No license is granted to copy, modify, redistribute, sublicense, commercialize, or build derivative works from this project unless permission is explicitly provided in writing.
+No license is granted to copy, modify, redistribute, sublicense, commercialize, or build derivative works from this project unless permission is explicitly provided in writing.
 
 *Company and product names are referenced for context only. Personal A.I. Console is not affiliated with, sponsored by, or endorsed by any referenced company.*

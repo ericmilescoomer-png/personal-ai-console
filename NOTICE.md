@@ -2,8 +2,6 @@
 
 Copyright &copy; 2026 Eric Coomer. All rights reserved.
 
-Personal A.I. Console&trade; is the subject of pending U.S. trademark application Serial No. 99527085 by Eric Coomer.
-
 ## Repository purpose
 
 This repository is provided for public visibility, product documentation, and portfolio presentation. It is not a software release, public distribution, or open-source project.
@@ -26,4 +24,4 @@ This repository is provided as-is for documentation and visibility purposes only
 
 ## Contact
 
-For licensing inquiries, partnership questions, or trademark matters, contact the owner directly.
+For licensing inquiries or partnership questions, contact the owner directly.

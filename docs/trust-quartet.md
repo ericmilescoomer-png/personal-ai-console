@@ -1,6 +1,6 @@
 # The Trust Quartet
 
-Most of Personal A.I. Console&trade; (PAC) reduces to four sentences. Everything else (the tiers, the postures, the receipt spine, the agent governance) is implementation detail in service of these four invariants.
+Most of Personal A.I. Console (PAC) reduces to four sentences. Everything else (the tiers, the postures, the receipt spine, the agent governance) is implementation detail in service of these four invariants.
 
 They are written as guarantees the system is built to keep, and as properties it is tested against. This document states the four, then expands the two that are easiest to miss and hardest to fake.
 

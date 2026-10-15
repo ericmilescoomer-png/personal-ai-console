@@ -1,6 +1,6 @@
 # The Operating Doctrine
 
-Most "AI command centers" are dashboards wearing the words. Personal A.I. Console&trade; (PAC) is built the other way around: a **command model** with a clean surface on top. And the command model isn't invented; it's borrowed from how human crews have run high-stakes operations for a very long time, long before any of it was software.
+Most "AI command centers" are dashboards wearing the words. Personal A.I. Console (PAC) is built the other way around: a **command model** with a clean surface on top. And the command model isn't invented; it's borrowed from how human crews have run high-stakes operations for a very long time, long before any of it was software.
 
 Four proven practices shape how PAC behaves. This document names each one and maps it to the system. It is written at a product level: no source, schemas, or configuration. See [NOTICE.md](../NOTICE.md).
 

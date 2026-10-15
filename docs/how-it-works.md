@@ -1,6 +1,6 @@
 # How It Works
 
-This document describes the *process* by which Personal A.I. Console&trade; (PAC) turns a request into governed work: the sequence, the decision points, and the guarantees at each one. [architecture.md](architecture.md) covers the *structure* (the layers); this covers the *flow* through them.
+This document describes the *process* by which Personal A.I. Console (PAC) turns a request into governed work: the sequence, the decision points, and the guarantees at each one. [architecture.md](architecture.md) covers the *structure* (the layers); this covers the *flow* through them.
 
 It is a behavior-level description. It is not an implementation guide and does not include source, real schemas, or the internal logic itself. For the principles behind it see [trust-model.md](trust-model.md); for a screenshot walkthrough see [demos/demo-walkthrough.md](../demos/demo-walkthrough.md).
 

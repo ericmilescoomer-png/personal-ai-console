@@ -1,6 +1,6 @@
 # Design Language: Calm by Default
 
-The trust architecture decides what Personal A.I. Console&trade; (PAC) is *allowed* to do. The design language decides how it *feels* to use. They are held to the same standard: the interface is built to keep the Owner oriented and in control, never to flatter, alarm, or obscure.
+The trust architecture decides what Personal A.I. Console (PAC) is *allowed* to do. The design language decides how it *feels* to use. They are held to the same standard: the interface is built to keep the Owner oriented and in control, never to flatter, alarm, or obscure.
 
 This document describes the design philosophy at a product level. It is not a style sheet or a component spec. See [NOTICE.md](../NOTICE.md). For the views themselves, see [screenshots.md](screenshots.md).
 

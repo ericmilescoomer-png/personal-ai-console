@@ -1,4 +1,4 @@
-Personal A.I. Console(TM) - Proprietary License
+Personal A.I. Console - Proprietary License
 
 Copyright (c) 2026 Eric Coomer. All rights reserved.
 
@@ -20,14 +20,9 @@ Viewing this repository on GitHub, and the limited rights GitHub's Terms
 of Service grant (such as forking within GitHub for viewing), are not a
 grant of any further rights by the copyright holder.
 
-"Personal A.I. Console" is the subject of pending U.S. trademark
-application Serial No. 99527085. See TRADEMARK.md for trademark notice
-and permitted use.
-
 One exception: the framework page docs/earned-autonomy.md is licensed
 separately under Creative Commons Attribution 4.0 (CC BY 4.0), as stated
-at the bottom of that page. That grant covers only that page's text and
-grants no rights in the names or marks.
+at the bottom of that page. That grant covers only that page's text.
 
 The Personal A.I. Console implementation (source code) is private, is not
 part of this repository, and is not available for distribution.
