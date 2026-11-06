@@ -47,6 +47,7 @@ Working today on a local, owner-controlled, Windows-validated build:
 - A governed build workspace for the Builder agent: sandboxed patch-and-test cycles with honest red/green evidence, no version-control access by design, and failure reports filed as deliverables when a build fails.
 - A local runtime substrate (PAC OS) of monitor agents producing structured evidence.
 - A durable single-owner key/access model for local operation, with owner-initiated key rotation.
+- A fail-closed security pass (November 2026): the model cannot grant itself an approval, model trust is an approved-digest allowlist asked on every execution path, the kill switch covers scheduled, triggered, and in-flight work and a damaged settings file reads as paused, keyless local access refuses writes from pages that are not PAC's own, and the audit chain reports a missing head as a break.
 - Governed, read-only web research behind an off-by-default flag (only when outbound is open, Limited or Connected, and SSRF-hardened); experimental.
 
 ---
@@ -67,7 +68,7 @@ Direction, not shipped features. Grouped by the two families the system is built
 
 ### Mission expansion
 
-- **Deliverable drafting (hardening)**: the iterating mission loop is shipped and long-form drafts now come out of it as real files (see "Now"). The loop is being generalized past its first test, a five-page paper, so the mission's own words decide what is checked and delivered; live runs resume after that pass. Coherence across sections, export beyond the mission's sandbox, and saving into the local library are the direction.
+- **Deliverable drafting (hardening)**: the iterating mission loop is shipped and long-form drafts now come out of it as real files (see "Now"). The loop has been generalized past its first test, a five-page paper: the mission's own words decide what is checked and delivered, and live runs are back on. No live run has yet met its locked done criteria in full; citation handling is the repair in progress. Coherence across sections, export beyond the mission's sandbox, and saving into the local library are the direction.
 - **Governed web research (expanding)**: read-only public-web search and fetch already exist as an experimental, off-by-default, Connected-only capability. What's ahead: source storage, extraction, and citation handling that mature it from experimental reads into a dependable research deliverable.
 - **Mission templates**: reusable mission shapes for recurring patterns.
 - **Multi-agent missions**: longer-running single missions are shipped (see "Now"); mission-to-mission dependencies and work split across agents, only as real workflows demand.

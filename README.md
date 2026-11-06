@@ -19,14 +19,14 @@ PAC treats the model as one replaceable component. The product is the system aro
 
 ## By the numbers
 
-Counts verified against the private build on 2026-10-15. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
+Counts verified against the private build on 2026-11-06. They are descriptive snapshots, not a contract; method in [docs/engineering-discipline.md](docs/engineering-discipline.md).
 
 | Measure | Value |
 |---|---|
-| Automated tests | 4,802 across 345 test files, including the smart-home extension's 105-test acceptance suite |
-| Contract tests pinning trust invariants | 1,058 across 107 modules |
+| Automated tests | 5,282 across 371 test files, including the smart-home extension's 105-test acceptance suite |
+| Contract tests pinning trust invariants | 1,246 across 115 modules |
 | Registered runtime monitor agents | 21 |
-| Append-only dev ledger | 340 entries over eight months, never edited after the fact |
+| Append-only dev ledger | 497 entries over nine months, never edited after the fact |
 | First live cloud consult | caught a real defect the local model missed, for $0.03 |
 
 ## Contents
@@ -175,6 +175,7 @@ Everything below runs in the current private build. Product level only; implemen
 
 - FastAPI local backend; models via Ollama (Qwen in the reference build), configurable in Settings
 - Governed model lifecycle: plain-English verdicts from locally measured evaluation, a per-machine role recommendation, model pulls treated as posture-gated egress, portable model cards
+- Model trust fails closed: a model runs only while its live content digest matches the one the Owner approved, every execution path asks the same gate (chat, embeddings, readiness, evaluation, startup warm-up), and a model that cannot be verified is refused, never assumed. The Owner approves a local model by the digest shown, a digest that changed between display and approval is refused, and a pull in flight blocks the tag until the new bytes are re-verified
 - The model seat is contested, not assumed: when a successor model shipped, it was benchmarked head-to-head on local instruments (evidence discipline, tier accuracy, citation honesty, vision, latency) and the incumbent held the seat; both baselines are persisted, so the next challenge costs minutes, not days
 - Retrieval that knows sources are not all the same kind of thing: owner-settable authority weights by source kind, an adjustable retrieval budget, and a gate that turns off automatic reaching entirely
 - Plan lifecycle from draft through preview, confirmation, execution, and receipt-backed completion
@@ -182,12 +183,12 @@ Everything below runs in the current private build. Product level only; implemen
 - Done is a contract, not an opinion: when a mission opens, Kora proposes the done criteria and a budget, the Owner edits or approves them, and they lock at approval. An external judge, never the worker, decides each criterion from evidence assembled in code (the criteria verbatim, the workspace listing, excerpts of the actual files, the step results), and a criterion that was met un-meets itself if its artifact disappears. Whatever PAC can measure (words written, documents read, citations checked, files present) it resolves by code every pass and never asks a model about. Each requirement in the Owner's ask is held as its own obligation and stays open until evidence settles it; a requirement PAC could not capture shows as an open gap, never as a silent pass
 - Every exit is honest: a done-claim the judge rejects sends the work back for repair, not to a stop. A budget hit, a stall, or a genuine dead end lands as a not-done checkpoint that leads with the work so far, and Continue extends the budget from there. A mission still making progress extends itself up to a hard ceiling that stays the Owner's stop; when it goes in circles, PAC steers itself if it can name the next action and asks the Owner only what it cannot answer. Every pass carries its cost (planner and judge calls, tokens, time) and whether it moved the work forward
 - The deliverable is proof first: a verified mission delivers a scorecard ahead of the artifact (each criterion met or unmet, with its evidence and receipt anchor, gaps declared), and the artifact itself is real files in the mission's own sandboxed workspace, which Kora can list, read, and write and the Owner opens from the rail. The product is the set of files the mission names, not a fixed document layout: text files are judged, other files are listed and downloadable, and a named file not yet written shows as open work
-- Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run
+- Approvals that cannot be replayed: an approval opens its door exactly once; re-approving finished work returns the recorded receipt, and unapproved work refuses to run. Nothing the model writes into a plan can stand in for an Owner decision: the only way past a secret-scan finding is the Owner's own go-ahead
 - SAFE / SENSITIVE / FORBIDDEN capability tiers, enforced in code
 - Typed compute, never a code runner: sixteen governed math operations (arithmetic through calculus, exact unit conversion, matrices, base and float representation) as a capability with no filesystem, network, or process surface; every computed answer is disclosed as computed, and a deterministic source check reports whether the number Kora was handed matches the page it came from
 - Real deadlines on governed work: every long-running path is killed or bounded when its time is up; a timeout here is enforced, not advisory
 - Three postures plus a one-touch panic control that drops everything back to Sovereign instantly
-- Graduated autonomy profiles, and a fail-closed kill switch that halts autonomous execution and survives restart
+- Graduated autonomy profiles, and a fail-closed kill switch that halts autonomous execution and survives restart: it covers scheduled and triggered work as well as a plan already running (the current step finishes, the plan parks resumable), a pause that could not be saved says so, and a damaged settings file reads as paused, never as a fresh start
 - Action receipt spine, lifecycle-tracked from proposal through verification
 - Append-only audit trail (`audit.jsonl`), independent of the main database
 - One error language: every API error carries a machine-readable code in a canonical envelope, unhandled failures included, so no client ever meets a bare plain-text 500; the operational event stream has its own read-only evidence tab
@@ -205,7 +206,7 @@ Everything below runs in the current private build. Product level only; implemen
 - Editable base system prompt over a protected grounding floor: framing can be tuned, honesty constraints cannot be edited away; every change versioned and receipted
 - An agent crew of a dozen scoped workers, each defined the way the industry now defines an agent (name, description, charter, capabilities, trigger, brain, autonomy) and holding exactly the capabilities the owner granted it; authorization reads each agent's own granted set, fail-closed, and an agent with zero capabilities is legal: it just talks
 - A measured agent lifecycle (draft, trial, active, proven), a create-an-agent wizard with capability presets and an à-la-carte checklist, and per-agent dossiers that show the actual grants, not a label
-- A governed build workspace for the Builder agent: sandboxed patch-and-test cycles, path-confined, no version-control access; failing tests report red honestly, and a failed build files a failure report with the evidence
+- A governed build workspace for the Builder agent: sandboxed patch-and-test cycles, path-confined, no version-control access; failing tests report red honestly, and a failed build files a failure report with the evidence. A test run is a sensitive action in its own right: it runs in a stripped environment with no PAC secrets, bounded output, a hard deadline, and a kill that takes the whole process tree
 
 **System layer (PAC OS)**
 
@@ -225,13 +226,14 @@ Everything below runs in the current private build. Product level only; implemen
 
 **Security**
 
-- Input firewall (untrusted-content sanitization, invisible-character removal), secret scanner, filesystem guard, trusted workspace roots, rate limiting, and a rotatable single-owner access key
+- Input firewall (untrusted content is decoded and normalized before invisible characters are stripped, so an encoded instruction cannot slip past the matcher; Library evidence is never rewritten), secret scanner over every outbound field, filesystem guard, trusted workspace roots, rate limiting, and a rotatable single-owner access key. The keyless local development mode still refuses state-changing requests from any page that is not PAC's own, and an unreadable key file is its own refused state, never a fall-through to open access
+- Audit truth: the chain reports a missing or unreadable head as a break, never as clean, and a write dropped by the rate cap is counted and recorded, never lost silently
 
 ---
 
 ## What's Not Built Yet
 
-The work loop now runs end to end, iteration and verification included. What is being hardened is long-form work on live runs. Each stop a live run surfaces is traced to its cause in the records and repaired. The current pass generalizes the loop itself: its first long-form test was a five-page paper, and rules shaped to that one task had crept in. Those rules are being replaced so the mission's own words decide what is checked, what sources count, and what gets delivered. Live runs are paused until that pass lands (see the [roadmap](docs/roadmap.md)).
+The work loop now runs end to end, iteration and verification included. What is being hardened is long-form work on live runs. Each stop a live run surfaces is traced to its cause in the records and repaired. The pass that generalized the loop past its first test (a five-page paper) has landed: the mission's own words decide what is checked, what sources count, and what gets delivered, and live runs are back on. A long-form mission now reports truthfully what it finished, what it did not, and why, but no live run has yet met its locked done criteria in full. The repair in progress is citation handling: the form a citation must take, then how the judge chooses the passage a cited sentence is checked against (see the [roadmap](docs/roadmap.md)).
 
 - The public showcase does not include the private implementation code.
 - The validated platform is Windows; cross-platform work is incomplete. A frozen-binary packaging spike has passed end to end; a real installer is queued behind a stabilization pass now underway, and no installable release has shipped yet.

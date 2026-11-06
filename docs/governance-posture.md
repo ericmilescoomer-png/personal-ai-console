@@ -42,7 +42,7 @@ PAC implements human-in-the-loop as a structural property, not a UI choice:
 
 - **Approval gates are pre-execution, not post-hoc.** Before a SENSITIVE step runs, the owner sees the full proposed plan, each step's risk tier, and what specifically requires confirmation. Approval is given before anything consequential happens, not surfaced after the fact as an alert.
 - **The gate is deterministic, not model-decided.** The system that evaluates whether a step requires owner confirmation is not the model. It is a policy engine in PAC Core that applies registry rules. The model proposes; it does not authorize.
-- **The kill switch is fail-closed.** A persistent kill switch halts all autonomous execution immediately and survives restart. There is no grace period, no deferred shutdown, no way to work around it by rephrasing a request.
+- **The kill switch is fail-closed.** A persistent kill switch halts all autonomous execution immediately and survives restart. It covers scheduled and triggered work as well as a plan already running (the current step finishes, the plan parks resumable), and a damaged settings file reads as paused, never as a fresh start. There is no grace period, no deferred shutdown, no way to work around it by rephrasing a request.
 - **The approval surface is honest about what it's showing.** The owner sees the actual plan, not a summary of the plan. The approval UI is designed around the principle that a person who does not understand what they are approving has not actually approved it.
 
 ---
@@ -77,7 +77,7 @@ The NIST AI Risk Management Framework (AI RMF 1.0) organizes AI governance into 
 **Measure**: *analyze, assess, and track AI risk.*
 - The earned-autonomy ratchet is a measured threshold, not a judgment call. Agent promotion (draft &rarr; trial &rarr; active &rarr; proven) requires recorded performance statistics over time. An agent that has not earned trust is not granted it.
 - Configuration fingerprinting detects drift in the trust-relevant configuration (system prompt, capability registry, agent set). Unexplained drift is a signal, not a silent state change.
-- A dedicated contract-test layer pins the trust invariants specifically: 1,058 tests across 107 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
+- A dedicated contract-test layer pins the trust invariants specifically: 1,246 tests across 115 modules at the last verified count (see the README's *By the numbers*), so the coverage is against the governance properties, not just functional behavior.
 
 **Manage**: *treat, respond to, and recover from AI risk.*
 - The kill switch halts all autonomous execution immediately and survives restart.

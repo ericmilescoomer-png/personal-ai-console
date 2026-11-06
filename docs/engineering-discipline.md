@@ -16,7 +16,7 @@ PAC is engineered so that its load-bearing guarantees are **executable**, not as
 
 ## A test suite that covers the guarantees, not just the code
 
-The private build is covered by **4,802 automated tests** across **345 test files** (counts verified against the build on 2026-10-15), including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
+The private build is covered by **5,282 automated tests** across **371 test files** (counts verified against the build on 2026-11-06), including a **105-test acceptance suite** for the smart-home extension, property-based tests that gauntlet its signed receipt chain rather than merely exercise it. The suite is organized into tiers, each answering a different question:
 
 | Tier | Question it answers |
 |---|---|
@@ -31,11 +31,14 @@ The point of the tiering is the **contract** layer. Most test suites prove that 
 
 ## Contract tests: invariants that are enforced, not promised
 
-**1,058 contract tests, across 107 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
+**1,246 contract tests, across 115 modules**, exist for one reason: to make the trust model's promises break the build if they are ever violated. Among the invariants pinned this way:
 
 - **The oversight boundary is a strict subset.** The set of agents Kora is allowed to restart is asserted to be a strict subset of the set the Owner controls, and the agents that observe, evaluate, learn from, or alert on Kora's own behavior are asserted to be *excluded* from her reach. If a future change let the delegate reach its own watchers, the test fails. (See [trust-model.md](trust-model.md) and [owasp-agentic-mapping.md](owasp-agentic-mapping.md), ASI10.)
 - **Sensitive work cannot self-authorize.** Tests assert that a SENSITIVE step parks for Owner confirmation and does not execute on the model's say-so.
 - **The approval surface can't be skipped.** A sensitive action with no way to reach the Owner does not quietly proceed.
+- **The model cannot grant itself an approval.** The fields a model-drafted plan may carry are pinned, and nothing in model output can stand in for the Owner's decision to proceed past a secret-scan finding.
+- **Model trust fails closed.** A model with no usable verdict, an unreachable model manager, or a digest that no longer matches the approved one is refused on every execution path; the tests drive the real gate against a simulated digest query rather than stubbing the answer.
+- **The kill switch covers everything.** Scheduled, triggered, and in-flight work all stop under the pause, a pause that could not be saved reports that it could not, and a damaged settings file reads as paused.
 - **Least-privilege grants are enforced.** An agent attempting a capability outside its owner-granted capability set is refused at execution time, not merely discouraged, and an unresolvable grant set refuses rather than defaults open.
 - **The trust ratchet is real.** Agent promotion thresholds (below) are asserted, so an agent cannot be promoted without meeting them.
 - **The public surface is allow-listed.** Which routes may be reached without authority is pinned, so the anonymous surface cannot silently widen.
